@@ -22,33 +22,33 @@ FactoryGirl.define do
 
 
   factory :ticket do
-    sequence :status do |n|
-      n
-    end
+    # sequence :status do |n|
+    #   n
+    # end
     price 9.99
     # image_path "example.jpg"
 
     factory :retired_ticket do
-      sequence :status do |n|
-        n
-      end
+      # sequence :status do |n|
+      #   n
+      # end
     end
   end
 
   factory :order do
     user
 
-    factory :paid_order do
-      status 1
-    end
-
-    factory :cancelled_order do
-      status 2
-    end
-
-    factory :completed_order do
-      status 3
-    end
+    # factory :paid_order do
+    #   status 1
+    # end
+    #
+    # factory :cancelled_order do
+    #   status 2
+    # end
+    #
+    # factory :completed_order do
+    #   status 3
+    # end
   end
 
   factory :order_ticket do

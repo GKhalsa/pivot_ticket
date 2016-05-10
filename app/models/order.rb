@@ -3,12 +3,12 @@ class Order < ActiveRecord::Base
   has_many :order_tickets
   has_many :tickets, through: :order_tickets
   belongs_to :user
-
-  scope :ordered, -> { where(status: 0) }
-  scope :paid, -> { where(status: 1) }
-  scope :cancelled, -> { where(status: 2) }
-  scope :completed, -> { where(status: 3) }
-
+  #
+  # scope :ordered, -> { where(status: 0) }
+  # scope :paid, -> { where(status: 1) }
+  # scope :cancelled, -> { where(status: 2) }
+  # scope :completed, -> { where(status: 3) }
+  #
   enum status: %w(ordered paid cancelled completed)
 
   def quantity
