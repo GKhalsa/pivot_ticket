@@ -1,27 +1,27 @@
 require "rails_helper"
 
-RSpec.feature "User can delete an item from cart and undo" do
+RSpec.feature "User can delete an ticket from cart and undo" do
   scenario "they see updated cart" do
-    item = create(:item)
+    ticket = create(:ticket)
 
-    visit items_path
+    visit tickets_path
 
-    within(".card-#{item.id}") do
+    within(".card-#{ticket.id}") do
       click_button("Add to Cart")
     end
 
     visit cart_path
 
-    expect(page).to have_content item.title
-    expect(page).to have_content item.price
+    expect(page).to have_content ticket.event
+    expect(page).to have_content ticket.price
     click_on "Delete"
-    expect(page).to have_content "Removed #{item.title}"
+    expect(page).to have_content "Removed #{ticket.event}"
 
-    expect(page).not_to have_content item.price
+    expect(page).not_to have_content ticket.price
 
-    click_on "Put one back?"
+    click_on "Undo?"
 
-    expect(page).to have_content item.title
-    expect(page).to have_content item.price
+    expect(page).to have_content ticket.event
+    expect(page).to have_content ticket.price
   end
 end

@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
   validates :password, presence: true
   validates :name, presence: true
   has_many  :orders
-  has_many  :order_items, through: :orders
-  has_many  :items, through: :order_items
+  has_many  :order_tickets, through: :orders
+  has_many  :tickets, through: :order_tickets
 
   enum role: %w(default admin)
 

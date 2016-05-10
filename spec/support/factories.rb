@@ -21,19 +21,17 @@ FactoryGirl.define do
   end
 
 
-  factory :item do
-    sequence :title do |n|
-      "item #{n}"
+  factory :ticket do
+    sequence :status do |n|
+      n
     end
-    description "Some item"
     price 9.99
-    image_path "example.jpg"
+    # image_path "example.jpg"
 
-    factory :retired_item do
-      sequence :title do |n|
-        "retired item #{n}"
+    factory :retired_ticket do
+      sequence :status do |n|
+        n
       end
-      state 1
     end
   end
 
@@ -53,8 +51,8 @@ FactoryGirl.define do
     end
   end
 
-  factory :order_item do
-    item
+  factory :order_ticket do
+    ticket
     order
     quantity 1
   end

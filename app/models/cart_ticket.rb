@@ -1,4 +1,4 @@
-class CartItems < SimpleDelegator
+class CartTickets < SimpleDelegator
   attr_reader :quantity, :item
 
   def initialize(item, quantity)

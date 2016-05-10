@@ -1,6 +1,6 @@
 module ApplicationHelper
   include CategoryHelper
-  include ItemsHelper
+  include TicketsHelper
   include NavHelper
 
   def link_to_login_or_logout

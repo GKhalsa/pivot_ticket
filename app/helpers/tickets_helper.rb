@@ -1,4 +1,4 @@
-module ItemsHelper
+module TicketsHelper
   def checkout_or_create_account_button
     if current_user
       button_to "Checkout", orders_path, class: "waves-effect waves-light btn"
@@ -10,15 +10,15 @@ module ItemsHelper
     end
   end
 
-  def button_to_change_item_state(item)
-    if item.active?
+  def button_to_change_ticket_state(ticket)
+    if ticket.active?
       link_to "Retire",
-              admin_retire_path(item),
+              admin_retire_path(ticket),
               method: :patch,
               class: "waves-effect waves-light btn"
     else
       link_to "Activate",
-              admin_activate_path(item),
+              admin_activate_path(ticket),
               method: :patch,
               class: "waves-effect waves-light btn"
     end
