@@ -1,5 +1,5 @@
 class Ticket < ActiveRecord::Base
-
+  belongs_to :event
   validates :price,         presence: true
   # has_attached_file :file
   has_attached_file :avatar,

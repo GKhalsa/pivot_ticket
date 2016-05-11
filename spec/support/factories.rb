@@ -20,8 +20,15 @@ FactoryGirl.define do
     end
   end
 
+  factory :event do
+    title "Event Title"
+    performing "Event Performer"
+    date "5874897 AD"
+  end
+
 
   factory :ticket do
+    event
     # sequence :status do |n|
     #   n
     # end
@@ -37,7 +44,7 @@ FactoryGirl.define do
 
   factory :order do
     user
-    
+
     factory :paid_order do
       status 1
     end
