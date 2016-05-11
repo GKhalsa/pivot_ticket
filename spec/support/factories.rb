@@ -20,8 +20,11 @@ FactoryGirl.define do
     end
   end
 
+
   factory :venue do
-    name "Venue Name"
+    sequence :name do |n|
+      "Venue_#{n} Name"
+    end
     address "Venue Address"
   end
 
