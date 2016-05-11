@@ -1,7 +1,7 @@
 # require "rails_helper"
 #
 # RSpec.feature "Admin can change the state of an item" do
-#   xscenario "Admin can click retire next to an item" do
+#   scenario "Admin can click retire next to an item" do
 #     admin = create(:admin)
 #
 #     ApplicationController.any_instance.stubs(:current_user).returns(admin)
