@@ -15,7 +15,7 @@
 
 
           <%= link_to "Delete", cart_path(ticket_id: ticket.id), method: :delete, class: "btn" %>
-          <span class="secondary-content right"><%= ticket.price %></span>
+          <span class="secondary-content right"><%= ticket.price %></span><br>
         </li>
       <% end %>
       <li class="right collection-ticket">Total: <%= @cart.total %></li>
