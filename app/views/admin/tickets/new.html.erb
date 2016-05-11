@@ -1,8 +1,8 @@
-<h5>Create a new item</h5>
-<%= form_for([:admin, @item], multipart: true) do |f| %>
+<h5>Create a new Ticket</h5>
+<%= form_for([:admin, @ticket], multipart: true) do |f| %>
   <div class="input-field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.label :seat_location %>
+    <%= f.text_field :seat_location %>
   </div>
   <div class="input-field">
      <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a category" }, class: "browser-default" %>
@@ -12,10 +12,10 @@
     <%= f.label :price %>
     <%= f.text_field :price %>
   </div>
-  <div class="input-field">
-    <%= f.label :description %>
-    <%= f.text_area :description, class: "materialize-textarea" %>
-  </div>
+  <!-- <div class="input-field">
+    <%#= f.label :description %>
+    <%#= f.text_area :description, class: "materialize-textarea" %>
+  </div> -->
     <%= f.label :avatar %>
     <%= f.file_field :avatar %>
     <%= f.label :file %>
@@ -24,6 +24,6 @@
 
   </div>
   <div class="center">
-    <%= f.submit "Create Item", class: "waves-effect waves-light btn" %>
+    <%= f.submit "Create Ticket", class: "waves-effect waves-light btn" %>
   </div>
 <% end %>
