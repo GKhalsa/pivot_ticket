@@ -2,18 +2,18 @@ require "rails_helper"
 
 RSpec.feature "User can register an account" do
   scenario "Their cart is saved" do
-    create_list(:item, 2)
+    create_list(:ticket, 2)
 
-    item_1 = Item.first
-    item_2 = Item.last
+    ticket_1 = Ticket.first
+    ticket_2 = Ticket.last
 
     visit root_path
 
-    within(".card-#{item_1.id}") do
+    within(".card-#{ticket_1.id}") do
       click_button("Add to Cart")
     end
 
-    within(".card-#{item_2.id}") do
+    within(".card-#{ticket_2.id}") do
       click_button("Add to Cart")
     end
 
@@ -34,7 +34,7 @@ RSpec.feature "User can register an account" do
       click_link("shopping_cart")
     end
 
-    expect(page).to have_content("#{item_1.title}")
-    expect(page).to have_content("#{item_2.title}")
+    expect(page).to have_content("#{ticket_1.event.title}")
+    expect(page).to have_content("#{ticket_2.event.title}")
   end
 end

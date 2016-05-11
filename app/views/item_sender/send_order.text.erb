@@ -1,8 +1,8 @@
 Hi <%= @user.name %>
 <h3>Thank You for Your Purchase!</h3>
-<h3>Here Are links to your items:</h3>
+<h3>Here are your tickets:</h3>
 
-<% @items.each do |item|  %>
-<%= link_to item.title, item.file.url %><br/>
+<% @tickets.each do |ticket|  %>
+<%= ticket.event %><br/>
 <% end %>
 <h2>Have a great day!</h2>

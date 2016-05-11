@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160427230748) do
+ActiveRecord::Schema.define(version: 20160511042150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,35 +22,24 @@ ActiveRecord::Schema.define(version: 20160427230748) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "items", force: :cascade do |t|
-    t.string   "title"
-    t.string   "description"
-    t.float    "price"
-    t.string   "image_path"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.integer  "category_id"
-    t.integer  "state",               default: 0
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
-    t.string   "file_file_name"
-    t.string   "file_content_type"
-    t.integer  "file_file_size"
-    t.datetime "file_updated_at"
+  create_table "events", force: :cascade do |t|
+    t.string  "title"
+    t.string  "performing"
+    t.date    "date"
+    t.integer "category_id"
+    t.integer "venue_id"
   end
 
-  add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
+  add_index "events", ["category_id"], name: "index_events_on_category_id", using: :btree
+  add_index "events", ["venue_id"], name: "index_events_on_venue_id", using: :btree
 
-  create_table "order_items", force: :cascade do |t|
+  create_table "order_tickets", force: :cascade do |t|
     t.integer "order_id"
-    t.integer "item_id"
     t.integer "quantity"
+    t.integer "ticket_id"
   end
 
-  add_index "order_items", ["item_id"], name: "index_order_items_on_item_id", using: :btree
-  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
+  add_index "order_tickets", ["order_id"], name: "index_order_tickets_on_order_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
     t.datetime "created_at",             null: false
@@ -60,6 +49,28 @@ ActiveRecord::Schema.define(version: 20160427230748) do
   end
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
+
+  create_table "tickets", force: :cascade do |t|
+    t.float    "price"
+    t.string   "image_path"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.integer  "category_id"
+    t.integer  "status",              default: 0
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.string   "seat_location"
+    t.integer  "event_id"
+  end
+
+  add_index "tickets", ["category_id"], name: "index_tickets_on_category_id", using: :btree
+  add_index "tickets", ["event_id"], name: "index_tickets_on_event_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
@@ -71,8 +82,15 @@ ActiveRecord::Schema.define(version: 20160427230748) do
     t.integer  "role",            default: 0
   end
 
-  add_foreign_key "items", "categories"
-  add_foreign_key "order_items", "items"
-  add_foreign_key "order_items", "orders"
+  create_table "venues", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+  end
+
+  add_foreign_key "events", "categories"
+  add_foreign_key "events", "venues"
+  add_foreign_key "order_tickets", "orders"
   add_foreign_key "orders", "users"
+  add_foreign_key "tickets", "categories"
+  add_foreign_key "tickets", "events"
 end

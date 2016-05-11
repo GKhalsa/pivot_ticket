@@ -1,4 +1,4 @@
 class Category < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
-  has_many :items
+  has_many :tickets
 end

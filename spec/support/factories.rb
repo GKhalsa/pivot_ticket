@@ -20,20 +20,31 @@ FactoryGirl.define do
     end
   end
 
+  factory :venue do
+    name "Venue Name"
+    address "Venue Address"
+  end
 
-  factory :item do
-    sequence :title do |n|
-      "item #{n}"
-    end
-    description "Some item"
+  factory :event do
+    title "Event Title"
+    performing "Event Performer"
+    date "5874897 AD"
+    venue
+  end
+
+
+  factory :ticket do
+    event
+    # sequence :status do |n|
+    #   n
+    # end
     price 9.99
-    image_path "example.jpg"
+    # image_path "example.jpg"
 
-    factory :retired_item do
-      sequence :title do |n|
-        "retired item #{n}"
-      end
-      state 1
+    factory :retired_ticket do
+      # sequence :status do |n|
+      #   n
+      # end
     end
   end
 
@@ -53,8 +64,8 @@ FactoryGirl.define do
     end
   end
 
-  factory :order_item do
-    item
+  factory :order_ticket do
+    ticket
     order
     quantity 1
   end

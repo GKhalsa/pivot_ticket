@@ -7,14 +7,14 @@ class OrderBuilder
   end
 
   def create
-    build_order_items_for_order
+    build_order_tickets_for_order
     order.save
   end
 
-  def build_order_items_for_order
-    cart.contents.each do |item_id, quantity|
-      order.order_items.create(
-        item_id: item_id,
+  def build_order_tickets_for_order
+    cart.contents.each do |ticket_id, quantity|
+      order.order_tickets.create(
+        ticket_id: ticket_id,
         quantity: quantity,
       )
     end

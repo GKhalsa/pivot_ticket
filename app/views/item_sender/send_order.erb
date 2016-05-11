@@ -6,10 +6,10 @@
   <body>
     <h1>Hi <%= @user.name %></h1>
     <h3>Thank You for Your Purchase!</h3>
-    <h3>Here Are links to your items:</h3>
+    <h3>Here Are links to your tickets:</h3>
     <p>
-      <% @items.each do |item|  %>
-      <%= link_to item.title, item.file.url %><br/>
+      <% @tickets.each do |ticket|  %>
+      <%= ticket.event %><br/>
       <% end %>
     </p>
     <h2>Have a great day!</h2>

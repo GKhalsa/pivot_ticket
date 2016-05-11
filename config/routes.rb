@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  root to: "items#index"
+  root to: "tickets#index"
 
-  resources :items, only: [:index]
+  resources :tickets, only: [:index]
   resource :cart, only: [:create, :show, :destroy, :update]
   resource :users, only: [:create]
   resources :orders, only: [:create, :index, :show]
@@ -15,12 +15,13 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/dashboard", to: "dashboard#show"
-    patch "/items/:id/retire", to: "items#retire", as: :retire
-    patch "/items/:id/activate", to: "items#activate", as: :activate
+    patch "/tickets/:id/retire", to: "tickets#retire", as: :retire
+    patch "/tickets/:id/activate", to: "tickets#activate", as: :activate
     patch "/orders/:id/cancel", to: "orders#cancel", as: :cancel
-    resources :items, only: [:index, :new, :create, :edit, :update]
+    resources :tickets, only: [:index, :new, :create, :edit, :update]
     resources :orders, only: [:index, :update]
     resources :categories, only: [:new, :create]
+    resources :events, only: [:new, :create]
   end
 
   get "/:name", to: "categories#show", as: :category
