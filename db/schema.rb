@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511034520) do
+ActiveRecord::Schema.define(version: 20160511034911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,9 +64,11 @@ ActiveRecord::Schema.define(version: 20160511034520) do
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
     t.string   "seat_location"
+    t.integer  "event_id"
   end
 
   add_index "tickets", ["category_id"], name: "index_tickets_on_category_id", using: :btree
+  add_index "tickets", ["event_id"], name: "index_tickets_on_event_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
@@ -82,4 +84,5 @@ ActiveRecord::Schema.define(version: 20160511034520) do
   add_foreign_key "order_tickets", "orders"
   add_foreign_key "orders", "users"
   add_foreign_key "tickets", "categories"
+  add_foreign_key "tickets", "events"
 end
