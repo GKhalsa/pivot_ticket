@@ -1,6 +1,6 @@
 module NavHelper
   def cart_contents
-    set_cart.number_of_items
+    set_cart.number_of_tickets
   end
 
   def link_to_dashboard
