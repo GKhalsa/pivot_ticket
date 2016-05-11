@@ -10,8 +10,8 @@ RSpec.describe User, type: :model do
 
   describe "associations" do
     it { is_expected.to have_many(:orders) }
-    it { is_expected.to have_many(:order_items) }
-    it { is_expected.to have_many(:items) }
+    it { is_expected.to have_many(:order_tickets) }
+    it { is_expected.to have_many(:tickets) }
   end
 
   describe "admin" do

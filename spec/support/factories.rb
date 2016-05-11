@@ -37,18 +37,18 @@ FactoryGirl.define do
 
   factory :order do
     user
+    
+    factory :paid_order do
+      status 1
+    end
 
-    # factory :paid_order do
-    #   status 1
-    # end
-    #
-    # factory :cancelled_order do
-    #   status 2
-    # end
-    #
-    # factory :completed_order do
-    #   status 3
-    # end
+    factory :cancelled_order do
+      status 2
+    end
+
+    factory :completed_order do
+      status 3
+    end
   end
 
   factory :order_ticket do
