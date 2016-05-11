@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511041918) do
+ActiveRecord::Schema.define(version: 20160511042150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,9 +27,11 @@ ActiveRecord::Schema.define(version: 20160511041918) do
     t.string  "performing"
     t.date    "date"
     t.integer "category_id"
+    t.integer "venue_id"
   end
 
   add_index "events", ["category_id"], name: "index_events_on_category_id", using: :btree
+  add_index "events", ["venue_id"], name: "index_events_on_venue_id", using: :btree
 
   create_table "order_tickets", force: :cascade do |t|
     t.integer "order_id"
@@ -86,6 +88,7 @@ ActiveRecord::Schema.define(version: 20160511041918) do
   end
 
   add_foreign_key "events", "categories"
+  add_foreign_key "events", "venues"
   add_foreign_key "order_tickets", "orders"
   add_foreign_key "orders", "users"
   add_foreign_key "tickets", "categories"
