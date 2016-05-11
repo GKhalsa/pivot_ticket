@@ -20,10 +20,16 @@ FactoryGirl.define do
     end
   end
 
+  factory :venue do
+    name "Venue Name"
+    address "Venue Address"
+  end
+
   factory :event do
     title "Event Title"
     performing "Event Performer"
     date "5874897 AD"
+    venue
   end
 
 
