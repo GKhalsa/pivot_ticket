@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :tickets, only: [:index, :new, :create, :edit, :update]
     resources :orders, only: [:index, :update]
     resources :categories, only: [:new, :create]
+    resources :events, only: [:new, :create]
   end
 
   get "/:name", to: "categories#show", as: :category

@@ -41,7 +41,7 @@ class Admin::TicketsController < Admin::BaseController
   private
 
   def ticket_params
-    params.require(:ticket).permit(:price, :avatar, :category_id)
+    params.require(:ticket).permit(:price, :avatar, :category_id, :event_id, :seat_location)
   end
 
   def set_ticket

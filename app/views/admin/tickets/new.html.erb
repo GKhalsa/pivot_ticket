@@ -7,7 +7,10 @@
   <div class="input-field">
      <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a category" }, class: "browser-default" %>
   </div>
-  <%= link_to "Or create a new one", new_admin_category_path, class: "waves-effect waves-light btn" %>
+  <div class="input-field">
+     <%= f.collection_select :event_id, Event.all, :id, :title, { prompt: "Choose an event" }, class: "browser-default" %>
+  </div>
+  <%= link_to "Or create a new one", new_admin_event_path, class: "waves-effect waves-light btn" %>
   <div class="input-field">
     <%= f.label :price %>
     <%= f.text_field :price %>
