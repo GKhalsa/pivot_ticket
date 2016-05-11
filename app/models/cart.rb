@@ -6,7 +6,7 @@ class Cart
 
   def add_ticket(ticket_id)
     contents[ticket_id.to_s] ||= 0
-    contents[item_id.to_s] += 1
+    contents[ticket_id.to_s] += 1
   end
 
   def total
