@@ -22,9 +22,9 @@ RSpec.feature "User can add a ticket to their cart" do
     expect(current_path).to eq(cart_path)
 
     within("ul.collection:nth-child(1)") do
-      expect(page).to have_content(ticket_1.event)
-      expect(page).to have_content(ticket_1.event_date)
-      expect(page).to have_content(ticket_1.event_venue)
+      expect(page).to have_content(ticket_1.event.title)
+      expect(page).to have_content(ticket_1.event.date)
+      expect(page).to have_content(ticket_1.event.venue)
       expect(page).to have_content(ticket_1.seat_location)
       expect(page).to have_content(ticket_1.price)
       # expect(page).to have_content(ticket_1.description)

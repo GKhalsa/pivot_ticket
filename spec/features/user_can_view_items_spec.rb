@@ -8,10 +8,10 @@ RSpec.feature "User can view tickets index" do
 
     visit tickets_path
 
-    expect(page).to have_content(ticket_1.event)
+    expect(page).to have_content(ticket_1.event.title)
     expect(page).to have_content(ticket_1.price)
 
-    expect(page).to have_content(ticket_2.event)
+    expect(page).to have_content(ticket_2.event.title)
     expect(page).to have_content(ticket_2.price)
   end
 end

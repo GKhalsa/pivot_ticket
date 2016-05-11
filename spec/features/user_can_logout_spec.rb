@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.feature "User can logout" do
   scenario "He sees the login link and an empty cart" do
     user = create(:user)
-    item = create(:item)
+    ticket = create(:ticket)
 
     visit login_path
 
@@ -15,7 +15,7 @@ RSpec.feature "User can logout" do
 
     visit root_path
 
-    within(".card-#{item.id}") do
+    within(".card-#{ticket.id}") do
       click_button("Add to Cart")
     end
 
@@ -28,6 +28,6 @@ RSpec.feature "User can logout" do
       click_link("shopping_cart")
     end
 
-    expect(page).not_to have_content("#{item.title}")
+    expect(page).not_to have_content("#{ticket.event.title}")
   end
 end

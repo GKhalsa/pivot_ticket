@@ -1,17 +1,17 @@
 class CartsController < ApplicationController
-  before_action :set_item, only: [:create, :destroy]
+  before_action :set_ticket, only: [:create, :destroy]
 
   def create
-    @cart.add_item(@item.id)
+    @cart.add_ticket(@ticket.id)
     session[:cart] = @cart.contents
     redirect_to request.referrer
   end
 
   def destroy
-    @cart.delete_item(@item.id)
+    @cart.delete_ticket(@ticket.id)
     session[:cart] = @cart.contents
 
-    flash[:notice] = %[Removed #{@item.title} from cart. #{link}]
+    flash[:notice] = %[Removed #{@ticket.event.title} from cart. #{link}]
 
     redirect_to cart_path
   end
@@ -20,20 +20,20 @@ class CartsController < ApplicationController
   end
 
   def update
-    @cart.update_item(params[:item_id], params[:quantity].to_i)
+    @cart.update_ticket(params[:ticket_id], params[:quantity].to_i)
     render :show
   end
 
 private
 
-  def set_item
-    @item = Item.find(params[:item_id])
+  def set_ticket
+    @ticket = Ticket.find(params[:ticket_id])
   end
 
   def link
     view_context.link_to(
-      "Put one back?",
-      cart_path(item_id: @item.id),
+      "Undo?",
+      cart_path(ticket_id: @ticket.id),
       method: :post
     )
   end

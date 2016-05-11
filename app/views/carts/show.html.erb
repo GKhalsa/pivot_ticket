@@ -1,24 +1,24 @@
 <div class="row">
   <div class="col sm12 m8 l6">
     <ul class="collection">
-      <% @cart.all_items.each do |item| %>
-        <li class="collection-item avatar">
-          <%= image_tag(item.avatar.url, class: "circle") %>
-          <span class="title"><%= item.title %></span>
-          <p><%= item.description %></p>
+      <% @cart.all_tickets.each do |ticket| %>
+        <li class="collection-ticket avatar">
+          <%= image_tag(ticket.avatar.url, class: "circle") %>
+          <span class="title"><%= ticket.event.title %></span>
+          <p><%= ticket.event.performing %></p>
 
             <%= form_tag cart_path, method: :patch do %>
-              <%= hidden_field_tag(:item_id, item.id) %>
-              <%= number_field_tag(:quantity, item.quantity, min: 1, class: "right right-align") %>
+              <%= hidden_field_tag(:ticket_id, ticket.id) %>
+              <%= number_field_tag(:quantity, ticket.quantity, min: 1, class: "right right-align") %>
               <%= submit_tag("Update", class: "right btn") %>
             <% end %>
 
 
-          <%= link_to "Delete", cart_path(item_id: item.id), method: :delete, class: "btn" %>
-          <span class="secondary-content right"><%= item.price %></span>
+          <%= link_to "Delete", cart_path(ticket_id: ticket.id), method: :delete, class: "btn" %>
+          <span class="secondary-content right"><%= ticket.price %></span>
         </li>
       <% end %>
-      <li class="right collection-item">Total: <%= @cart.total %></li>
+      <li class="right collection-ticket">Total: <%= @cart.total %></li>
     </ul>
     <%= checkout_or_create_account_button %>
   </div>

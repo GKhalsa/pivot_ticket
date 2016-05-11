@@ -34,7 +34,7 @@ RSpec.feature "User can register an account" do
       click_link("shopping_cart")
     end
 
-    expect(page).to have_content("#{ticket_1.event}")
-    expect(page).to have_content("#{ticket_2.event}")
+    expect(page).to have_content("#{ticket_1.event.title}")
+    expect(page).to have_content("#{ticket_2.event.title}")
   end
 end
