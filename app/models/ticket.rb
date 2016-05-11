@@ -15,4 +15,21 @@ class Ticket < ActiveRecord::Base
   def self.all_by_id
     all.order(:id)
   end
+
+  def event_title
+    event.title
+  end
+
+  def event_performing
+    event.performing
+  end
+
+  def venue_name
+    event.venue.name
+  end
+
+  def event_date
+    event.date
+  end
+
 end

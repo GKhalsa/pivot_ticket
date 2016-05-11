@@ -4,8 +4,8 @@
       <% @cart.all_tickets.each do |ticket| %>
         <li class="collection-ticket avatar">
           <%= image_tag(ticket.avatar.url, class: "circle") %>
-          <span class="title"><%= ticket.event.title %></span>
-          <p><%= ticket.event.performing %></p>
+          <span class="title"><%= ticket.event_title %></span>
+          <p><%= ticket.event_performing %> at <%= ticket.venue_name %></p>
 
             <%= form_tag cart_path, method: :patch do %>
               <%= hidden_field_tag(:ticket_id, ticket.id) %>
