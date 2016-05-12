@@ -22,6 +22,7 @@ class EventsController < ApplicationController
   def index
     @categories = Category.all
     @events = Event.all
+    @venues = Venue.all
   end
 
   private
