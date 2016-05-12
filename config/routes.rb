@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: "tickets#index"
 
-  resources :tickets, only: [:index]
+  resources :tickets, only: [:index, :new, :create, :edit]
   resource :cart, only: [:create, :show, :destroy, :update]
   resource :users, only: [:create]
   resources :orders, only: [:create, :index, :show]
