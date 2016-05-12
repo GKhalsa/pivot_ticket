@@ -4,7 +4,7 @@
        <%#= display_all_venue_link(active_venue) %>
        <% @venues.each do |venue| %>
          <%#= display_venue_link(venue, active_venue) %>
-         <%= link_to venue.name, venue_path(venue) %>
+         <%= link_to venue.name, venue_path(venue.slug) %>
        <% end %>
     </div>
   </div>

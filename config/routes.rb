@@ -25,4 +25,5 @@ Rails.application.routes.draw do
   end
 
   get "/:name", to: "categories#show", as: :category
+  get "/:venue/events", to: "venues#show", as: :venue
 end

@@ -11,7 +11,9 @@ RSpec.feature "User sees events by venue" do
 
       click_on venue_1.name
 
-      expect(current_path).to eq('/venue-1-name/events')
+      correct_path = "/#{venue_1.name.parameterize}/events"
+
+      expect(current_path).to eq(correct_path)
 
       expect(page).to have_content(venue_1.name)
       expect(page).to have_content(event_1.name)
