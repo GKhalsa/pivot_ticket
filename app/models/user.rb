@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
   validates :name, presence: true
+  belongs_to :venue
+  has_many :user_roles
+  has_many :roles, through: :user_roles
   has_many  :orders
   has_many  :order_tickets, through: :orders
   has_many  :tickets, through: :order_tickets
