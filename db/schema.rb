@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160512164023) do
+ActiveRecord::Schema.define(version: 20160512212118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,14 +28,14 @@ ActiveRecord::Schema.define(version: 20160512164023) do
     t.date     "date"
     t.integer  "category_id"
     t.integer  "venue_id"
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
     t.string   "event_image_file_name"
     t.string   "event_image_content_type"
     t.integer  "event_image_file_size"
     t.datetime "event_image_updated_at"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "events", ["category_id"], name: "index_events_on_category_id", using: :btree
@@ -58,6 +58,12 @@ ActiveRecord::Schema.define(version: 20160512164023) do
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tickets", force: :cascade do |t|
     t.float    "price"
     t.datetime "created_at",                null: false
@@ -71,6 +77,16 @@ ActiveRecord::Schema.define(version: 20160512164023) do
   add_index "tickets", ["category_id"], name: "index_tickets_on_category_id", using: :btree
   add_index "tickets", ["event_id"], name: "index_tickets_on_event_id", using: :btree
 
+  create_table "user_roles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "user_roles", ["role_id"], name: "index_user_roles_on_role_id", using: :btree
+  add_index "user_roles", ["user_id"], name: "index_user_roles_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "password_digest"
@@ -79,7 +95,10 @@ ActiveRecord::Schema.define(version: 20160512164023) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.integer  "role",            default: 0
+    t.integer  "venue_id"
   end
+
+  add_index "users", ["venue_id"], name: "index_users_on_venue_id", using: :btree
 
   create_table "venues", force: :cascade do |t|
     t.string "name"
@@ -93,4 +112,7 @@ ActiveRecord::Schema.define(version: 20160512164023) do
   add_foreign_key "orders", "users"
   add_foreign_key "tickets", "categories"
   add_foreign_key "tickets", "events"
+  add_foreign_key "user_roles", "roles"
+  add_foreign_key "user_roles", "users"
+  add_foreign_key "users", "venues"
 end
