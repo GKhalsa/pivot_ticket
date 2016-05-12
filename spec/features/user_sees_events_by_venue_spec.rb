@@ -16,9 +16,9 @@ RSpec.feature "User sees events by venue" do
       expect(current_path).to eq(correct_path)
 
       expect(page).to have_content(venue_1.name)
-      expect(page).to have_content(event_1.name)
-      expect(page).to have_content(event_2.name)
-      expect(page).to_not have_content(event_3.name)
+      expect(page).to have_content(event_1.title)
+      expect(page).to have_content(event_2.title)
+      expect(page).to_not have_content(event_3.title)
     end
   end
 end
