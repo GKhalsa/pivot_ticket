@@ -1,11 +1,10 @@
 <div class="row">
   <div class="col s12 m3">
     <div class="collection">
-       <%#= display_all_venue_link(active_venue) %>
+       <%= link_to "Venues", '#', class: "collection-item active" %>
        <% @venues.each do |venue| %>
          <%#= display_venue_link(venue, active_venue) %>
-         <%= link_to venue.name, venue_path(venue.slug) %>
+         <%= link_to venue.name, venue_path(venue.slug), class: "collection-item" %>
        <% end %>
     </div>
   </div>
-</div>
