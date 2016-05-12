@@ -26,4 +26,5 @@ Rails.application.routes.draw do
 
   get "/:name", to: "categories#show", as: :category
   get "/:venue/events", to: "venues#show", as: :venue
+  # get "/:venue/events/:id", to: "tickets#index", as: :event_tickets
 end

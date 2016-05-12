@@ -29,7 +29,9 @@ FactoryGirl.define do
   end
 
   factory :event do
-    title "Event Title"
+    sequence :title do |n|
+      "Event_#{n} Title"
+    end
     performing "Event Performer"
     date "5874897 AD"
     venue

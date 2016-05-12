@@ -4,4 +4,8 @@ class TicketsController < ApplicationController
     @tickets = Ticket.all_by_state
     @venues = Venue.all
   end
+
+  def show
+
+  end
 end
