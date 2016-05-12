@@ -17,6 +17,8 @@ class TicketsController < ApplicationController
   end
 
   def new
+    @user = current_user
+    binding.pry
     @categories = Category.all
     @ticket = Ticket.new
   end
