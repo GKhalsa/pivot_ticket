@@ -13,7 +13,7 @@
       <th></th>
       <th></th>
     </tr>
-    <% @tickets.each do |ticket|%>
+    <% @tickets[-100..-1].each do |ticket|%>
     <tr>
       <td><%= ticket.id %></td>
       <td><%= ticket.event_title %></td>
