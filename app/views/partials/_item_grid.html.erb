@@ -1,27 +1,19 @@
 <div class="col s12 m8 l9">
   <div class="row">
-    <% @tickets.each do |ticket| %>
+    <% @events.each do |event| %>
       <div class="col s12 m6">
-        <div class="card card-<%= ticket.id %> hoverable">
+        <div class="card card-<%= event.id %> hoverable">
           <div class="card-image waves-effect waves-block waves-light">
-            <%= image_tag(ticket.avatar.url, class: "activator card-img")%>
+            <%= image_tag(event.event_image.url, class: "activator card-img")%>
           </div>
           <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4"><%= ticket.event_title %></span>
-            <span class="right"><h5>$<%= ticket.price %> <%= ticket.seat_location %></h5></span>
+            <span class="card-title activator grey-text text-darken-4"><%= link_to event.title, event_path(event) %></span>
           </div>
           <div class="card-action center-align">
-            <% if ticket.active? %>
-              <%= button_to cart_path(ticket_id: ticket.id), class: "waves-effect waves-light btn" do %>
-                <i class="material-icons left">shopping_cart</i>Add to Cart
-              <% end %>
-            <% else %>
-                <a class="btn disabled">Item Retired</a>
-            <% end %>
           </div>
           <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4"><%= ticket.event.title %><i class="material-icons right">close</i></span>
-            <p><%= ticket.event.performing %></p>
+            <span class="card-title grey-text text-darken-4"><%= event.title %><i class="material-icons right">close</i></span>
+            <p><%= event.performing %></p>
           </div>
         </div>
       </div>

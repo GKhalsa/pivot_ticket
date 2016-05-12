@@ -1,7 +1,7 @@
 module CategoryHelper
   def display_all_category_link(active_category)
     active = "active" if active_category == "all"
-    link_to "All", tickets_path, class: "collection-item #{active}"
+    link_to "All", events_path, class: "collection-item #{active}"
   end
 
   def display_category_link(category, active_category)

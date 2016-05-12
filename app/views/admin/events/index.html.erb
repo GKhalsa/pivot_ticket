@@ -1,6 +1,6 @@
-<h4 class="admin-tickets">All Tickets</h4>
+<h4 class="admin-tickets">All Events</h4>
 <div class="center">
-  <%= link_to "Create a New Ticket",
+  <%= link_to "Create a New Event",
               new_admin_ticket_path,
               class: "waves-effect waves-light btn" %>
 </div>
@@ -13,13 +13,13 @@
       <th></th>
       <th></th>
     </tr>
-    <% @tickets[-100..-1].each do |ticket|%>
+    <% @tickets.each do |ticket|%>
     <tr>
       <td><%= ticket.id %></td>
       <td><%= ticket.event_title %></td>
       <td><%= ticket.price %></td>
       <td><%= ticket.updated_at %></td>
-      <td><%= link_to "Edit Ticket", edit_admin_ticket_path(ticket), class: "waves-effect waves-light btn" %></td>
+      <td><%= link_to "Edit Event", edit_admin_ticket_path(ticket), class: "waves-effect waves-light btn" %></td>
       <td><%= button_to_change_ticket_state(ticket) %></td>
     </tr>
   <% end %>

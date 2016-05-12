@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root to: "tickets#index"
-
+  root to: "events#index"
+  resources :events, only: [:show, :index, :new, :create]
   resources :tickets, only: [:index]
   resource :cart, only: [:create, :show, :destroy, :update]
   resource :users, only: [:create]
