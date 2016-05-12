@@ -1,0 +1,33 @@
+<%= @venue.name %>
+<%= @venue.address %>
+
+<div class="col s12 m8 l9">
+  <div class="row">
+    <% @events.each do |event| %>
+      <div class="col s12 m6">
+        <div class="card card-<%= event.id %> hoverable">
+          <div class="card-image waves-effect waves-block waves-light">
+            <%= image_tag(event.event_image.url, class: "activator card-img")%>
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4"><%= event.title %></span>
+            <span class="right"><h5><%= event.date %></h5></span>
+          </div>
+          <div class="card-action center-align">
+            <% unless event.tickets.nil? %>
+              <%#= button_to event_tickets_path(@venue.slug, ), class: "waves-effect waves-light btn" do %>
+                <i class="material-icons left">shopping_cart</i>View Tickets
+              <#% end %>
+            <% else %>
+                <a class="btn disabled">Unavailable</a>
+            <% end %>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4"><%= event.title %><i class="material-icons right">close</i></span>
+            <p><%= event.performing %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
