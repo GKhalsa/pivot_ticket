@@ -1,5 +1,6 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:retire, :activate, :edit, :update]
+  before_action :require_login, only: [:new, :create, :edit]
 
   def index
     @categories = Category.all
@@ -17,8 +18,6 @@ class TicketsController < ApplicationController
   end
 
   def new
-    @user = current_user
-    binding.pry
     @categories = Category.all
     @ticket = Ticket.new
   end
@@ -34,6 +33,10 @@ class TicketsController < ApplicationController
   end
 
   def edit
+    unless @ticket.owner == current_user
+      render file: "public/404"
+      flash[:error] = "Not Authorized"
+    end
   end
 
   def update

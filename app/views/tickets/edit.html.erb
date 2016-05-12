@@ -1,8 +1,8 @@
-<h5>Edit Item</h5>
-<%= form_for([:admin, @item], multipart: true) do |f| %>
+<h5>Edit Ticket</h5>
+<%= form_for([:admin, @ticket], multipart: true) do |f| %>
   <div class="input-field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.label :price %>
+    <%= f.text_field :price %>
   </div>
   <div class="input-field">
      <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a category" }, class: "browser-default" %>
@@ -11,18 +11,8 @@
     <%= f.label :price %>
     <%= f.text_field :price %>
   </div>
-  <div class="input-field">
-    <%= f.label :description %>
-    <%= f.text_area :description, class: "materialize-textarea" %>
-  </div>
-    <%= f.label :avatar %>
-    <%= f.file_field :avatar %>
-    <%= f.label :file %>
-    <%= f.file_field :file %>
-  <div class="input-field">
 
-  </div>
   <div class="center">
-    <%= f.submit "Edit Item", class: "waves-effect waves-light btn" %>
+    <%= f.submit "Edit Ticket", class: "waves-effect waves-light btn" %>
   </div>
 <% end %>

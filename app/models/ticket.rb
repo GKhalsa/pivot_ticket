@@ -1,10 +1,9 @@
 class Ticket < ActiveRecord::Base
   belongs_to :event
+  has_many :orders
+  belongs_to :user
   validates :price,         presence: true
-  # has_attached_file :file
-  has_attached_file :avatar,
-  default_url: "https://s3.amazonaws.com/digital-destination/missing_image.png"
-  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
 
   enum status: %w(active retired)
 
@@ -30,6 +29,10 @@ class Ticket < ActiveRecord::Base
 
   def event_date
     event.date
+  end
+
+  def owner
+    self.user
   end
 
 end
