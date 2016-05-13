@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/dashboard", to: "dashboard#show"
+    patch '/venues/:id/de_activate', to: "venues#de_activate"
+    patch '/venues/:id/activate', to: "venues#activate"
     patch "/tickets/:id/retire", to: "tickets#retire", as: :retire
     patch "/tickets/:id/activate", to: "tickets#activate", as: :activate
     patch "/orders/:id/cancel", to: "orders#cancel", as: :cancel

@@ -4,4 +4,37 @@
     <%= link_to "Tickets", admin_tickets_path, class: "waves-effect waves-light btn"%>
     <%= link_to "Orders", admin_orders_path, class: "waves-effect waves-light btn"%>
   </div>
+  <div class="row">
+    <table>
+      <thead>
+        <th data-field="venue_name">Venue Name</th>
+        <th data-field="venue_address">Venue Address</th>
+        <th data-field="venue_admin">Venue Admin</th>
+        <th data-field="venue_admin">Venue Status</th>
+        <th data-field="alerts">Alerts</th>
+        <th data-field="available_actions">Available Actions</th>
+      </thead>
+
+      <tbody>
+        <% @venues.each do |venue| %>
+          <td><%= venue.name %></td>
+          <td><%= venue.address %></td>
+          <td><%= venue.admin_list %></td>
+          <td><%= venue.status %></td>
+          <td>
+            <% if venue.alerts? %>
+             <%= link_to "!", alerts_path, class: "btn-floating btn-small waves-effect waves-light red" %>
+            <% end %>
+          </td>
+          <td>
+            <% if venue.active? %>
+             <%= button_to "de-activate venue", controller: "admin/venues", action: "de_activate", class: "#{venue.name}-de-activate waves-effect waves-light btn" %>
+            <% else %>
+             <%= button_to "activate venue", controller: "admin/venues", action: "activate", class: "#{venue.name}-activate waves-effect waves-light btn" %>
+            <% end %>
+          </td>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

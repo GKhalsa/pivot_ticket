@@ -5,12 +5,12 @@ RSpec.feature "Admin can change a venue's status" do
     scenario "The venue is no longer visible to viewers" do
       admin = User.create!(name: "Platform_admin",
                           email: "platform_admin@example.com",
-                       password: "password" )
+                       password: "password")
       admin.roles.create!(name: "platform_admin")
 
       Venue.create!(name: "venue_name",
                  address: "venue_address",
-                  status: "active")
+                  status: 1)
       ApplicationController.any_instance.stubs(:current_user).returns(admin)
 
       visit root_path
@@ -19,10 +19,12 @@ RSpec.feature "Admin can change a venue's status" do
 
       visit admin_dashboard_path
 
-      within "#venue_name" do
         expect(page).to_not have_button('de-activate venue')
-        click_on 'activate venue'
-      end
+
+        find(:css, "#venue_name-de-activate").click
+
+        # click_on 'activate venue'
+
 
       expect(page).to have_content("venue_name was successfully de-activated")
 
@@ -41,7 +43,7 @@ RSpec.feature "Admin can change a venue's status" do
 
       Venue.create!(name: "venue_name",
                 address: "venue_address",
-                 status: "inactive")
+                 status: 2)
 
       ApplicationController.any_instance.stubs(:current_user).returns(admin)
 
@@ -51,10 +53,11 @@ RSpec.feature "Admin can change a venue's status" do
 
       visit admin_dashboard_path
 
-      within "#venue_name" do
+
         expect(page).to_not have_button('activate venue')
-        click_on 'de-activate venue'
-      end
+        find(:css, "#venue_name-activate").click
+        # click_on 'de-activate venue'
+
 
       expect(page).to have_content("venue_name was successfully activated")
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160512212118) do
+ActiveRecord::Schema.define(version: 20160513023836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,9 +101,10 @@ ActiveRecord::Schema.define(version: 20160512212118) do
   add_index "users", ["venue_id"], name: "index_users_on_venue_id", using: :btree
 
   create_table "venues", force: :cascade do |t|
-    t.string "name"
-    t.string "address"
-    t.string "slug"
+    t.string  "name"
+    t.string  "address"
+    t.string  "slug"
+    t.integer "status"
   end
 
   add_foreign_key "events", "categories"
