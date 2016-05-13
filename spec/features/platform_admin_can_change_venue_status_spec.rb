@@ -19,11 +19,9 @@ RSpec.feature "Admin can change a venue's status" do
 
       visit admin_dashboard_path
 
-        expect(page).to_not have_button('de-activate venue')
+      # find(:css, "#venue_name-de-activate").click
 
-        find(:css, "#venue_name-de-activate").click
-
-        # click_on 'activate venue'
+      click_on 'activate venue'
 
 
       expect(page).to have_content("venue_name was successfully de-activated")
@@ -54,7 +52,7 @@ RSpec.feature "Admin can change a venue's status" do
       visit admin_dashboard_path
 
 
-        expect(page).to_not have_button('activate venue')
+        expect(page).to_not have_button('de-activate venue')
         find(:css, "#venue_name-activate").click
         # click_on 'de-activate venue'
 

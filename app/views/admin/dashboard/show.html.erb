@@ -28,9 +28,9 @@
           </td>
           <td>
             <% if venue.active? %>
-             <%= button_to "de-activate venue", controller: "admin/venues", action: "de_activate", class: "#{venue.name}-de-activate waves-effect waves-light btn" %>
+             <%= button_to "de-activate venue", admin_venue_deactivate_path(venue.id), class: "#{venue.name}-de-activate waves-effect waves-light btn" %>
             <% else %>
-             <%= button_to "activate venue", controller: "admin/venues", action: "activate", class: "#{venue.name}-activate waves-effect waves-light btn" %>
+             <%= button_to "activate venue", url: admin_venue_activate_path(venue.id), method: "patch", class: "#{venue.name}-activate waves-effect waves-light btn" %>
             <% end %>
           </td>
         <% end %>

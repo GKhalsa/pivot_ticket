@@ -26,8 +26,9 @@ class PermissionsService
 
   def platform_admin_permissions
     return true if controller == "sessions"
-    return true if controller == "events" 
+    return true if controller == "events"
     return true if controller == "admin/dashboard" && action.in?(%w(show))
+    return true if controller == "admin/venues" && action.in?(%w(de_activate))
   end
 
   def venue_admin_permissions
