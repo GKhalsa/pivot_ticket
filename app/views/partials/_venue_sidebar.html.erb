@@ -3,8 +3,9 @@
     <div class="collection">
        <%= link_to "Venues", '#', class: "collection-item active" %>
        <% @venues.each do |venue| %>
-         <%#= display_venue_link(venue, active_venue) %>
-         <%= link_to venue.name, venue_path(venue.slug), class: "collection-item" %>
+         <% if venue.active? %>
+           <%= link_to venue.name, venue_path(venue.slug), class: "collection-item" %>
+         <% end %>
        <% end %>
     </div>
   </div>
