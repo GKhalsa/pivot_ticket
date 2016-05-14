@@ -1,19 +1,20 @@
 class Admin::VenuesController < ApplicationController
+  include VenuesHelper
+
+  before_action :set_venue
 
   def de_activate
-    venue = Venue.find(params[:id])
-    venue.status = 2
-    venue.save
-    flash[:success] = "#{venue.name} was successfully de-activated"
-    redirect_to admin_dashboard_path
+    change_status(@venue, 2, "de-activated")
   end
 
   def activate
-    venue = Venue.find(params[:id])
-    venue.status = 1
-    venue.save
-    flash[:success] = "#{venue.name} was successfully activated"
-    redirect_to admin_dashboard_path
+    change_status(@venue, 1, "activated")
+  end
+
+  private
+
+  def set_venue
+    @venue = Venue.find(params[:id])
   end
 
 end
