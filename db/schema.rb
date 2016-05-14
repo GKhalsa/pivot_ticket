@@ -28,14 +28,14 @@ ActiveRecord::Schema.define(version: 20160513023836) do
     t.date     "date"
     t.integer  "category_id"
     t.integer  "venue_id"
-    t.string   "event_image_file_name"
-    t.string   "event_image_content_type"
-    t.integer  "event_image_file_size"
-    t.datetime "event_image_updated_at"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "event_image_file_name"
+    t.string   "event_image_content_type"
+    t.integer  "event_image_file_size"
+    t.datetime "event_image_updated_at"
   end
 
   add_index "events", ["category_id"], name: "index_events_on_category_id", using: :btree

@@ -1,4 +1,4 @@
 
-<%= render partial: "partials/category_sidebar", locals: { active_category: "#{@category.name}" } %>
+<%= render partial: "partials/events_sidebar", locals: { active_category: "#{@category.name}", venues: @venues } %>
 
 <%= render partial: "partials/item_grid" %>
