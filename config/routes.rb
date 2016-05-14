@@ -3,12 +3,13 @@ Rails.application.routes.draw do
 
   resources :tickets, only: [:index, :update, :create]
   resource :cart, only: [:create, :show, :destroy, :update]
-  resource :users, only: [:create]
+  resource :users, only: [:create, :update]
   resources :orders, only: [:create, :index, :show]
 
   get "/my-tickets", to: "tickets#my_tickets"
   get "/my-tickets/new", to: "tickets#new"
   get "/my-tickets/edit", to: "tickets#edit"
+  get "/account/edit", to: "users#edit"
   get "/login", to: "users#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"

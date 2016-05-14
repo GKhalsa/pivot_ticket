@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_login, only: [:show, :dashboard]
+  before_action :require_login, only: [:show, :dashboard, :edit, :update]
 
   def new
     @user = User.new
@@ -17,6 +17,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+    @user.update(user_params)
+    redirect_to dashboard_path
+  end
+
   def dashboard
     @user = current_user
     render :dashboard
@@ -32,7 +42,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(
       :email,
       :password,
-      :name,
+      :name
     )
   end
 
