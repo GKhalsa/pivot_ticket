@@ -4,10 +4,10 @@
       <div class="col s12 m6">
         <div class="card card-<%= event.id %> hoverable">
           <div class="card-image waves-effect waves-block waves-light">
-            <%= image_tag(event.event_image.url, class: "activator card-img")%>
+            <%= image_tag(event.event_image.url, class: "flow-text")%>
           </div>
           <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4"><%= link_to event.title, event_path(event) %></span>
+            <span class="card-title activator grey-text text-darken-4"><%= link_to event.title, event_path(event), class: "event-text" %></span>
           </div>
           <div class="card-action center-align">
           </div>
