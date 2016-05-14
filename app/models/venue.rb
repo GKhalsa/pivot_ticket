@@ -1,6 +1,6 @@
 class Venue < ActiveRecord::Base
   before_create :generate_slug
-
+  has_many :users
   has_many :events
   has_many :tickets, through: :events
 
@@ -11,8 +11,8 @@ class Venue < ActiveRecord::Base
     self.slug = self.name.parameterize
   end
 
-  def admin_list
-    "links to a venues admins go here"
+  def first_admin
+    "first admin email link"
   end
 
   def alerts?

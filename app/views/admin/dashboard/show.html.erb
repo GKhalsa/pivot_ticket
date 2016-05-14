@@ -5,7 +5,7 @@
     <%= link_to "Orders", admin_orders_path, class: "waves-effect waves-light btn"%>
   </div>
   <div class="row">
-    <table>
+    <table class= "bordered highlight">
       <thead>
         <th data-field="new"></th>
         <th data-field="venue_name">Venue Name</th>
@@ -26,7 +26,7 @@
           </td>
           <td><%= venue.name %></td>
           <td><%= venue.address %></td>
-          <td><%= venue.admin_list %></td>
+          <td><%= venue.first_admin %></td>
           <td><%= venue.status %></td>
           <td>
             <% if venue.alerts? %>
@@ -35,7 +35,7 @@
           </td>
           <td>
             <% if venue.active? %>
-             <%= button_to "de-activate venue", admin_venue_deactivate_path(venue.id), class: "#{venue.name}-de-activate waves-effect waves-light btn" %>
+             <%= button_to "de-activate venue", admin_venue_deactivate_path(venue.id), class: "#{venue.name}-de-activate waves-effect waves-light red lighten-1 btn" %>
             <% else %>
              <%= button_to "activate venue", admin_venue_activate_path(venue.id), class: "#{venue.name}-activate waves-effect waves-light btn" %>
             <% end %>
