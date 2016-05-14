@@ -17,6 +17,7 @@
 
       <tbody>
         <% @venues.each do |venue| %>
+        <tr>
           <td><%= venue.name %></td>
           <td><%= venue.address %></td>
           <td><%= venue.admin_list %></td>
@@ -33,6 +34,7 @@
              <%= button_to "activate venue", admin_venue_activate_path(venue.id), class: "#{venue.name}-activate waves-effect waves-light btn" %>
             <% end %>
           </td>
+        </tr>
         <% end %>
       </tbody>
     </table>

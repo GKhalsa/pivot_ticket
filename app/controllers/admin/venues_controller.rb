@@ -5,10 +5,12 @@ class Admin::VenuesController < ApplicationController
 
   def de_activate
     change_status(@venue, 2, "de-activated")
+    redirect_to admin_dashboard_path
   end
 
   def activate
     change_status(@venue, 1, "activated")
+    redirect_to admin_dashboard_path
   end
 
   private
