@@ -19,9 +19,7 @@ RSpec.feature "Admin can change a venue's status" do
 
       visit admin_dashboard_path
 
-
-      click_on 'activate venue'
-
+      click_on 'de-activate venue'
 
       expect(page).to have_content("venue_name was successfully de-activated")
 
@@ -32,7 +30,7 @@ RSpec.feature "Admin can change a venue's status" do
   end
 
   context "a platform admin clicks to change a venue's status from inactive to active" do
-    xscenario "The venue starts invisible and becomes visible" do
+    scenario "The venue starts invisible and becomes visible" do
       admin = User.create(name: "Platform_admin",
                          email: "platform_admin@example.com",
                       password: "password" )
@@ -50,11 +48,9 @@ RSpec.feature "Admin can change a venue's status" do
 
       visit admin_dashboard_path
 
-
       expect(page).to_not have_button('de-activate venue')
 
-      click_on 'de-activate venue'
-
+      click_on 'activate venue'
 
       expect(page).to have_content("venue_name was successfully activated")
 

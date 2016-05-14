@@ -9,7 +9,11 @@ class Admin::VenuesController < ApplicationController
   end
 
   def activate
-
+    venue = Venue.find(params[:id])
+    venue.status = 1
+    venue.save
+    flash[:success] = "#{venue.name} was successfully activated"
+    redirect_to admin_dashboard_path
   end
 
 end
