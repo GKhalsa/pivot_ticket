@@ -1,17 +1,20 @@
 Rails.application.routes.draw do
   root to: "tickets#index"
 
-  resources :tickets, only: [:index, :new, :create, :edit]
+  resources :tickets, only: [:index, :update, :create]
   resource :cart, only: [:create, :show, :destroy, :update]
   resource :users, only: [:create]
   resources :orders, only: [:create, :index, :show]
 
+  get "/my-tickets", to: "tickets#my_tickets"
+  get "/my-tickets/new", to: "tickets#new"
+  get "/my-tickets/edit", to: "tickets#edit"
   get "/login", to: "users#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   get "/auth/github", as: :github_login
   get "/auth/github/callback", to: "sessions#create"
-  get "/dashboard", to: "orders#index"
+  get "/dashboard", to: "users#dashboard"
 
   namespace :admin do
     get "/dashboard", to: "dashboard#show"

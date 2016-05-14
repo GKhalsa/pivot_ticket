@@ -26,4 +26,8 @@ class User < ActiveRecord::Base
       password: rand(1..10_000).to_s
     )
   end
+
+  def tickets
+    Ticket.where(user_id: self.id)
+  end
 end

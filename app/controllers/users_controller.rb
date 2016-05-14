@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_login, only: [:show]
+  before_action :require_login, only: [:show, :dashboard]
 
   def new
     @user = User.new
@@ -15,6 +15,11 @@ class UsersController < ApplicationController
       flash[:notice] = @user.errors.full_messages.join(", ")
       render :new
     end
+  end
+
+  def dashboard
+    @user = current_user
+    render :dashboard
   end
 
   def show
