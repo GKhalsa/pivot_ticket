@@ -7,6 +7,7 @@
   <div class="row">
     <table>
       <thead>
+        <th data-field="new"></th>
         <th data-field="venue_name">Venue Name</th>
         <th data-field="venue_address">Venue Address</th>
         <th data-field="venue_admin">Venue Admin</th>
@@ -18,6 +19,11 @@
       <tbody>
         <% @venues.each do |venue| %>
         <tr>
+          <td>
+            <% if venue.pending? %>
+              <p id="pending-new">NEW</p>
+            <% end %>
+          </td>
           <td><%= venue.name %></td>
           <td><%= venue.address %></td>
           <td><%= venue.admin_list %></td>
