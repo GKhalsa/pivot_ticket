@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
 
   def authorize!
     unless current_permission.allow?
-     redirect_to root_url, danger: "You are not allowed"
+      render file: 'public/404'
     end
   end
 end

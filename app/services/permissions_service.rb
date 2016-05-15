@@ -25,22 +25,27 @@ class PermissionsService
   private
 
   def platform_admin_permissions
-    return true if controller == "sessions"
     return true if controller == "events"
     return true if controller == "admin/dashboard" && action.in?(%w(show))
     return true if controller == "admin/venues" && action.in?(%w(de_activate activate))
+    return true if controller == "admin/categories" && action.in?(%w(new create))
+    return true if controller == "admin/tickets"
+    return true if controller == "sessions"
   end
 
   def venue_admin_permissions
-    true
+    false
   end
 
   def registered_user_permissions
-    true
+    return true if controller == "events" && action.in?(%w(index, show))
+    return true if controller == "orders" && action.in?(%w(index))
+    return true if controller == "sessions"
   end
 
   def guest_user_permissions
-    true
+    return true if controller == "events" && action.in?(%w(index, show))
+    return true if controller == "sessions"
   end
 
   def controller
