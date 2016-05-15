@@ -1,5 +1,28 @@
-<%= render partial: "partials/category_sidebar", locals: { active_category: "all" } %>
-<% unless @venues.nil? %>
-  <%= render partial: "partials/venue_sidebar", locals: { venues: @venues} %>
-<% end %>
-<%= render partial: "partials/item_grid" %>
+<!-- <%= render partial: "partials/category_sidebar", locals: { active_category: "all" } %>
+<%# unless @venues.nil? %>
+  <%#= render partial: "partials/venue_sidebar", locals: { venues: @venues } %>
+<%# end %>
+<%#= render partial: "partials/item_grid" %> -->
+
+<div class="col s12 m8 l9">
+  <div class="row">
+    <% @tickets.each do |ticket| %>
+      <div class="col s12 m6">
+        <div class="card card-<%= ticket.id %> hoverable">
+          <div class="card-image waves-effect waves-block waves-light">
+            <%= image_tag(ticket.event.event_image.url, class: "activator card-img")%>
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4"><%= link_to event.title, event_path(event) %></span>
+          </div>
+          <div class="card-action center-align">
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4"><%= ticket.event.title %><i class="material-icons right">close</i></span>
+            <p><%= ticket.event.performing %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -3,6 +3,11 @@
     <div class="bar">
       <a href="/" class="brand-logo">Pivot Tickets</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><%= form_tag(tickets_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search Tickets" %>
+        <%= submit_tag "Search" %>
+        <% end %>
+        </li>
         <li><%= link_to_dashboard %></li>
         <li><%= link_to_login_or_logout %></li>
         <li><a href="/cart"><i class="large material-icons left">shopping_cart</i><%= cart_contents %></a></li>

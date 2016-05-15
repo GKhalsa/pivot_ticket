@@ -12,8 +12,7 @@ class Seed
       user = User.create(
       email: "#{user.downcase}@turing.io",
       password: "password",
-      name: user,
-      role: 1)
+      name: user)
       puts "Created #{user.name}, with email: #{user.email}"
     end
   end

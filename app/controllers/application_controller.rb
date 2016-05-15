@@ -30,8 +30,9 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize!
-    unless current_permission.allow?
-     redirect_to root_url, danger: "You are not allowed"
-    end
+    # unless current_permission.allow?
+    #  redirect_to root_url, danger: "You are not allowed"
+    # end
+    true
   end
 end
