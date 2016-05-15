@@ -13,9 +13,9 @@ RSpec.feature "User can logout" do
       click_button("Login")
     end
 
-    visit root_path
+    visit event_path(ticket.event.id)
 
-    within(".card-#{ticket.id}") do
+    within("#ticket-#{ticket.id}") do
       click_button("Add to Cart")
     end
 
