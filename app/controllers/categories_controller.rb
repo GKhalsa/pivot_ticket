@@ -3,5 +3,6 @@ class CategoriesController < ApplicationController
     @categories = Category.all
     @category = Category.find_by(name: params[:name]) || not_found
     @events  = @category.events
+    @venues = Venue.all
   end
 end

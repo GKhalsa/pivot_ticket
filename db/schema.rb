@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160514213809) do
+ActiveRecord::Schema.define(version: 20160515162737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,10 +72,12 @@ ActiveRecord::Schema.define(version: 20160514213809) do
     t.integer  "status",        default: 0
     t.string   "seat_location"
     t.integer  "event_id"
+    t.integer  "user_id"
   end
 
   add_index "tickets", ["category_id"], name: "index_tickets_on_category_id", using: :btree
   add_index "tickets", ["event_id"], name: "index_tickets_on_event_id", using: :btree
+  add_index "tickets", ["user_id"], name: "index_tickets_on_user_id", using: :btree
 
   create_table "user_roles", force: :cascade do |t|
     t.integer  "user_id"
@@ -92,9 +94,8 @@ ActiveRecord::Schema.define(version: 20160514213809) do
     t.string   "password_digest"
     t.string   "name"
     t.string   "last_name"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.integer  "role",            default: 0
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "venue_id"
   end
 
@@ -117,6 +118,7 @@ ActiveRecord::Schema.define(version: 20160514213809) do
   add_foreign_key "orders", "users"
   add_foreign_key "tickets", "categories"
   add_foreign_key "tickets", "events"
+  add_foreign_key "tickets", "users"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
   add_foreign_key "users", "venues"

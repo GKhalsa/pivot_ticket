@@ -1,7 +1,13 @@
 class Ticket < ActiveRecord::Base
   belongs_to :event
+  has_many :orders
+  belongs_to :user
+  belongs_to :category
   belongs_to :venue
-  validates :price,         presence: true
+  validates :price,                 presence: true
+  validates :seat_location,         presence: true
+  validates :seat_location,         uniqueness: { scope: :event_id,
+   message: "that ticket has already been posted for sale" }
 
   enum status: %w(active retired)
 
@@ -27,6 +33,10 @@ class Ticket < ActiveRecord::Base
 
   def event_date
     event.date
+  end
+
+  def owner
+    self.user
   end
 
 end

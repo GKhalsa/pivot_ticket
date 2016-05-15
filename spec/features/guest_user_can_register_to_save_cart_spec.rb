@@ -2,18 +2,16 @@ require "rails_helper"
 
 RSpec.feature "User can register an account" do
   scenario "Their cart is saved" do
-    create_list(:ticket, 2)
+    ticket_1 = create(:ticket)
+    ticket_2 = create(:ticket, event_id: ticket_1.event.id)
 
-    ticket_1 = Ticket.first
-    ticket_2 = Ticket.last
+    visit event_path(ticket_1.event.id)
 
-    visit root_path
-
-    within(".card-#{ticket_1.id}") do
+    within("#ticket-#{ticket_1.id}") do
       click_button("Add to Cart")
     end
 
-    within(".card-#{ticket_2.id}") do
+    within("#ticket-#{ticket_2.id}") do
       click_button("Add to Cart")
     end
 

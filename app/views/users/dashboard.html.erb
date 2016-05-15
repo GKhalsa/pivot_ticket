@@ -1,0 +1,58 @@
+<h1>Dashboard</h1>
+
+<%= link_to my_tickets_new_path, class: "waves-effect waves-light btn" do %>
+  Sell A Ticket
+<% end %>
+<%= link_to account_edit_path, class: "waves-effect waves-light btn" do %>
+  Update My Account
+<% end %>
+
+<h4 class="order-for">Your Tickets</h4>
+<div class="col s12 m8 l9">
+  <div class="row">
+    <% @user.tickets.each do |ticket| %>
+      <div class="col s12 m6">
+        <div class="card card-<%= ticket.id %> hoverable">
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4"><%= ticket.event_title if ticket.event %></span>
+            <span class="right"><h5>$<%= ticket.price %> <%= ticket.seat_location %></h5></span>
+          </div>
+          <div class="card-action center-align">
+            <!-- <% if ticket.active? %>
+              <%= link_to my_tickets_edit_path(id: ticket.id), class: "waves-effect waves-light btn" do %>
+                Edit
+              <% end %>
+            <% else %>
+                <a class="btn disabled">Item Retired</a>
+            <% end %> -->
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4"><%= ticket.event.title if ticket.event %><i class="material-icons right">close</i></span>
+            <p><%= ticket.event.performing if ticket.event %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+<h4 class="order-for">Your Orders</h4>
+
+<table class="highlight">
+    <tr>
+      <th>Order ID</th>
+      <th>Created at</th>
+      <th>Items</th>
+      <th>Total</th>
+    </tr>
+    <% @user.orders.each do |order|%>
+    <tr>
+      <td><%= link_to order.id, order_path(order) %></td>
+      <td><%= order.created_time %></td>
+      <td><%= order.quantity %></td>
+      <td><%= order.total %></td>
+    </tr>
+  <% end %>
+</table>

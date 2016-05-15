@@ -1,4 +1,18 @@
 class Admin::VenuesController < Admin::BaseController
+  include VenuesHelper
+
+  before_action :set_venue, only: [:de_activate, :activate]
+
+
+  def de_activate
+    change_status(@venue, 2, "de-activated")
+    redirect_to admin_dashboard_path
+  end
+
+  def activate
+    change_status(@venue, 1, "activated")
+    redirect_to admin_dashboard_path
+  end
 
   def show
     if current_user.venue.pending?
@@ -54,4 +68,7 @@ class Admin::VenuesController < Admin::BaseController
       params.require(:venue).permit(:name, :address, :image, :status)
     end
 
+    def set_venue
+      @venue = Venue.find(params[:id])
+    end
 end

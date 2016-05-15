@@ -10,7 +10,6 @@ FactoryGirl.define do
       sequence :email do |n|
         "admin#{n}@example.com"
       end
-      role 1
     end
 
     factory :o_auth_user do
@@ -26,6 +25,7 @@ FactoryGirl.define do
       "Venue_#{n} Name"
     end
     address "Venue Address"
+    status 1
   end
 
   factory :event do
@@ -40,16 +40,11 @@ FactoryGirl.define do
 
   factory :ticket do
     event
-    # sequence :status do |n|
-    #   n
-    # end
+    sequence :seat_location do |n|
+      n.to_s
+    end
     price 9.99
-    # image_path "example.jpg"
-
     factory :retired_ticket do
-      # sequence :status do |n|
-      #   n
-      # end
     end
   end
 
