@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160512212118) do
+ActiveRecord::Schema.define(version: 20160515002345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,14 +28,14 @@ ActiveRecord::Schema.define(version: 20160512212118) do
     t.date     "date"
     t.integer  "category_id"
     t.integer  "venue_id"
-    t.string   "event_image_file_name"
-    t.string   "event_image_content_type"
-    t.integer  "event_image_file_size"
-    t.datetime "event_image_updated_at"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "event_image_file_name"
+    t.string   "event_image_content_type"
+    t.integer  "event_image_file_size"
+    t.datetime "event_image_updated_at"
   end
 
   add_index "events", ["category_id"], name: "index_events_on_category_id", using: :btree
@@ -63,6 +63,22 @@ ActiveRecord::Schema.define(version: 20160512212118) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "tags", force: :cascade do |t|
+    t.text     "word"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ticket_tags", force: :cascade do |t|
+    t.integer  "ticket_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "ticket_tags", ["tag_id"], name: "index_ticket_tags_on_tag_id", using: :btree
+  add_index "ticket_tags", ["ticket_id"], name: "index_ticket_tags_on_ticket_id", using: :btree
 
   create_table "tickets", force: :cascade do |t|
     t.float    "price"
@@ -110,6 +126,8 @@ ActiveRecord::Schema.define(version: 20160512212118) do
   add_foreign_key "events", "venues"
   add_foreign_key "order_tickets", "orders"
   add_foreign_key "orders", "users"
+  add_foreign_key "ticket_tags", "tags"
+  add_foreign_key "ticket_tags", "tickets"
   add_foreign_key "tickets", "categories"
   add_foreign_key "tickets", "events"
   add_foreign_key "user_roles", "roles"
