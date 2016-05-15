@@ -52,6 +52,8 @@ RSpec.feature "User can view orders" do
       user = create(:user)
       ApplicationController.any_instance.stubs(:current_user).returns(user)
 
+      visit order_path(order)
+      
       expect(page).to have_content("404")
     end
   end
