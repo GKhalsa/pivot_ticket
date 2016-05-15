@@ -38,13 +38,13 @@ class PermissionsService
   end
 
   def registered_user_permissions
-    return true if controller == "events" && action.in?(%w(index, show))
+    return true if controller == "events" && action.in?(%w(index show))
     return true if controller == "orders" && action.in?(%w(index))
     return true if controller == "sessions"
   end
 
   def guest_user_permissions
-    return true if controller == "events" && action.in?(%w(index, show))
+    return true if controller == "events" && action.in?(%w(index show))
     return true if controller == "sessions"
   end
 
