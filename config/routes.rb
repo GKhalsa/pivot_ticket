@@ -21,10 +21,18 @@ Rails.application.routes.draw do
     resources :tickets, only: [:index, :new, :create, :edit, :update]
     resources :orders, only: [:index, :update]
     resources :categories, only: [:new, :create]
-    resources :events, only: [:new, :create]
+    # resources :events, only: [:new, :create]
+    resources :venues, only: [:new, :create, :index]
   end
 
   get "/:name", to: "categories#show", as: :category
   get "/:venue/events", to: "venues#show", as: :venue
+  # get "/admin/venues", to: "admin/venues#index", as: :admin_venues
+  get "/admin/:venue", to: "admin/venues#show", as: :admin_venue
+  # get "/admin/pending"
+
+  get "/admin/:venue/events/new", to: "admin/events#new", as: :new_admin_event
+  post "/admin/:venue/events", to: "admin/events#create", as: :admin_events
+
   # get "/:venue/events/:id", to: "tickets#index", as: :event_tickets
 end

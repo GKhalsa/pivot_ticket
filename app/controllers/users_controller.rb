@@ -28,6 +28,7 @@ class UsersController < ApplicationController
       :email,
       :password,
       :name,
+      :venue_id
     )
   end
 

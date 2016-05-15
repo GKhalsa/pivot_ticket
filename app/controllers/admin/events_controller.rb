@@ -1,29 +1,21 @@
 class Admin::EventsController < Admin::BaseController
-  before_action :set_event, only: [:retire, :activate, :edit, :update]
+  before_action :set_event, only: [:edit, :update]
 
   def index
     @events = Event.all_by_id
   end
 
-  def retire
-    @event.retired!
-    redirect_to admin_events_path
-  end
-
-  def activate
-    @event.active!
-    redirect_to admin_events_path
-  end
-
   def new
     @categories = Category.all
     @event = Event.new
+    @venue = params[:venue]
   end
 
   def create
-    @event = Event.new(ticket_params)
+    @event = Event.new(event_params)
     if @event.save
-      redirect_to admin_events_path
+      current_user.venue.events << @event
+      redirect_to admin_venue_path(current_user.venue.slug)
     else
       flash[:notice] = @event.errors.full_messages.join(", ")
       render :new
@@ -40,8 +32,8 @@ class Admin::EventsController < Admin::BaseController
 
   private
 
-  def ticket_params
-    params.require(:event).permit(:price, :avatar, :category_id, :event_id, :seat_location)
+  def event_params
+    params.require(:event).permit(:title, :performing, :date, :category_id, :venue_id, :event_image)
   end
 
   def set_event
