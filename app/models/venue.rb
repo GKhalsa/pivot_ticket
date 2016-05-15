@@ -9,13 +9,11 @@ class Venue < ActiveRecord::Base
   default_url: "https://s3.amazonaws.com/digital-destination/missing_image.png"
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
+  enum status: %w(pending active inactive)
 
   def generate_slug
     self.slug = self.name.parameterize
   end
 
-  def pending?
-    !approved
-  end
 
 end

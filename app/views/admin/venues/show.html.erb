@@ -3,10 +3,9 @@
 <div class="row">
   <div id="venue-options" class="col s2 m2 l4">
     <div  class="collection">
-      <div class="collection-item center"> <%= link_to "Add Event", new_admin_event_path %> </div>
-      <a href="#!" class="collection-item center">Edit Venue</a>
-      <a href="#!" class="collection-item center">Add Admin</a>
-      <a href="#!" class="collection-item center">Delete Admin</a>
+      <div class="collection-item center"> <%= link_to "Add Event", new_admin_event_path(@venue) %> </div>
+      <div href="#!" class="collection-item center"> <%= link_to "Edit Venue", edit_admin_venue_path(@venue) %></div>
+      <div href="#!" class="collection-item center"> <%= link_to "Venue Moderators Dashboard", admin_venue_moderators_path(venue_id: @venue.id) %> </div>
     </div>
   </div>
 </div>
