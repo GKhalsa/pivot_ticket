@@ -4,8 +4,11 @@ class Ticket < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
   belongs_to :venue
-  validates :price,         presence: true
-  
+  validates :price,                 presence: true
+  validates :seat_location,         presence: true
+  validates :seat_location,         uniqueness: { scope: :event_id,
+   message: "that ticket has already been posted for sale" }
+
   enum status: %w(active retired)
 
   def self.all_by_state
