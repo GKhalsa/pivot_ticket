@@ -72,10 +72,12 @@ ActiveRecord::Schema.define(version: 20160515162737) do
     t.integer  "status",        default: 0
     t.string   "seat_location"
     t.integer  "event_id"
+    t.integer  "user_id"
   end
 
   add_index "tickets", ["category_id"], name: "index_tickets_on_category_id", using: :btree
   add_index "tickets", ["event_id"], name: "index_tickets_on_event_id", using: :btree
+  add_index "tickets", ["user_id"], name: "index_tickets_on_user_id", using: :btree
 
   create_table "user_roles", force: :cascade do |t|
     t.integer  "user_id"
@@ -112,6 +114,7 @@ ActiveRecord::Schema.define(version: 20160515162737) do
   add_foreign_key "orders", "users"
   add_foreign_key "tickets", "categories"
   add_foreign_key "tickets", "events"
+  add_foreign_key "tickets", "users"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
   add_foreign_key "users", "venues"

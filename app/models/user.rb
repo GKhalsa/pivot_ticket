@@ -2,7 +2,6 @@ class User < ActiveRecord::Base
   has_secure_password
 
   validates :email, presence: true, uniqueness: true
-  validates :password, presence: true
   validates :name, presence: true
   belongs_to :venue
   has_many :user_roles
@@ -28,6 +27,10 @@ class User < ActiveRecord::Base
       name: auth_hash[:info][:nickname],
       password: rand(1..10_000).to_s
     )
+  end
+
+  def tickets
+    Ticket.where(user_id: self.id)
   end
 
   def platform_admin?

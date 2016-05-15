@@ -1,0 +1,19 @@
+<h4>Edit Your Information</h4>
+
+<%= form_for @user, url: users_path do |f| %>
+  <div class="input-field col s8 offset-s2">
+    <%= f.text_field :email %>
+    <%= f.label :email %>
+  </div>
+  <div class="input-field col s8 offset-s2">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+  <div class="input-field col s8 offset-s2">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="center">
+    <%= f.submit "Update Account", class: "waves-effect waves-light btn" %>
+  </div>
+<% end %>

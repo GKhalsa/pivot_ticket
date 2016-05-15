@@ -1,5 +1,7 @@
 class Ticket < ActiveRecord::Base
   belongs_to :event
+  has_many :orders
+  belongs_to :user
   belongs_to :category
   belongs_to :venue
   validates :price,                 presence: true
@@ -31,6 +33,10 @@ class Ticket < ActiveRecord::Base
 
   def event_date
     event.date
+  end
+
+  def owner
+    self.user
   end
 
 end
