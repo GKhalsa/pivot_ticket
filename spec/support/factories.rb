@@ -26,6 +26,7 @@ FactoryGirl.define do
       "Venue_#{n} Name"
     end
     address "Venue Address"
+    status 1
   end
 
   factory :event do
