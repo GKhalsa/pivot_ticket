@@ -29,6 +29,10 @@ class Admin::VenuesController < Admin::BaseController
     end
   end
 
+  def destroy
+  
+  end
+
   private
 
     def venue_params

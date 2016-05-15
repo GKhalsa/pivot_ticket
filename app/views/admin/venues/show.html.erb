@@ -15,11 +15,11 @@
   <% @events.each do |event| %>
     <li>
       <div class="collapsible-header"><i class="material-icons"></i><%= event.title %></div>
-      <div class="collapsible-body">  <%= link_to "hello", class: "waves-effect waves-light btn" do %>
+      <div class="collapsible-body">  <%= link_to delete_admin_event_path(@venue.slug, event), method: :delete, class: "waves-effect waves-light btn" do %>
                                       <i class="material-icons left">delete</i>Delete
                                       <% end %>
 
-                                      <%= link_to "hello", class: "waves-effect waves-light btn" do %>
+                                      <%= link_to edit_admin_event_path(@venue.slug, event), class: "waves-effect waves-light btn" do %>
                                       <i class="material-icons left">mode_edit</i>Edit
                                       <% end %>
 
