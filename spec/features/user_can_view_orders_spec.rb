@@ -4,6 +4,10 @@ RSpec.feature "User can view orders" do
   scenario "they see an order breakdown" do
     user = create(:user)
 
+    role = Role.create(name: "registered_user")
+
+    user.roles = [role]
+
     ApplicationController.any_instance.stubs(:current_user).returns(user)
 
     ticket_1 = create(:ticket)
@@ -23,7 +27,7 @@ RSpec.feature "User can view orders" do
 
     visit cart_path
     click_on "Checkout"
-  
+
     order = Order.first
     expect(page).to have_content("Your Orders")
     expect(page).to have_content(order.created_time)
@@ -48,7 +52,7 @@ RSpec.feature "User can view orders" do
       user = create(:user)
       ApplicationController.any_instance.stubs(:current_user).returns(user)
 
-      expect { visit order_path(order) }.to raise_error(ActionController::RoutingError)
+      expect(page).to have_content("404")
     end
   end
 
