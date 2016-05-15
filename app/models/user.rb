@@ -29,4 +29,19 @@ class User < ActiveRecord::Base
       password: rand(1..10_000).to_s
     )
   end
+
+  def platform_admin?
+    # roles.exists?(name: "platform_admin")
+    roles.include?(Role.find_by(name: "platform_admin"))
+  end
+
+  def venue_admin?
+    # roles.exists?(name: "venue_admin")
+    roles.include?(Role.find_by(name: "venue_admin"))
+  end
+
+  def registered_user?
+    # roles.exists?(name: "registered_user")
+    roles.include?(Role.find_by(name: "registered_user"))
+  end
 end

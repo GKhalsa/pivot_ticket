@@ -3,7 +3,9 @@ require "rails_helper"
 RSpec.feature "User can visit admin dashboard" do
   scenario "Admin can see admin dashboard" do
     admin = create(:admin)
-
+    role = Role.create(name: "platform_admin")
+    admin.roles = [role]
+    
     ApplicationController.any_instance.stubs(:current_user).returns(admin)
 
     visit admin_dashboard_path

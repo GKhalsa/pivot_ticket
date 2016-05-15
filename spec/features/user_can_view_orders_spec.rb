@@ -4,24 +4,30 @@ RSpec.feature "User can view orders" do
   scenario "they see an order breakdown" do
     user = create(:user)
 
+    role = Role.create(name: "registered_user")
+
+    user.roles = [role]
+
     ApplicationController.any_instance.stubs(:current_user).returns(user)
 
-    create_list(:ticket, 2)
+    ticket_1 = create(:ticket)
 
-    ticket_1 = Ticket.first
-    ticket_2 = Ticket.last
+    ticket_2 = create(:ticket, event_id: ticket_1.event.id)
 
-    visit tickets_path
-    within(".card-#{ticket_1.id}") do
+    visit event_path(ticket_1.event)
+
+    within("#ticket-#{ticket_1.id}") do
       click_button("Add to Cart")
     end
 
-    within(".card-#{ticket_2.id}") do
+
+    within("#ticket-#{ticket_2.id}") do
       click_button("Add to Cart")
     end
 
     visit cart_path
     click_on "Checkout"
+
     order = Order.first
     expect(page).to have_content("Your Orders")
     expect(page).to have_content(order.created_time)
@@ -46,7 +52,9 @@ RSpec.feature "User can view orders" do
       user = create(:user)
       ApplicationController.any_instance.stubs(:current_user).returns(user)
 
-      expect { visit order_path(order) }.to raise_error(ActionController::RoutingError)
+      visit order_path(order)
+      
+      expect(page).to have_content("404")
     end
   end
 
@@ -56,7 +64,7 @@ RSpec.feature "User can view orders" do
 
       visit orders_path
 
-      expect(current_path).to eq(login_path)
+      expect(page).to have_content("404")
     end
 
     scenario "is redirected to login path when trying to view specific order" do
@@ -64,7 +72,8 @@ RSpec.feature "User can view orders" do
 
       visit order_path(order)
 
-      expect(current_path).to eq(login_path)
+      expect(page).to have_content("404")
+
     end
   end
 end

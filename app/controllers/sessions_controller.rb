@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
   private
 
   def redirect_based_on_role
-    if current_admin?
+    if platform_admin?
       redirect_to admin_dashboard_path
     else
       redirect_to dashboard_path
