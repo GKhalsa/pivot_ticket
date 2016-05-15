@@ -2,8 +2,8 @@ class Seed
 
   def initialize
     create_known_users
-    # create_sports_venue_event_tickets
-    # create_music_venue_event_tickets
+    create_sports_venue_event_tickets
+    create_music_venue_event_tickets
   end
 
   def create_known_users

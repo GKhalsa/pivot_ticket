@@ -12,7 +12,7 @@ class Admin::VenueModeratorsController < Admin::BaseController
   end
 
   def new
-   @venue = Venue.find(params[:id])
+   @venue = current_user.venue
   end
 
   def create
@@ -22,7 +22,7 @@ class Admin::VenueModeratorsController < Admin::BaseController
       flash[:success] = "#{@user.name} has been added as an admin"
       redirect_to admin_venue_path(@venue.slug)
     else
-      flash.now[:error] = "This email could not be found"
+      flash[:error] = "This email could not be found"
       redirect_to new_admin_venue_moderator_path
     end
   end

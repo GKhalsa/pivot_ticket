@@ -43,7 +43,7 @@ class UsersController < ApplicationController
       :email,
       :password,
       :name,
-      :venue_id
+      :venue_id)
   end
 
   def require_login

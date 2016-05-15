@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
 
   def business_admin?
     roles.exists?(name: "business_admin")
+  end
 
   def tickets
     Ticket.where(user_id: self.id)

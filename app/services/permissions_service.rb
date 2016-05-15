@@ -4,7 +4,8 @@ class PermissionsService
   def_delegators :user,
                  :platform_admin?,
                  :venue_admin?,
-                 :registered_user?
+                 :registered_user?,
+                 :business_admin?
 
   def initialize(user, controller, action)
     @_user = user || User.new
@@ -14,9 +15,9 @@ class PermissionsService
 
   def allow?
     case
-    when user.business_admin? then business_admin_permissions
+    when business_admin? then business_admin_permissions
     when platform_admin? then platform_admin_permissions
-    when venue_admin? then venue_admin_permissions
+    # when venue_admin? then venue_admin_permissions
     when registered_user? then registered_user_permissions
     else
       guest_user_permissions
@@ -55,7 +56,7 @@ class PermissionsService
       return true if controller == "venues" && action.in?(%w(show))
       return true if controller == "sessions"
       return true if controller == "tickets" && action.in?(%w(index new create edit update destroy))
-      return true if controller == "users" && action.in?(%w(new create dashboard))
+      return true if controller == "users" && action.in?(%w(new create dashboard edit))
     end
 
     def guest_user_permissions
