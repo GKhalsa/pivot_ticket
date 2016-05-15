@@ -37,6 +37,7 @@ gem 'formtastic', '~> 3.0'
 gem 'omniauth-oauth2'
 gem 'omniauth-github'
 gem 'figaro'
+gem 'faker'
 
 group :production do
   gem 'rails_12factor'
@@ -54,7 +55,6 @@ group :development, :test do
   gem 'mocha'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
-  gem 'faker'
 end
 
 group :development do

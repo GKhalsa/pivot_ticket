@@ -1,0 +1,25 @@
+<div id="event_image"><%= image_tag @event.event_image.url %></div>
+<div id="event_packages" class="col s12 m8 l9">
+  <div class="row">
+
+    <%#= link_to event_path(@event), class: "waves-effect waves-light btn-large" do %>
+                                    <!-- <i class="material-icons left"></i><% @tickets.sort_by{|ticket| ticket.price} %> -->
+                                     <%# end %>
+<a class="waves-effect waves-light btn-large">Button</a>
+<a class="waves-effect waves-light btn-large">Button</a>
+<a class="waves-effect waves-light btn-large">Button</a>
+    <ul class="collapsible scrolling" data-collapsible="accordion">
+      <% @tickets.each do |ticket| %>
+        <li id="ticket-<%= ticket.id %>">
+          <div class="collapsible-header"><i class="material-icons ticket-add">add</i>
+            <div class="ticket-info">
+              <strong>Ticket Price:</strong> $<%= ticket.price %> <strong>Section/Seat Number:</strong> <%= ticket.seat_location %> </div>
+            </div>
+          <div class="collapsible-body">  <%= button_to cart_path(ticket_id: ticket.id), class: "waves-effect waves-light btn" do %>
+                                          <i class="material-icons left">shopping_cart</i>Add to Cart
+                                           <% end %></div>
+        </li>
+        <% end %>
+      </ul>
+  </div>
+</div>

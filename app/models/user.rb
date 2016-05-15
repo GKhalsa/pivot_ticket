@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
 
   validates :email, presence: true, uniqueness: true
   validates :name, presence: true
+  belongs_to :venue
+  has_many :user_roles
+  has_many :roles, through: :user_roles
   has_many  :orders
   has_many  :order_tickets, through: :orders
   has_many  :tickets, through: :order_tickets
@@ -28,5 +31,20 @@ class User < ActiveRecord::Base
 
   def tickets
     Ticket.where(user_id: self.id)
+  end
+
+  def platform_admin?
+    # roles.exists?(name: "platform_admin")
+    roles.include?(Role.find_by(name: "platform_admin"))
+  end
+
+  def venue_admin?
+    # roles.exists?(name: "venue_admin")
+    roles.include?(Role.find_by(name: "venue_admin"))
+  end
+
+  def registered_user?
+    # roles.exists?(name: "registered_user")
+    roles.include?(Role.find_by(name: "registered_user"))
   end
 end

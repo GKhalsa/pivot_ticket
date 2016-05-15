@@ -2,9 +2,10 @@ class Ticket < ActiveRecord::Base
   belongs_to :event
   has_many :orders
   belongs_to :user
+  belongs_to :category
+  belongs_to :venue
   validates :price,         presence: true
-
-
+  
   enum status: %w(active retired)
 
   def self.all_by_state
