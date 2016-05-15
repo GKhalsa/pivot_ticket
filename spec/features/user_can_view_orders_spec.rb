@@ -6,17 +6,17 @@ RSpec.feature "User can view orders" do
 
     ApplicationController.any_instance.stubs(:current_user).returns(user)
 
-    create_list(:ticket, 2)
+    ticket_1 = create(:ticket)
 
-    ticket_1 = Ticket.first
-    ticket_2 = Ticket.last
+    ticket_2 = create(:ticket, event_id: ticket_1.event.id)
 
-    visit tickets_path
-    within(".card-#{ticket_1.id}") do
+    visit event_path(ticket_1.event)
+
+    within("#ticket-#{ticket_1.id}") do
       click_button("Add to Cart")
     end
 
-    within(".card-#{ticket_2.id}") do
+    within("#ticket-#{ticket_2.id}") do
       click_button("Add to Cart")
     end
 

@@ -1,5 +1,3 @@
-<%= render partial: "partials/events_sidebar", locals: { active_category: "all" } %>
-<% unless @venues.nil? %>
-  <%= render partial: "partials/venue_sidebar", locals: { venues: @venues} %>
-<% end %>
+<%= render partial: "partials/events_sidebar", locals: { active_category: "all", venues: @venues } %>
+
 <%= render partial: "partials/item_grid" %>

@@ -10,7 +10,7 @@
 <a class="waves-effect waves-light btn-large">Button</a>
     <ul class="collapsible scrolling" data-collapsible="accordion">
       <% @tickets.each do |ticket| %>
-        <li>
+        <li id="ticket-<%= ticket.id %>">
           <div class="collapsible-header"><i class="material-icons ticket-add">add</i>
             <div class="ticket-info">
               <strong>Ticket Price:</strong> $<%= ticket.price %> <strong>Section/Seat Number:</strong> <%= ticket.seat_location %> </div>
