@@ -40,16 +40,11 @@ FactoryGirl.define do
 
   factory :ticket do
     event
-    # sequence :status do |n|
-    #   n
-    # end
+    sequence :seat_location do |n|
+      n.to_s
+    end
     price 9.99
-    # image_path "example.jpg"
-
     factory :retired_ticket do
-      # sequence :status do |n|
-      #   n
-      # end
     end
   end
 
