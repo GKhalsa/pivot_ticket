@@ -16,12 +16,14 @@ RSpec.feature "User can view orders" do
       click_button("Add to Cart")
     end
 
+
     within("#ticket-#{ticket_2.id}") do
       click_button("Add to Cart")
     end
 
     visit cart_path
     click_on "Checkout"
+  
     order = Order.first
     expect(page).to have_content("Your Orders")
     expect(page).to have_content(order.created_time)
@@ -56,7 +58,7 @@ RSpec.feature "User can view orders" do
 
       visit orders_path
 
-      expect(current_path).to eq(login_path)
+      expect(page).to have_content("404")
     end
 
     scenario "is redirected to login path when trying to view specific order" do
@@ -64,7 +66,8 @@ RSpec.feature "User can view orders" do
 
       visit order_path(order)
 
-      expect(current_path).to eq(login_path)
+      expect(page).to have_content("404")
+
     end
   end
 end

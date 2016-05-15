@@ -31,6 +31,8 @@ class PermissionsService
     return true if controller == "admin/categories" && action.in?(%w(new create))
     return true if controller == "admin/tickets"
     return true if controller == "sessions"
+    # return true if controller == "venues"
+
   end
 
   def venue_admin_permissions
@@ -39,12 +41,17 @@ class PermissionsService
 
   def registered_user_permissions
     return true if controller == "events" && action.in?(%w(index show))
-    return true if controller == "orders" && action.in?(%w(index))
+    return true if controller == "carts"
+    return true if controller == "orders" && action.in?(%w(index create show))
+    return true if controller == "venues" && action.in?(%w(show))
     return true if controller == "sessions"
   end
 
   def guest_user_permissions
     return true if controller == "events" && action.in?(%w(index show))
+    return true if controller == "orders" && action.in?(%w(index create show))
+    return true if controller == "carts"
+    return true if controller == "venues" && action.in?(%w(show))
     return true if controller == "sessions"
   end
 
