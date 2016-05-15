@@ -55,7 +55,6 @@ RSpec.feature "Admin can change a venue's status" do
       expect(page).to have_content("venue_name was successfully activated")
 
       visit root_path
-
       expect(page).to have_content("venue_name")
     end
   end

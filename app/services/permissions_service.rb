@@ -33,6 +33,8 @@ class PermissionsService
     return true if controller == "admin/tickets"
     return true if controller == "sessions"
     return true if controller == "categories"
+    return true if controller == "tickets" && action.in?(%w(index new create edit update destroy))
+    return true if controller == "users" && action.in?(%w(new create dashboard))
     # return true if controller == "venues"
   end
 
@@ -47,6 +49,8 @@ class PermissionsService
     return true if controller == "orders" && action.in?(%w(index create show))
     return true if controller == "venues" && action.in?(%w(show))
     return true if controller == "sessions"
+    return true if controller == "tickets" && action.in?(%w(index new create edit update destroy))
+    return true if controller == "users" && action.in?(%w(new create dashboard))
   end
 
   def guest_user_permissions
@@ -56,8 +60,8 @@ class PermissionsService
     return true if controller == "carts"
     return true if controller == "venues" && action.in?(%w(show))
     return true if controller == "sessions"
-    return true if controller == "users" && action.in?(%w(new create))
-
+    return true if controller == "users" && action.in?(%w(new create dashboard))
+    return true if controller == "tickets" && action.in?(%w(index new))
   end
 
   def controller

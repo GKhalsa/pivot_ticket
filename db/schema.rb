@@ -11,7 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20160515162737) do
 
   # These are extensions that must be enabled in order to support this database
@@ -115,6 +114,7 @@ ActiveRecord::Schema.define(version: 20160515162737) do
   add_foreign_key "orders", "users"
   add_foreign_key "tickets", "categories"
   add_foreign_key "tickets", "events"
+  add_foreign_key "tickets", "users"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
   add_foreign_key "users", "venues"
