@@ -1,8 +1,7 @@
-<!-- <%= render partial: "partials/category_sidebar", locals: { active_category: "all" } %>
-<%# unless @venues.nil? %>
-  <%#= render partial: "partials/venue_sidebar", locals: { venues: @venues } %>
-<%# end %>
-<%#= render partial: "partials/item_grid" %> -->
+<%= render partial: "partials/category_sidebar", locals: { active_category: "all" } %>
+<% unless @venues.nil? %>
+  <%= render partial: "partials/venue_sidebar", locals: { venues: @venues } %>
+<% end %>
 
 <div class="col s12 m8 l9">
   <div class="row">

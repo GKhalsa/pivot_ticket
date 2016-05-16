@@ -3,6 +3,8 @@ require "rails_helper"
 RSpec.feature "Admin can login" do
   scenario "and be taken to the admin dashboard" do
     admin = create(:admin)
+    role = Role.create(name: "platform_admin")
+    admin.roles = [role]
     visit login_path
 
     within("#login-form") do

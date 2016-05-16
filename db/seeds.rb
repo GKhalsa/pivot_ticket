@@ -21,7 +21,8 @@ class Seed
     sports = Category.create!(name: "Sports")
     5.times do
       sport_venue = Venue.create(name: "#{Faker::University.name} stadium",
-                                address: "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.state_abbr}, #{Faker::Address.zip}")
+                              address: "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.state_abbr}, #{Faker::Address.zip}",
+                               status: 1)
       puts "Built #{sport_venue.name} at #{sport_venue.address}"
       10.times do
         team1 = Faker::Team.name
@@ -29,7 +30,7 @@ class Seed
         game = Event.create(title: "#{team1} vs. #{team2} at #{sport_venue.name}",
                        performing: "#{team1}, #{team2}",
                              date: Faker::Date.forward(23),
-                    event_image: Faker::Avatar.image,
+                    # event_image: Faker::Avatar.image,
                       category_id: sports.id,
                          venue_id: sport_venue.id)
         puts "#{game.title} is happening on #{game.date}, at #{game.venue.name}!"
@@ -49,7 +50,8 @@ class Seed
     music = Category.create!(name: "Music")
     5.times do
       music_venue = Venue.create(name: "#{Faker::Company.name} concert hall",
-                                address: "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.state_abbr}, #{Faker::Address.zip}")
+                              address: "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.state_abbr}, #{Faker::Address.zip}",
+                               status: 1)
       puts "Built #{music_venue.name} at #{music_venue.address}"
       10.times do
         group = Faker::Superhero.name
@@ -57,7 +59,7 @@ class Seed
         concert = Event.create(title: "#{artist} with #{group} at #{music_venue.name}",
                        performing: "#{group}, #{artist}",
                              date: Faker::Date.forward(23),
-                      event_image: Faker::Avatar.image,
+                      # event_image: Faker::Avatar.image,
                       category_id: music.id,
                          venue_id: music_venue.id)
         puts "#{concert.title} is happening on #{concert.date}, at #{concert.venue.name}!"

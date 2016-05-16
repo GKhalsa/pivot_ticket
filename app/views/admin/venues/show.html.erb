@@ -1,0 +1,30 @@
+<h3><div> <%= @venue.name %> </div></h3>
+<div id="venue-image"><%= image_tag @venue.image %></div>
+
+<div class="row">
+  <div id="venue-options" class="col s2 m2 l4">
+    <div  class="collection">
+      <div class="collection-item center"> <%= link_to "Add Event", new_admin_event_path(@venue) %> </div>
+      <div href="#!" class="collection-item center"> <%= link_to "Edit Venue", edit_admin_venue_path(@venue) %></div>
+      <div href="#!" class="collection-item center"> <%= link_to "Venue Admin Dashboard", admin_venue_moderators_path(venue_id: @venue.id) %> </div>
+    </div>
+  </div>
+</div>
+
+<ul class="collapsible" data-collapsible="accordion">
+  <% @events.each do |event| %>
+    <li>
+      <div  class="collapsible-header"><i class="material-icons"></i><%= event.title %></div>
+      <div id="event-<%=event.id%>" class="collapsible-body">  <%= link_to delete_admin_event_path(@venue.slug, event), method: :delete, class: "waves-effect waves-light btn" do %>
+                                      <i class="material-icons left">delete</i>Delete
+                                      <% end %>
+
+                                      <%= link_to edit_admin_event_path(@venue.slug, event), class: "waves-effect waves-light btn" do %>
+                                      <i class="material-icons left">mode_edit</i>Edit
+                                      <% end %>
+
+      </div>
+
+    </li>
+    <% end %>
+  </ul>

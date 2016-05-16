@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160515002345) do
+ActiveRecord::Schema.define(version: 20160515162737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,10 +88,12 @@ ActiveRecord::Schema.define(version: 20160515002345) do
     t.integer  "status",        default: 0
     t.string   "seat_location"
     t.integer  "event_id"
+    t.integer  "user_id"
   end
 
   add_index "tickets", ["category_id"], name: "index_tickets_on_category_id", using: :btree
   add_index "tickets", ["event_id"], name: "index_tickets_on_event_id", using: :btree
+  add_index "tickets", ["user_id"], name: "index_tickets_on_user_id", using: :btree
 
   create_table "user_roles", force: :cascade do |t|
     t.integer  "user_id"
@@ -108,18 +110,22 @@ ActiveRecord::Schema.define(version: 20160515002345) do
     t.string   "password_digest"
     t.string   "name"
     t.string   "last_name"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.integer  "role",            default: 0
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "venue_id"
   end
 
   add_index "users", ["venue_id"], name: "index_users_on_venue_id", using: :btree
 
   create_table "venues", force: :cascade do |t|
-    t.string "name"
-    t.string "address"
-    t.string "slug"
+    t.string   "name"
+    t.string   "address"
+    t.string   "slug"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "status",             default: 0
   end
 
   add_foreign_key "events", "categories"
@@ -130,6 +136,7 @@ ActiveRecord::Schema.define(version: 20160515002345) do
   add_foreign_key "ticket_tags", "tickets"
   add_foreign_key "tickets", "categories"
   add_foreign_key "tickets", "events"
+  add_foreign_key "tickets", "users"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
   add_foreign_key "users", "venues"

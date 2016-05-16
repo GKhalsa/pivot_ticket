@@ -1,0 +1,24 @@
+<h3><%= @venue.name %>'s admin</h3>
+<div class="center">
+  <%= link_to "Create a New Admin",
+              new_admin_venue_moderator_path(id: @venue.id),
+              class: "waves-effect waves-light btn" %>
+</div>
+<table class="highlight">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+    <% @moderators.each do |moderator|%>
+    <tr>
+      <% if moderator.name == current_user.name %>
+        <td><%= moderator.name %></td>
+        <td><%= moderator.email %></td>
+      <% else %>
+        <td><%= moderator.name %></td>
+        <td><%= moderator.email %></td>
+        <td id="mod-id-<%=moderator.id%>"><%= link_to "Remove", admin_venue_moderator_path(moderator), method: :delete, class: "waves-effect waves-light btn" %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

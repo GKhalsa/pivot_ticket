@@ -13,8 +13,8 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
-  def current_admin?
-    current_user && current_user.admin?
+  def platform_admin?
+    current_user.platform_admin?
   end
 
   def require_login
@@ -30,9 +30,8 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize!
-    # unless current_permission.allow?
-    #  redirect_to root_url, danger: "You are not allowed"
-    # end
-    true
+    unless current_permission.allow?
+      render file: 'public/404'
+    end
   end
 end

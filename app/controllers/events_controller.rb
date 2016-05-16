@@ -22,7 +22,7 @@ class EventsController < ApplicationController
   def index
     @categories = Category.all
     @events = Event.all
-    @venues = Venue.all
+    @venues = Venue.where(status: 1)
   end
 
   private

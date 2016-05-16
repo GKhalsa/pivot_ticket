@@ -14,27 +14,35 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_many(:tickets) }
   end
 
-  describe "admin" do
-    it "should return true when asked if admin" do
-      admin = create(:admin)
-      expect(admin.admin?).to be(true)
+  describe "platform admin" do
+    it "should return true when asked if platform admin" do
+      role = Role.create(name: "platform_admin")
+      platform_admin = User.create(name: "PA", email: "email")
+      platform_admin.roles = [role]
+      expect(platform_admin.platform_admin?).to be(true)
     end
 
     it "should return false when asked if default user" do
-      admin = create(:admin)
-      expect(admin.default?).to be(false)
+      role = Role.create(name: "platform_admin")
+      platform_admin = User.create(name: "PA", email: "email")
+      platform_admin.roles = [role]
+      expect(platform_admin.registered_user?).to be(false)
     end
   end
 
   describe "non admin user" do
     it "should return true when asked if default user" do
-      user = create(:user)
-      expect(user.default?).to be(true)
+      role = Role.create(name: "registered_user")
+      registered_user = User.create(name: "RU", email: "email")
+      registered_user.roles = [role]
+      expect(registered_user.registered_user?).to be(true)
     end
 
     it "should return false when asked if admin" do
-      user = create(:user)
-      expect(user.admin?).to be(false)
+      role = Role.create(name: "registered_user")
+      registered_user = User.create(name: "RU", email: "email")
+      registered_user.roles = [role]
+      expect(registered_user.platform_admin?).to be(false)
     end
   end
 

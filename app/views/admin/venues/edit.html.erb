@@ -1,0 +1,19 @@
+<h5>Edit <%= @venue.name %></h5>
+<%= form_for([:admin, @venue]) do |f| %>
+  <div class="input-field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="input-field">
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  <div class="input-field">
+
+  </div>
+  <div class="center">
+    <%= f.submit "Edit", class: "waves-effect waves-light btn" %>
+  </div>
+<% end %>

@@ -1,0 +1,22 @@
+<%= form_for(@ticket) do |f| %>
+  <div class="input-field">
+    <%= f.label :seat_location %>
+    <%= f.text_field :seat_location %>
+  </div>
+  <div class="input-field">
+     <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a category" }, class: "browser-default" %>
+  </div>
+  <div class="input-field">
+     <%= f.collection_select :event_id, Event.all, :id, :title, { prompt: "Choose an event" }, class: "browser-default" %>
+  </div>
+  <div class="input-field">
+    <%= f.label :price %>
+    <%= f.text_field :price %>
+  </div>
+  <div class="input-field">
+
+  </div>
+  <div class="center">
+    <%= f.submit "Create Ticket", class: "waves-effect waves-light btn" %>
+  </div>
+<% end %>
