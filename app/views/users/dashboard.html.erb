@@ -1,42 +1,101 @@
-<h1>Dashboard</h1>
-
-<%= link_to my_tickets_new_path, class: "waves-effect waves-light btn" do %>
-  Sell A Ticket
-<% end %>
-<%= link_to account_edit_path, class: "waves-effect waves-light btn" do %>
-  Update My Account
-<% end %>
-
-<h4 class="order-for">Your Tickets</h4>
-<div class="col s12 m8 l9">
+<div class="col s12 m8 offset-m2 ">
   <div class="row">
-    <% @user.tickets.each do |ticket| %>
-      <div class="col s12 m6">
-        <div class="card card-<%= ticket.id %> hoverable">
-          <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4"><%= ticket.event_title if ticket.event %></span>
-            <span class="right"><h5>$<%= ticket.price %> <%= ticket.seat_location %></h5></span>
-          </div>
-          <div class="card-action center-align">
-            <!-- <% if ticket.active? %>
-              <%= link_to my_tickets_edit_path(id: ticket.id), class: "waves-effect waves-light btn" do %>
-                Edit
-              <% end %>
+    <h4>Admin Dashboard</h4>
+    <%= link_to "Tickets", admin_tickets_path, class: "waves-effect waves-light btn"%>
+    <%= link_to "Orders", admin_orders_path, class: "waves-effect waves-light btn"%>
+  </div>
+  <div class="row">
+    <table class= "bordered highlight">
+      <thead>
+        <th data-field="new"></th>
+        <th data-field="venue_name">Venue Name</th>
+        <th data-field="venue_address">Venue Address</th>
+        <th data-field="venue_admin">Venue Admin</th>
+        <th data-field="venue_admin">Venue Status</th>
+        <th data-field="alerts">Alerts</th>
+        <th data-field="available_actions">Available Actions</th>
+      </thead>
+
+      <tbody>
+        <% @venues.each do |venue| %>
+        <tr>
+          <td>
+            <% if venue.pending? %>
+              <p id="pending-new">NEW</p>
+            <% end %>
+          </td>
+          <td><%= venue.name %></td>
+          <td><%= venue.address %></td>
+          <td><%= venue.first_admin %></td>
+          <td><%= venue.status %></td>
+          <td>
+            <% if venue.alerts? %>
+             <%= link_to "!", alerts_path, class: "btn-floating btn-small waves-effect waves-light red" %>
+            <% end %>
+          </td>
+          <td>
+            <% if venue.active? %>
+             <%= button_to "de-activate venue", admin_venue_deactivate_path(venue.id), class: "#{venue.name}-de-activate waves-effect waves-light red lighten-1 btn" %>
             <% else %>
-                <a class="btn disabled">Item Retired</a>
-            <% end %> -->
-          </div>
-          <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4"><%= ticket.event.title if ticket.event %><i class="material-icons right">close</i></span>
-            <p><%= ticket.event.performing if ticket.event %></p>
-          </div>
-        </div>
-      </div>
-    <% end %>
+             <%= button_to "activate venue", admin_venue_activate_path(venue.id), class: "#{venue.name}-activate waves-effect waves-light btn" %>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
 
-
+<div class="col s12 m8 offset-m2 ">
+  <div class="row">
+    <h4>Dashboard</h4>
+    <%= link_to my_tickets_new_path, class: "waves-effect waves-light btn" do %>
+    Sell A Ticket
+    <% end %>
+    <%= link_to account_edit_path, class: "waves-effect waves-light btn" do %>
+    Update My Account
+    <% end %>
+  </div>
+  <% unless @tickets.nil? %>
+    <h4 class="order-for">Your Tickets</h4>
+    <div class="row">
+      <table class= "bordered highlight">
+        <thead>
+          <!-- <th data-field="alert"></th> -->
+          <th data-field="title">Event Title</th>
+          <th data-field="price">Ticket Price</th>
+          <th data-field="seat_location">Seat Location</th>
+          <th data-field="performing">Performing</th>
+          <!-- <th data-field="tags">Tags</th> -->
+          <th data-field="available_actions">Available Actions</th>
+        </thead>
+        <tbody>
+          <% @tickets.each do |ticket| %>
+          <tr>
+            <td>
+              <!-- <#% if ticket.expired? %> -->
+                <!-- <p id="expired-tcket">EXPIRED</p> -->
+              <!-- <#% end %> -->
+            </td>
+            <td><%= ticket.event_title %></td>
+            <td><%= ticket.price %></td>
+            <td><%= ticket.seat_location %></td>
+            <td><%= ticket.performing %></td>
+            <td>
+              <% if ticket.for_sale? %>
+               <%= button_to "de-activate ticket", ticket_deactivate_path(ticket.id), class: "waves-effect waves-light red lighten-1 btn" %>
+              <% else %>
+               <%= button_to "activate ticket", ticket_activate_path(ticket.id), class: "waves-effect waves-light btn" %>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<% end %>
 
 <h4 class="order-for">Your Orders</h4>
 
