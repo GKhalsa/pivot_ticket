@@ -7,8 +7,8 @@ RSpec.feature "User sees events by venue" do
       event_1, event_2 = create_list(:event, 2, venue_id: venue_1.id)
       event_3 = create(:event, venue_id: venue_2.id)
 
+      venue_1.update(status: 1)
       visit root_path
-
       click_on venue_1.name
 
       correct_path = "/#{venue_1.name.parameterize}/events"

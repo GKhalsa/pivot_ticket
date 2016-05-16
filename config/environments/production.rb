@@ -84,6 +84,7 @@ Rails.application.configure do
     :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
   }
 }
+
 config.action_mailer.delivery_method = :smtp
 # SMTP settings for gmail
 config.action_mailer.smtp_settings = {
