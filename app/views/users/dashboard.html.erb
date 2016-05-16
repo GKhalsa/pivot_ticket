@@ -28,10 +28,10 @@
                 <i class="material-icons">assignment_late</i>
               <% end %>
             </td>
-            <td><%= ticket.event.title %></td>
+            <td><%= ticket.event.title if ticket.event %></td>
             <td><%= ticket.price %></td>
             <td><%= ticket.seat_location %></td>
-            <td><%= ticket.event_performing %></td>
+            <td><%= ticket.event_performing if ticket.event %></td>
             <td>
               <% if ticket.active? %>
                <%= button_to "de-activate ticket", ticket_deactivate_path(ticket.id), class: "waves-effect waves-light red lighten-1 btn" %>

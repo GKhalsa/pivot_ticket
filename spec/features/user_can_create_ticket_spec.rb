@@ -12,7 +12,7 @@ RSpec.feature "User can visit ticket creation page" do
     fill_in "Seat location", with: "Test Seat"
     fill_in "Price", with: "201"
     click_button "Create Ticket"
-    
+
     expect(page).to have_content("Test Seat")
     expect(page).to have_content("201.0")
     expect(page).to have_button("de-activate ticket")
