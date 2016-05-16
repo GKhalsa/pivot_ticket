@@ -42,8 +42,8 @@ class UsersController < ApplicationController
     params.require(:user).permit(
       :email,
       :password,
-      :name
-    )
+      :name,
+      :venue_id)
   end
 
   def require_login

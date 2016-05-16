@@ -29,6 +29,11 @@ class User < ActiveRecord::Base
     )
   end
 
+
+  def business_admin?
+    roles.exists?(name: "business_admin")
+  end
+
   def tickets
     Ticket.where(user_id: self.id)
   end
@@ -38,10 +43,10 @@ class User < ActiveRecord::Base
     roles.include?(Role.find_by(name: "platform_admin"))
   end
 
-  def venue_admin?
-    # roles.exists?(name: "venue_admin")
-    roles.include?(Role.find_by(name: "venue_admin"))
-  end
+  # def venue_admin?
+  #   # roles.exists?(name: "venue_admin")
+  #   roles.include?(Role.find_by(name: "venue_admin"))
+  # end
 
   def registered_user?
     # roles.exists?(name: "registered_user")

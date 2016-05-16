@@ -6,7 +6,7 @@ class Admin::CategoriesController < Admin::BaseController
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to new_admin_ticket_path
+      redirect_to new_admin_event_path(current_user.venue.slug)
     else
       flash[:notice] = @category.errors.full_messages.join(", ")
       redirect_to new_admin_category_path
