@@ -13,26 +13,25 @@
     <div class="row">
       <table class= "bordered highlight">
         <thead>
-          <!-- <th data-field="alert"></th> -->
+          <th data-field="alert"></th>
           <th data-field="title">Event Title</th>
           <th data-field="price">Ticket Price</th>
           <th data-field="seat_location">Seat Location</th>
           <th data-field="performing">Performing</th>
-          <!-- <th data-field="tags">Tags</th> -->
           <th data-field="available_actions">Available Actions</th>
         </thead>
         <tbody>
           <% @user.tickets.each do |ticket| %>
           <tr>
             <td>
-              <!-- <#% if ticket.expired? %> -->
-                <!-- <p id="expired-tcket">EXPIRED</p> -->
-              <!-- <#% end %> -->
+              <% if ticket.not_valid? %>
+                <i class="material-icons">assignment_late</i>
+              <% end %>
             </td>
-            <!-- <td><%#= ticket.event.title %></td> -->
+            <td><%= ticket.event.title %></td>
             <td><%= ticket.price %></td>
             <td><%= ticket.seat_location %></td>
-            <!-- <td><%#= ticket.event_performing %></td> -->
+            <td><%= ticket.event_performing %></td>
             <td>
               <% if ticket.active? %>
                <%= button_to "de-activate ticket", ticket_deactivate_path(ticket.id), class: "waves-effect waves-light red lighten-1 btn" %>
