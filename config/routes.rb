@@ -21,14 +21,15 @@ Rails.application.routes.draw do
     get "/dashboard", to: "dashboard#show"
     post '/venues/:id/de_activate', to: "venues#de_activate", as: "venue_deactivate"
     post '/venues/:id/activate', to: "venues#activate", as: "venue_activate"
-    patch "/tickets/:id/retire", to: "tickets#retire", as: :retire
-    patch "/tickets/:id/activate", to: "tickets#activate", as: :activate
     patch "/orders/:id/cancel", to: "orders#cancel", as: :cancel
     resources :tickets, only: [:index, :new, :create, :edit, :update]
     resources :orders, only: [:index, :update]
     resources :categories, only: [:new, :create]
     resources :events, only: [:new, :create]
   end
+
+  post "/tickets/:id/de_activate", to: "tickets#de_activate", as: :ticket_deactivate
+  post "/tickets/:id/activate", to: "tickets#activate", as: :ticket_activate
 
   get "/:name", to: "categories#show", as: :category
   get "/:venue/events", to: "venues#show", as: :venue

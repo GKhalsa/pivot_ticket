@@ -93,7 +93,7 @@ RSpec.feature "User can change the status of a ticket" do
 
       visit dashboard_path(user.id)
 
-      expect(page).to have_button("expired")
+      expect(page).to have_button("ticket is expired")
       expect(page).to_not have_button("activate ticket")
       expect(page).to_not have_button("de-activate ticket")
     end

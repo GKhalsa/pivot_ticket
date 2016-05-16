@@ -8,7 +8,7 @@
     Update My Account
     <% end %>
   </div>
-  <% unless @tickets.nil? %>
+  <% unless @user.tickets.nil? %>
     <h4 class="order-for">Your Tickets</h4>
     <div class="row">
       <table class= "bordered highlight">
@@ -22,22 +22,24 @@
           <th data-field="available_actions">Available Actions</th>
         </thead>
         <tbody>
-          <% @tickets.each do |ticket| %>
+          <% @user.tickets.each do |ticket| %>
           <tr>
             <td>
               <!-- <#% if ticket.expired? %> -->
                 <!-- <p id="expired-tcket">EXPIRED</p> -->
               <!-- <#% end %> -->
             </td>
-            <td><%= ticket.event_title %></td>
+            <!-- <td><%#= ticket.event.title %></td> -->
             <td><%= ticket.price %></td>
             <td><%= ticket.seat_location %></td>
-            <td><%= ticket.performing %></td>
+            <!-- <td><%#= ticket.event_performing %></td> -->
             <td>
-              <% if ticket.for_sale? %>
+              <% if ticket.active? %>
                <%= button_to "de-activate ticket", ticket_deactivate_path(ticket.id), class: "waves-effect waves-light red lighten-1 btn" %>
-              <% else %>
+              <% elsif ticket.inactive? %>
                <%= button_to "activate ticket", ticket_activate_path(ticket.id), class: "waves-effect waves-light btn" %>
+              <% else %>
+               <%= button_to "ticket is expired", "#", class: "btn disabled" %>
               <% end %>
             </td>
           </tr>

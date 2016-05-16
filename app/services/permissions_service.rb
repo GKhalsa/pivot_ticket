@@ -14,9 +14,9 @@ class PermissionsService
 
   def allow?
     case
-    when platform_admin? then platform_admin_permissions
-    when venue_admin? then venue_admin_permissions
-    when registered_user? then registered_user_permissions
+    when platform_admin? && platform_admin_permissions then true
+    when venue_admin? && venue_admin_permissions then true
+    when registered_user? && registered_user_permissions then true
     else
       guest_user_permissions
     end
