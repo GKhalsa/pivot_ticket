@@ -2,13 +2,11 @@ class Admin::VenueModeratorsController < Admin::BaseController
 
   def index
     @venue = Venue.find(params[:venue_id])
+
     @moderators = @venue.users
   end
 
   def show
-    @moderator = User.find(params[:id])
-    @moderator.update(venue_id: nil)
-    redirect_to request.referrer
   end
 
   def new
@@ -25,6 +23,12 @@ class Admin::VenueModeratorsController < Admin::BaseController
       flash[:error] = "This email could not be found"
       redirect_to new_admin_venue_moderator_path
     end
+  end
+
+  def destroy
+    @moderator = User.find(params[:id])
+    @moderator.update(venue_id: nil)
+    redirect_to request.referrer
   end
 
 end

@@ -28,8 +28,10 @@ class Admin::EventsController < Admin::BaseController
   end
 
   def update
+
     @event = Event.find(params[:venue])
     if @event.update(event_params)
+      flash[:success] = "#{@event.title} has been updated"
       redirect_to admin_venue_path(current_user.venue.slug)
     else
       flash.now[:errors] = @event.errors.full_messages

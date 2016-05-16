@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     resources :categories, only: [:new, :create]
     # resources :events, only: [:new, :create]
     resources :venues, only: [:new, :create, :index, :edit]
-    resources :venue_moderators, only: [:index, :show, :new, :create]
+    resources :venue_moderators, only: [:index, :show, :new, :create, :destroy]
   end
 
   get "/:name", to: "categories#show", as: :category

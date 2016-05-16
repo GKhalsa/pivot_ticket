@@ -41,7 +41,7 @@ RSpec.describe "Business Admin can see venue button" do
 
     expect(page).to have_content("Add Event")
     expect(page).to have_content("Edit Venue")
-    expect(page).to have_content("Venue Moderators Dashboard")
+    expect(page).to have_content("Venue Admin Dashboard")
   end
 
   context "Business Admin can add an event" do
@@ -92,10 +92,9 @@ RSpec.describe "Business Admin can see venue button" do
       click_on("Edit")
     end
 
-    fill_in :Title, with: "helppp" 
+    fill_in :Title, with: "what"
     click_on "Edit Event"
-    expect(page).to have_content("what")
-    expect(page).not_to have_content("hello")
+    expect(page).to have_content("what has been updated")
   end
 
   scenario "Business Admin can delete events" do
@@ -115,15 +114,14 @@ RSpec.describe "Business Admin can see venue button" do
     ApplicationController.any_instance.stubs(:current_user).returns(business_admin)
 
     visit admin_venue_path(venue: venue.slug)
-
     expect(page).to have_content("hello")
+    expect(Event.count).to eq(1)
 
-    save_and_open_page
     within("#event-#{event.id}") do
       click_on("Delete")
     end
-
-    expect(page).not_to have_content("hello")
+    expect(page).to have_content("hello has been deleted")
+    expect(Event.count).to eq(0)
   end
 
 
@@ -167,13 +165,13 @@ RSpec.describe "Business Admin can see venue button" do
       ApplicationController.any_instance.stubs(:current_user).returns(business_admin)
 
       visit admin_venue_path(venue: venue.slug)
-      click_on("Venue Moderators Dashboard")
+      click_on("Venue Admin Dashboard")
 
-      click_on("Create a New Moderator")
+      click_on("Create a New Admin")
 
       fill_in :email, with: "email@email.com"
       click_on("Search")
-      click_on("Venue Moderators Dashboard")
+      click_on("Venue Admin Dashboard")
       expect(page).to have_content("kaiser soze")
 
       within("#mod-id-#{user.id}") do

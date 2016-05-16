@@ -4,7 +4,7 @@ module NavHelper
   end
 
   def link_to_dashboard
-    if current_user && current_user.admin?
+    if current_user && current_user.platform_admin?
       link_to "Dashboard", admin_dashboard_path
     elsif current_user
       link_to "Dashboard", dashboard_path

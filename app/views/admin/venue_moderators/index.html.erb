@@ -1,6 +1,6 @@
-<h3><%= @venue.name %>'s moderators</h3>
+<h3><%= @venue.name %>'s admin</h3>
 <div class="center">
-  <%= link_to "Create a New Moderator",
+  <%= link_to "Create a New Admin",
               new_admin_venue_moderator_path(id: @venue.id),
               class: "waves-effect waves-light btn" %>
 </div>
@@ -11,10 +11,14 @@
     </tr>
     <% @moderators.each do |moderator|%>
     <tr>
-      <td><%= moderator.name %></td>
-      <td><%= moderator.email %></td>
-      <td id="mod-id-<%=moderator.id%>"><%= link_to "Remove", admin_venue_moderator_path(moderator), class: "waves-effect waves-light btn" %></td>
-      <!-- <td><%#= button_to_change_ticket_state(ticket) %></td> -->
+      <% if moderator.name == current_user.name %>
+        <td><%= moderator.name %></td>
+        <td><%= moderator.email %></td>
+      <% else %>
+        <td><%= moderator.name %></td>
+        <td><%= moderator.email %></td>
+        <td id="mod-id-<%=moderator.id%>"><%= link_to "Remove", admin_venue_moderator_path(moderator), method: :delete, class: "waves-effect waves-light btn" %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>
