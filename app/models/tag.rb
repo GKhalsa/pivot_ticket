@@ -3,6 +3,9 @@ class Tag < ActiveRecord::Base
   has_many :tickets, through: :ticket_tags
 
   def self.search(search)
-    self.find_by(word: search).tickets
+    tag = self.find_by(word: search)
+    if tag
+      tag.tickets
+    end
   end
 end
