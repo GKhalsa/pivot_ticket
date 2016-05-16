@@ -7,13 +7,6 @@ class Ticket < ActiveRecord::Base
 
   enum status: %w(active retired)
 
-  def self.search(search)
-    where("ticket_tags.word IN ?", "%#{search}%")
-    self.find_each do |ticket|
-      tags.include?(search)
-    end
-  end
-
   def self.all_by_state
     all.order(:status)
   end

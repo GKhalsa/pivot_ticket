@@ -1,9 +1,8 @@
 class TicketsController < ApplicationController
   def index
     @categories = Category.all
-    @tickets = Ticket.search(params[:search]).order("created_at DESC")
+    @tickets = Tag.search(params[:search])
     @venues = Venue.all
-    binding.pry
   end
 
   def show
