@@ -1,13 +1,24 @@
 class Seed
 
   def initialize
+    create_roles
     create_known_users
+    assign_roles
     create_sports_venue_event_tickets
     create_music_venue_event_tickets
   end
 
+  def create_roles
+    puts "Creating Roles"
+    roles = ["registered_user", "venue_admin", "platform_admin"]
+    roles.each do |role|
+      Role.create(name: role)
+      puts role
+    end
+  end
+
   def create_known_users
-    users = ["Admin", "Josh", "Andrew", "Jorge", "Jeneve", "Drew", "Sunny"]
+    users = ["platform_admin", "venue_admin", "user", "Josh", "Andrew", "Jorge", "Jeneve", "Drew", "Sunny"]
     users.each do |user|
       user = User.create(
       email: "#{user.downcase}@turing.io",
@@ -15,6 +26,39 @@ class Seed
       name: user)
       puts "Created #{user.name}, with email: #{user.email}"
     end
+  end
+
+  def assign_roles
+    p_a = Role.find_by(name: "platform_admin")
+    v_a = Role.find_by(name: "venue_admin")
+    r_u = Role.find_by(name: "registered_user")
+    user = User.find_by(name: "platform_admin")
+    user.roles = [p_a]
+    puts "#{user.name} has #{user.roles.count} roles"
+    user = User.find_by(name: "venue_admin")
+    user.roles = [v_a]
+    puts "#{user.name} has #{user.roles.count} roles"
+    user = User.find_by(name: "user")
+    user.roles = [r_u]
+    puts "#{user.name} has #{user.roles.count} roles"
+    user = User.find_by(name: "Josh")
+    user.roles = [p_a, v_a, r_u]
+    puts "#{user.name} has all #{user.roles.count} roles"
+    user = User.find_by(name: "Andrew")
+    user.roles = [p_a, v_a, r_u]
+    puts "#{user.name} has all #{user.roles.count} roles"
+    user = User.find_by(name: "Jorge")
+    user.roles = [p_a, v_a, r_u]
+    puts "#{user.name} has all #{user.roles.count} roles"
+    user = User.find_by(name: "Drew")
+    user.roles = [p_a, v_a, r_u]
+    puts "#{user.name} has all #{user.roles.count} roles"
+    user = User.find_by(name: "Sunny")
+    user.roles = [p_a, v_a, r_u]
+    puts "#{user.name} has all #{user.roles.count} roles"
+    user = User.find_by(name: "Jeneve")
+    user.roles = [p_a, v_a, r_u]
+    puts "#{user.name} has all #{user.roles.count} roles"
   end
 
   def create_sports_venue_event_tickets
@@ -30,7 +74,7 @@ class Seed
         game = Event.create(title: "#{team1} vs. #{team2} at #{sport_venue.name}",
                        performing: "#{team1}, #{team2}",
                              date: Faker::Date.forward(23),
-                    # event_image: Faker::Avatar.image,
+                    event_image: Faker::Avatar.image,
                       category_id: sports.id,
                          venue_id: sport_venue.id)
         puts "#{game.title} is happening on #{game.date}, at #{game.venue.name}!"
@@ -59,7 +103,7 @@ class Seed
         concert = Event.create(title: "#{artist} with #{group} at #{music_venue.name}",
                        performing: "#{group}, #{artist}",
                              date: Faker::Date.forward(23),
-                      # event_image: Faker::Avatar.image,
+                      event_image: Faker::Avatar.image,
                       category_id: music.id,
                          venue_id: music_venue.id)
         puts "#{concert.title} is happening on #{concert.date}, at #{concert.venue.name}!"
