@@ -10,17 +10,10 @@ module TicketsHelper
     end
   end
 
-  def button_to_change_ticket_state(ticket)
-    if ticket.active?
-      link_to "Retire",
-              admin_retire_path(ticket),
-              method: :patch,
-              class: "waves-effect waves-light btn"
-    else
-      link_to "Activate",
-              admin_activate_path(ticket),
-              method: :patch,
-              class: "waves-effect waves-light btn"
-    end
+  def change_status(ticket, status, message)
+    ticket.status = status
+    ticket.save
+    flash[:notice] = "Your ticket to #{ticket.event.title} was successfully #{message}"
   end
+
 end
