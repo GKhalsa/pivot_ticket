@@ -1,3 +1,4 @@
+<h3><div> <%= @venue.name %> </div></h3>
 <div id="venue-image"><%= image_tag @venue.image %></div>
 
 <div class="row">
@@ -13,8 +14,8 @@
 <ul class="collapsible" data-collapsible="accordion">
   <% @events.each do |event| %>
     <li>
-      <div class="collapsible-header"><i class="material-icons"></i><%= event.title %></div>
-      <div class="collapsible-body">  <%= link_to delete_admin_event_path(@venue.slug, event), method: :delete, class: "waves-effect waves-light btn" do %>
+      <div  class="collapsible-header"><i class="material-icons"></i><%= event.title %></div>
+      <div id="event-<%=event.id%>" class="collapsible-body">  <%= link_to delete_admin_event_path(@venue.slug, event), method: :delete, class: "waves-effect waves-light btn" do %>
                                       <i class="material-icons left">delete</i>Delete
                                       <% end %>
 

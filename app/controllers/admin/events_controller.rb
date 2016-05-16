@@ -29,8 +29,12 @@ class Admin::EventsController < Admin::BaseController
 
   def update
     @event = Event.find(params[:venue])
-    @event.update(event_params)
-    redirect_to admin_venue_path(current_user.venue.slug)
+    if @event.update(event_params)
+      redirect_to admin_venue_path(current_user.venue.slug)
+    else
+      flash.now[:errors] = @event.errors.full_messages
+      render :edit
+    end
   end
 
   def destroy

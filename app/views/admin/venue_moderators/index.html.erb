@@ -13,7 +13,7 @@
     <tr>
       <td><%= moderator.name %></td>
       <td><%= moderator.email %></td>
-      <td><%= link_to "Remove", admin_venue_moderator_path(moderator), class: "waves-effect waves-light btn" %></td>
+      <td id="mod-id-<%=moderator.id%>"><%= link_to "Remove", admin_venue_moderator_path(moderator), class: "waves-effect waves-light btn" %></td>
       <!-- <td><%#= button_to_change_ticket_state(ticket) %></td> -->
     </tr>
   <% end %>
