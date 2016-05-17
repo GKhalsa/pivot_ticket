@@ -16,10 +16,16 @@ class Admin::VenuesController < Admin::BaseController
   end
 
   def show
-    if pending_venue?
+    if current_user.venue && current_user.venue.pending?
       render :pending
-    else
+    elsif current_user.platform_admin?
+      @venue = Venue.find_by(slug: params[:venue]) || Venue.find(params[:venue])
       @events = @venue.events
+    elsif current_user.business_admin?
+      @venue = current_user.venue
+      @events = @venue.events
+    else
+      render file: 'public/404'
     end
   end
 

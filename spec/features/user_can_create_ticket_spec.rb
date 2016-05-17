@@ -1,7 +1,7 @@
 require "rails_helper"
 
-RSpec.feature "User can visit item creation page" do
-  scenario "User can create an item" do
+RSpec.feature "User can visit ticket creation page" do
+  scenario "User can create an ticket" do
     user = create(:user)
     role = Role.create(name: "registered_user")
     user.roles = [role]
@@ -15,5 +15,6 @@ RSpec.feature "User can visit item creation page" do
 
     expect(page).to have_content("Test Seat")
     expect(page).to have_content("201.0")
+    expect(page).to have_button("de-activate ticket")
   end
 end

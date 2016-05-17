@@ -1,5 +1,6 @@
 class TicketsController < ApplicationController
-  before_action :set_ticket, only: [:retire, :activate, :edit, :update]
+  include TicketsHelper
+  before_action :set_ticket, only: [:edit, :update, :activate, :de_activate]
   before_action :require_login, only: [:new, :create, :edit, :update]
 
   def index
@@ -12,21 +13,22 @@ class TicketsController < ApplicationController
 
   end
 
+  def de_activate
+    change_status(@ticket, 1, "de-activated")
+    redirect_to dashboard_path
+  end
+
+  def activate
+    change_status(@ticket, 0, "posted for sale")
+    redirect_to dashboard_path
+  end
+
   def my_tickets
     @categories = Category.all
     @tickets = Ticket.where(user_id: current_user.id)
     render :my_tickets_index
   end
 
-  def retire
-    @ticket.retired!
-    redirect_to tickets_path
-  end
-
-  def activate
-    @ticket.active!
-    redirect_to tickets_path
-  end
 
   def new
     @categories = Category.all

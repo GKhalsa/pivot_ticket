@@ -9,7 +9,7 @@ class Ticket < ActiveRecord::Base
   validates :seat_location,         uniqueness: { scope: :event_id,
    message: "that ticket has already been posted for sale" }
 
-  enum status: %w(active retired)
+  enum status: %w(active inactive not_valid)
 
   def self.all_by_state
     all.order(:status)

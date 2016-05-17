@@ -15,9 +15,9 @@ class PermissionsService
 
   def allow?
     case
-    when business_admin? then business_admin_permissions
-    when platform_admin? then platform_admin_permissions
-    when registered_user? then registered_user_permissions
+    when platform_admin? && platform_admin_permissions then true
+    when business_admin? && business_admin_permissions then true
+    when registered_user? && registered_user_permissions then true
     else
       guest_user_permissions
     end
@@ -43,7 +43,8 @@ class PermissionsService
       return true if controller == "events"
       return true if controller == "admin/orders"
       return true if controller == "admin/dashboard" && action.in?(%w(show))
-      return true if controller == "admin/venues" && action.in?(%w(de_activate activate))
+      return true if controller == "admin/venues" && action.in?(%w(de_activate activate show index edit update))
+      return true if controller == "admin/venue_moderators" && action.in?(%w(index destroy new create))
       return true if controller == "admin/categories" && action.in?(%w(new create))
       return true if controller == "admin/tickets"
       return true if controller == "sessions"
@@ -61,6 +62,8 @@ class PermissionsService
       return true if controller == "orders" && action.in?(%w(index create show))
       return true if controller == "venues" && action.in?(%w(show))
       return true if controller == "sessions"
+      return true if controller == "tickets" && action.in?(%w(activate de_activate index new create edit update destroy))
+      return true if controller == "users" && action.in?(%w(new create dashboard))
       return true if controller == "tickets" && action.in?(%w(index new create edit update destroy))
       return true if controller == "users" && action.in?(%w(new create dashboard edit update))
     end
