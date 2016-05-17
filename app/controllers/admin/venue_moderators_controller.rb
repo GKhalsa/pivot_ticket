@@ -1,6 +1,6 @@
 class Admin::VenueModeratorsController < Admin::BaseController
 
-  before_action :user_venue, only: [:new, :create]
+  before_action :user_venue, only: [:new]
 
   def index
     @venue = Venue.find(params[:venue_id])
@@ -20,13 +20,15 @@ class Admin::VenueModeratorsController < Admin::BaseController
 
 
   def create
+    @venue = Venue.find(params[:venue])
     if @user = User.find_by(email: params[:email])
+      @user.update(venue_id: @venue.id)
       @venue.users << @user
       flash[:notice] = "#{@user.name} has been added as an admin"
       redirect_to admin_venue_path(@venue.slug)
     else
       flash[:notice] = "This email could not be found"
-      redirect_to new_admin_venue_moderator_path
+      redirect_to new_admin_venue_moderator_path(id: @venue.id)
     end
   end
 
