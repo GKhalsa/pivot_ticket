@@ -24,6 +24,10 @@ class Admin::VenuesController < Admin::BaseController
     elsif current_user.business_admin?
       @venue = current_user.venue
       @events = @venue.events
+    elsif current_user.registered_user?
+      current_user.roles << Role.all[1]
+      @venue = current_user.venue
+      @events = @venue.events
     else
       render file: 'public/404'
     end

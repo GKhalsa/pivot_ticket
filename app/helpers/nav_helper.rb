@@ -12,10 +12,13 @@ module NavHelper
   end
 
   def link_to_venue_dashboard
-    if current_user && current_user.business_admin? && current_user.venue
+    if current_user.nil?
+      return
+    end
+    if current_user && (current_user.business_admin? || current_user.registered_user?) && current_user.venue
       venue = current_user.venue
       link_to "Venue", admin_venue_path(venue: venue.slug)
-    elsif current_user && current_user.business_admin? && current_user.venue.nil?
+    elsif current_user.registered_user? || current_user.business_admin? && current_user.venue.nil?
       link_to "Venue", admin_venues_path
     end
   end

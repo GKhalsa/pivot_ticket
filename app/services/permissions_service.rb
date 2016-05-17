@@ -66,6 +66,7 @@ class PermissionsService
       return true if controller == "users" && action.in?(%w(new create dashboard))
       return true if controller == "tickets" && action.in?(%w(index new create edit update destroy))
       return true if controller == "users" && action.in?(%w(new create dashboard edit update))
+      return true if controller == "admin/venues" 
     end
 
     def guest_user_permissions
