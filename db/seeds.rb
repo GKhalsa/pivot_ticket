@@ -11,7 +11,7 @@ class Seed
 
   def create_roles
     puts "Creating Roles"
-    roles = ["registered_user", "buisness_admin", "platform_admin"]
+    roles = ["registered_user", "business_admin", "platform_admin"]
     roles.each do |role|
       Role.create(name: role)
       puts role
@@ -81,7 +81,7 @@ class Seed
                         email: "#{sport_venue.name}@turing.io",
                      password: "password",
                      venue_id: sport_venue.id)
-      user.roles = [Role.find_by(name: "buisness_admin")]
+      user.roles = [Role.find_by(name: "business_admin")]
       puts "Built #{sport_venue.name} at #{sport_venue.address} admin: #{sport_venue.users.first.name}"
       5.times do
         team1 = Faker::Team.name
@@ -115,7 +115,7 @@ class Seed
                         email: "#{music_venue.name}@turing.io",
                      password: "password",
                      venue_id: music_venue.id)
-      user.roles = [Role.find_by(name: "buisness_admin")]
+      user.roles = [Role.find_by(name: "business_admin")]
       puts "Built #{music_venue.name} at #{music_venue.address} admin: #{music_venue.users.first.name}"
       5.times do
         group = Faker::Superhero.name
