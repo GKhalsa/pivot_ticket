@@ -64,6 +64,22 @@ ActiveRecord::Schema.define(version: 20160515162737) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.text     "word"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ticket_tags", force: :cascade do |t|
+    t.integer  "ticket_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "ticket_tags", ["tag_id"], name: "index_ticket_tags_on_tag_id", using: :btree
+  add_index "ticket_tags", ["ticket_id"], name: "index_ticket_tags_on_ticket_id", using: :btree
+
   create_table "tickets", force: :cascade do |t|
     t.float    "price"
     t.datetime "created_at",                null: false
@@ -116,6 +132,8 @@ ActiveRecord::Schema.define(version: 20160515162737) do
   add_foreign_key "events", "venues"
   add_foreign_key "order_tickets", "orders"
   add_foreign_key "orders", "users"
+  add_foreign_key "ticket_tags", "tags"
+  add_foreign_key "ticket_tags", "tickets"
   add_foreign_key "tickets", "categories"
   add_foreign_key "tickets", "events"
   add_foreign_key "tickets", "users"

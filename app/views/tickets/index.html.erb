@@ -1,3 +1,29 @@
-<%= render partial: "partials/events_sidebar", locals: { active_category: "all", venues: @venues } %>
+<%= render partial: "partials/events_sidebar", locals: { active_category: "all", venues: @venues} %>
 
-<%= render partial: "partials/item_grid" %>
+
+<div class="col s12 m8 l9">
+  <div class="row">
+    <% if @tickets %>
+      <% @tickets.each do |ticket| %>
+        <div class="col s12 m6">
+          <div class="card card-<%= ticket.id %> hoverable">
+            <div class="card-image waves-effect waves-block waves-light">
+              <%= image_tag(ticket.event.event_image.url, class: "activator card-img")%>
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4"><%= link_to ticket.event.title, event_path(ticket.event) %></span>
+            </div>
+            <div class="card-action center-align">
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4"><%= ticket.event.title %><i class="material-icons right">close</i></span>
+              <p><%= ticket.event.performing %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <%= "No tickets match your query." %>
+    <% end %>
+  </div>
+</div>
