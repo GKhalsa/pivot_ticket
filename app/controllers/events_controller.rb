@@ -16,7 +16,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @tickets = @event.tickets
+    @tickets = @event.tickets.where(status: 0)
   end
 
   def index
