@@ -5,7 +5,7 @@
   <input type="text" name="email"><br>
   <input type="submit" value="Submit">
 </form> -->
-<%= form_tag("/admin/venue_moderators", method: "post") do %>
+<%= form_tag(admin_venue_moderators_path(venue: @venue.id), method: "post") do %>
   <%= label_tag(:email, "Search email:") %>
   <%= text_field_tag(:email) %>
   <%= submit_tag("Search") %>
