@@ -1,5 +1,4 @@
 class Admin::EventsController < Admin::BaseController
-  # before_action :set_event, only: [:edit, :update]
 
   def index
     @events = Event.all_by_id
@@ -14,7 +13,7 @@ class Admin::EventsController < Admin::BaseController
   def create
     @event = Event.new(event_params)
     if @event.save
-      current_user.venue.events << @event
+      current_user_events << @event
       redirect_to admin_venue_path(current_user.venue.slug)
     else
       flash[:notice] = @event.errors.full_messages.join(", ")
@@ -49,11 +48,14 @@ class Admin::EventsController < Admin::BaseController
   private
 
   def event_params
-    params.require(:event).permit(:title, :performing, :date, :category_id, :venue_id, :event_image, :id)
+    params.require(:event).permit(:title,
+                                  :performing,
+                                  :date,
+                                  :category_id,
+                                  :venue_id,
+                                  :event_image,
+                                  :id
+                                  )
   end
 
-  # def set_event
-  #   binding.pry
-  #   @event = Event.find(params[:id])
-  # end
 end

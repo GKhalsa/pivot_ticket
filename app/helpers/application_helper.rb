@@ -10,4 +10,22 @@ module ApplicationHelper
       link_to "Login", login_path
     end
   end
+
+  def venue_active?(venue)
+    if venue.active?
+      button_to "de-activate venue",
+      admin_venue_deactivate_path(venue.id),
+      class: "#{venue.name}-de-activate waves-effect waves-light red lighten-1 btn"
+    else
+      button_to "activate venue",
+      admin_venue_activate_path(venue.id),
+      class: "#{venue.name}-activate waves-effect waves-light btn"
+    end
+  end
+
+  def venue_alerts?(venue)
+    if venue.alerts?
+     link_to "!", alerts_path, class: "btn-floating btn-small waves-effect waves-light red"
+    end
+  end
 end

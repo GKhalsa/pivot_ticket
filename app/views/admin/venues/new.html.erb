@@ -1,19 +1,2 @@
 <h5>Create a New Venue</h5>
-<%= form_for([:admin, @venue], multipart: true) do |f| %>
-  <div class="input-field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-  <div class="input-field">
-    <%= f.label :address %>
-    <%= f.text_field :address %>
-  </div>
-    <%= f.label :image %>
-    <%= f.file_field :image %>
-  <div class="input-field">
-
-  </div>
-  <div class="center">
-    <%= f.submit "Create Venue", class: "waves-effect waves-light btn" %>
-  </div>
-<% end %>
+<%= render partial: "admin/partials/venue_form" %>

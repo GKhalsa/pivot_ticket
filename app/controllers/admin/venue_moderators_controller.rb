@@ -1,8 +1,9 @@
 class Admin::VenueModeratorsController < Admin::BaseController
 
+  before_action :user_venue, only: [:new, :create]
+
   def index
     @venue = Venue.find(params[:venue_id])
-
     @moderators = @venue.users
   end
 
@@ -10,11 +11,9 @@ class Admin::VenueModeratorsController < Admin::BaseController
   end
 
   def new
-   @venue = current_user.venue
   end
 
   def create
-    @venue = current_user.venue
     if @user = User.find_by(email: params[:email])
       @venue.users << @user
       flash[:success] = "#{@user.name} has been added as an admin"
@@ -30,5 +29,11 @@ class Admin::VenueModeratorsController < Admin::BaseController
     @moderator.update(venue_id: nil)
     redirect_to request.referrer
   end
+
+  private
+
+    def user_venue
+      @venue = current_user.venue
+    end
 
 end
