@@ -16,7 +16,7 @@ class Admin::VenuesController < Admin::BaseController
   end
 
   def show
-    if current_user.venue.pending?
+    if pending_venue?
       render :pending
     else
       @events = @venue.events
