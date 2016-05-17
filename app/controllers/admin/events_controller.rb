@@ -1,5 +1,4 @@
 class Admin::EventsController < Admin::BaseController
-  # before_action :set_event, only: [:edit, :update]
 
   def index
     @events = Event.all_by_id
@@ -52,8 +51,4 @@ class Admin::EventsController < Admin::BaseController
     params.require(:event).permit(:title, :performing, :date, :category_id, :venue_id, :event_image, :id)
   end
 
-  # def set_event
-  #   binding.pry
-  #   @event = Event.find(params[:id])
-  # end
 end

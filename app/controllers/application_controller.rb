@@ -31,7 +31,6 @@ class ApplicationController < ActionController::Base
 
   def authorize!
     unless current_permission.allow?
-      # binding.pry
       render file: 'public/404'
     end
   end

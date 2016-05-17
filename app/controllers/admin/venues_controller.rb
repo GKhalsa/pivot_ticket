@@ -1,7 +1,8 @@
 class Admin::VenuesController < Admin::BaseController
   include VenuesHelper
 
-  before_action :set_venue, only: [:de_activate, :activate]
+  before_action :set_venue, only: [:de_activate, :activate, :edit, :update]
+  before_action :user_venue, only: [:show, :create]
 
 
   def de_activate
@@ -18,7 +19,6 @@ class Admin::VenuesController < Admin::BaseController
     if current_user.venue.pending?
       render :pending
     else
-      @venue = current_user.venue
       @events = @venue.events
     end
   end
@@ -32,23 +32,20 @@ class Admin::VenuesController < Admin::BaseController
   end
 
   def create
-    @user_venue = current_user.venue
-    @user_venue = Venue.new(venue_params)
-    if @user_venue.save
-      current_user.update(venue_id: @user_venue.id)
+    @venue = Venue.new(venue_params)
+    if @venue.save
+      current_user.update(venue_id: @venue.id)
       render :pending
     else
-      flash.now[:error] = @user_venue.errors.full_messages
+      flash.now[:error] = @venue.errors.full_messages
       render :new
     end
   end
 
   def edit
-    @venue = Venue.find(params[:id])
   end
 
   def update
-    @venue = Venue.find(params[:id])
     if @venue.update(venue_params)
       flash[:success] = "#{@venue.name} has been successfully updated"
       redirect_to admin_venue_path(@venue.slug)
@@ -70,5 +67,9 @@ class Admin::VenuesController < Admin::BaseController
 
     def set_venue
       @venue = Venue.find(params[:id])
+    end
+
+    def user_venue
+      @venue = current_user.venue
     end
 end
