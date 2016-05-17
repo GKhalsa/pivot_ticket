@@ -4,7 +4,7 @@
       <a href="/" class="brand-logo">Pivot Tickets</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><%= form_tag(tickets_path, :method => "get", id: "search-form") do %>
-          <%= text_field_tag :search, params[:search], placeholder: "Search Tickets" %>
+          <%= text_field_tag :search, params[:search], placeholder: "Search Tickets", id: "search" %>
         <% end %>
         </li>
         <li><%= link_to_venue_dashboard %></li>
