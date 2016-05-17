@@ -22,4 +22,8 @@ class Venue < ActiveRecord::Base
   def alerts?
     false
   end
+
+  def self.find_by_name(params)
+    find_by(slug: params[:venue])
+  end
 end

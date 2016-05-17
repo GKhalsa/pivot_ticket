@@ -17,7 +17,7 @@ RSpec.describe "Business Admin can see venue button" do
     click_on("Create a New Venue")
     fill_in :Name, with: "staples center"
     fill_in :Address, with: "123 fake st"
-    click_on("Create Venue")
+    click_on("Submit")
 
     expect(page).to have_content("Your Venue is Pending Approval")
   end
@@ -64,7 +64,7 @@ RSpec.describe "Business Admin can see venue button" do
       fill_in :Performing, with: "woogie woogie"
       fill_in :Date, with: "1/2/3"
 
-      click_on "Create Event"
+      click_on "Submit"
       expect(current_path).to eq(admin_venue_path(venue: venue.slug))
       expect(page).to have_content("boogie boogie")
     end
@@ -93,7 +93,7 @@ RSpec.describe "Business Admin can see venue button" do
     end
 
     fill_in :Title, with: "what"
-    click_on "Edit Event"
+    click_on "Submit"
     expect(page).to have_content("what has been updated")
   end
 
@@ -120,6 +120,7 @@ RSpec.describe "Business Admin can see venue button" do
     within("#event-#{event.id}") do
       click_on("Delete")
     end
+
     expect(page).to have_content("hello has been deleted")
     expect(Event.count).to eq(0)
   end
@@ -142,7 +143,7 @@ RSpec.describe "Business Admin can see venue button" do
       click_on("Edit Venue")
       fill_in :Name, with: "hello"
       fill_in :Address, with: "1234 st."
-      click_on("Edit")
+      click_on("Submit")
 
       expect(page).to have_content("hello")
     end

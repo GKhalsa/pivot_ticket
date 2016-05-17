@@ -1,0 +1,26 @@
+<%= form_for([:admin, @event]) do |f| %>
+  <div class="input-field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="input-field">
+     <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a category" }, class: "browser-default" %>
+  </div>
+  <%= link_to "Or create a new one", new_admin_category_path, class: "waves-effect waves-light btn" %>
+  <div class="input-field">
+    <%= f.label :performing %>
+    <%= f.text_field :performing %>
+  </div>
+  <div class="input-field">
+    <%= f.label :date %>
+    <%= f.text_field :date %>
+  </div>
+    <%= f.label :event_image %>
+    <%= f.file_field :event_image %>
+  <div class="input-field">
+
+  </div>
+  <div class="center">
+    <%= f.submit "Submit", class: "waves-effect waves-light btn" %>
+  </div>
+<% end %>

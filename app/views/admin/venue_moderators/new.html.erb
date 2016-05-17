@@ -1,10 +1,6 @@
 <h3>Create admin by email</h3>
 
-<!-- <form method="post">
-  Email:<br>
-  <input type="text" name="email"><br>
-  <input type="submit" value="Submit">
-</form> -->
+
 <%= form_tag(admin_venue_moderators_path(venue: @venue.id), method: "post") do %>
   <%= label_tag(:email, "Search email:") %>
   <%= text_field_tag(:email) %>

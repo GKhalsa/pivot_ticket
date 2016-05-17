@@ -1,19 +1,5 @@
 class Seed
 
-# 20 total businesses
-# 10 categories
-# 50 items per category
-# 100 registered customers, one with the following data:
-# Username: josh@turing.io
-# Password: password
-# 10 orders per registered customer
-# 1 business admins per business
-# Username: andrew@turing.io
-# Password: password
-# 1 platform administrators
-# Username: jorge@turing.io
-# Password: password
-
   def initialize
     create_roles
     create_known_users
@@ -32,8 +18,17 @@ class Seed
     end
   end
 
+  def create_roles
+    puts "Creating Roles"
+    roles = ["registered_user", "business_admin", "platform_admin"]
+    roles.each do |role|
+      Role.create(name: role)
+      puts role
+    end
+  end
+
   def create_known_users
-    users = ["platform_admin", "buisness_admin", "user", "Josh", "Andrew", "Jorge", "Jeneve", "Drew", "Sunny"]
+    users = ["platform_admin", "business_admin", "user", "Josh", "Andrew", "Jorge", "Jeneve", "Drew", "Sunny"]
     users.each do |user|
       user = User.create(
       email: "#{user.downcase}@turing.io",
@@ -45,12 +40,12 @@ class Seed
 
   def assign_roles
     p_a = Role.find_by(name: "platform_admin")
-    b_a = Role.find_by(name: "buisness_admin")
+    b_a = Role.find_by(name: "business_admin")
     r_u = Role.find_by(name: "registered_user")
     user = User.find_by(name: "platform_admin")
     user.roles = [p_a]
     puts "#{user.name} has #{user.roles.count} roles"
-    user = User.find_by(name: "buisness_admin")
+    user = User.find_by(name: "business_admin")
     user.roles = [b_a]
     puts "#{user.name} has #{user.roles.count} roles"
     user = User.find_by(name: "user")

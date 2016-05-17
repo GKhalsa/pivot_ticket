@@ -7,6 +7,22 @@
     <%= link_to account_edit_path, class: "waves-effect waves-light btn" do %>
     Update My Account
     <% end %>
+    <% @user.tickets.each do |ticket| %>
+      <div class="col s12 m6">
+        <div class="card card-<%= ticket.id %> hoverable">
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4"><%= ticket.event_title if ticket.event %></span>
+            <span class="right"><h5>$<%= ticket.price %> <%= ticket.seat_location %></h5></span>
+          </div>
+          <div class="card-action center-align">
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4"><%= ticket.event.title if ticket.event %><i class="material-icons right">close</i></span>
+            <p><%= ticket.event.performing if ticket.event %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
   <% unless @user.tickets.nil? %>
     <h4 class="order-for">Your Tickets</h4>

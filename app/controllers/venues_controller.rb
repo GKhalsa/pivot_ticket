@@ -1,6 +1,6 @@
 class VenuesController < ApplicationController
   def show
-    @venue = Venue.find_by(slug: params[:venue])
+    @venue = Venue.find_by_name(params)
     @venues = Venue.all
     @events = @venue.events
     @categories = Category.all
