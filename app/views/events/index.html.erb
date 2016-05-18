@@ -1,3 +1,40 @@
 <%= render partial: "partials/events_sidebar", locals: { active_category: "all", venues: @venues } %>
+<div class="slider short col s9 offset-3">
+  <ul class="slides">
+    <li>
+      <%= image_tag("symphony") %>
+      <div class="caption left-align">
+        <h3>Welcome to Pivot Tickets!</h3>
+        <h5 class="light white-text text-lighten-3">We've got the best seats.</h5>
+      </div>
+    </li>
+    <li>
+      <%= image_tag("stadium") %>
+      <div class="caption center-align">
+        <h3>Buy or Sell</h3>
+        <h5 class="light white-text text-lighten-3">
+          <%= link_to "click to learn more.", my_tickets_new_path, class: "white-text" %>
+        </h5>
+      </div>
+    </li>
+    <li>
+      <%= image_tag("venue") %>
+      <div class="caption left-align">
+        <h3>Now accepting Venue applications!</h3>
+        <h5 class="light white-text text-lighten-3">
+          <%= link_to "click to learn more.", "#", class: "white-text" %>
+          <!-- add link to go to new venue form -->
+        </h5>
+      </div>
+    </li>
+    <li>
+      <%= image_tag("night_out") %>
+      <div class="caption right-align">
+        <h3>We Make Tickets Fun!</h3>
+        <h5 class="light white-text text-lighten-3">your next big night starts here.</h5>
+      </div>
+    </li>
+  </ul>
+</div>
 
 <%= render partial: "partials/item_grid" %>
