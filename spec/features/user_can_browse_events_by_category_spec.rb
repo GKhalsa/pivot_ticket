@@ -12,8 +12,10 @@ RSpec.feature "User can view category index" do
 
     expect(current_path).to eq(category_path(category_1.name))
 
-    expect(page).to have_content("Haiku Event")
+    within('.events') do
+      expect(page).to have_content("Haiku Event")
+      expect(page).not_to have_content("Limericks Event")
+    end
 
-    expect(page).not_to have_content("Limericks Event")
   end
 end

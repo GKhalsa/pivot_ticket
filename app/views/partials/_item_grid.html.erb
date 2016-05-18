@@ -3,7 +3,7 @@
     <% unless @events.nil? %>
       <% @events.each do |event| %>
         <div class="col s12 m6">
-          <div class="card card-<%= event.id %> hoverable">
+          <div class="card events card-<%= event.id %> hoverable">
             <div class="card-image waves-effect waves-block waves-light">
               <%= image_tag(event.event_image.url, class: "flow-text")%>
             </div>
