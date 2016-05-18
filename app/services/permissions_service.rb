@@ -41,6 +41,7 @@ class PermissionsService
 
     def platform_admin_permissions
       return true if controller == "events"
+      return true if controller == "admin/events"
       return true if controller == "admin/orders"
       return true if controller == "admin/dashboard" && action.in?(%w(show))
       return true if controller == "admin/venues" && action.in?(%w(de_activate activate show index edit update))
@@ -66,7 +67,7 @@ class PermissionsService
       return true if controller == "users" && action.in?(%w(new create dashboard))
       return true if controller == "tickets" && action.in?(%w(index new create edit update destroy))
       return true if controller == "users" && action.in?(%w(new create dashboard edit update))
-      return true if controller == "admin/venues" 
+      return true if controller == "admin/venues"
     end
 
     def guest_user_permissions

@@ -24,3 +24,12 @@ a.event-title {
   overflow-y: scroll;
   max-height: 800px;
 }
+
+.head {
+  background-color: rgba(250, 160, 102, 0.27);
+  border-radius: 3px;
+}
+
+.hidden-text {
+  visibility: hidden;
+}
