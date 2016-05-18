@@ -26,7 +26,7 @@
           </td>
           <td><%= venue.name %></td>
           <td><%= venue.address %></td>
-          <td><%= link_to "link", admin_venue_path(venue) %></td>
+          <td><%= link_to "link", admin_venue_path(venue.slug) %></td>
           <td><%= venue.status %></td>
           <td>
             <%= venue_alerts?(venue) %>

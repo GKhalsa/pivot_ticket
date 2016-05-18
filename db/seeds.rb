@@ -8,8 +8,8 @@ class Seed
     create_known_users
     assign_roles
     create_sports_venue_event_tickets
-    create_music_venue_event_tickets
-    create_users_with_orders
+    # create_music_venue_event_tickets
+    # create_users_with_orders
   end
 
   def create_roles
