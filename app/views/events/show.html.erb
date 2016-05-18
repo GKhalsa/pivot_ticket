@@ -1,13 +1,11 @@
 <div id="event_image"><%= image_tag @event.event_image.url %></div>
 <div id="event_packages" class="col s12 m8 l9">
   <div class="row">
-
-    <%#= link_to event_path(@event), class: "waves-effect waves-light btn-large" do %>
-                                    <!-- <i class="material-icons left"></i><% @tickets.sort_by{|ticket| ticket.price} %> -->
-                                     <%# end %>
-<a class="waves-effect waves-light btn-large">Button</a>
-<a class="waves-effect waves-light btn-large">Button</a>
-<a class="waves-effect waves-light btn-large">Button</a>
+  <table class="head">
+    <td>
+      <h5>available tickets ordered by seat</h5>
+    </td>
+  </table>
     <ul class="collapsible scrolling" data-collapsible="accordion">
       <% @tickets.each do |ticket| %>
         <li id="ticket-<%= ticket.id %>">
