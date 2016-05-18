@@ -1,5 +1,7 @@
+<div class="cart-body">
+
   <div class="col sm12 m8 l6">
-    <div class="cart-head">
+    <div class="cart-head center-align">
         <h5>Your shopping cart</h5>
     </div>
     <table class="responsive bordered highlight">
@@ -23,7 +25,7 @@
           </tr>
         <% end %>
         <tr>
-          <td></td>
+          <td>  <%= checkout_or_create_account_button %></td>
           <td></td>
           <td></td>
           <td></td>
@@ -32,18 +34,8 @@
         </tr>
       </tbody>
     </table>
-    <!-- <ul class="collection">
-      <#% @cart.all_tickets.each do |ticket| %>
-        <li class="collection-item avatar">
-          <%#= image_tag(ticket.event.event_image.url, class: "circle") %>
-          <span class="title"><%#= ticket.event.title %></span>
-          <p><%#= ticket.event.performing %></p>
-          <p><%#= ticket.event.date_string %></p>
-          <%#= link_to "Delete", cart_path(ticket_id: ticket.id), method: :delete, class: "btn" %>
-          <span class="secondary-content right"><%#= ticket.price %></span>
-        </li>
-      <#% end %>
-      <li class="right collection-item">Total: <%= @cart.total %></li>
-    </ul> -->
-    <%= checkout_or_create_account_button %>
+    <!-- <div class="right-align checkout-div">
+
+    </div> -->
   </div>
+</div>
