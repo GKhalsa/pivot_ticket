@@ -11,10 +11,11 @@ class Admin::VenueModeratorsController < Admin::BaseController
   end
 
   def new
-    if current_user.venue && current_user.business_admin?
-      @venue = current_user.venue
+    if authorize_business_admin
     elsif current_user.platform_admin?
       @venue = Venue.find(params[:id])
+    else
+      render file: 'public/404'
     end
   end
 
