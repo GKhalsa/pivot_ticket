@@ -7,6 +7,8 @@ class Seed
     create_sports_venue_event_tickets
     create_music_venue_event_tickets
     create_users_with_orders
+    create_tags
+    create_tagged_tickets
   end
 
   def create_roles
@@ -164,6 +166,21 @@ class Seed
     end
     puts "created #{Order.count} orders, with #{OrderTicket.count} tickets"
     puts "ending user count-#{User.count}"
+  end
+
+  def create_tags
+    50.times do
+      tag = Tag.create!(word: Faker::Team.sport)
+    end
+  end
+
+  def create_tagged_tickets
+    200.times do
+      TicketTag.create!(
+      ticket: Ticket.find(rand(1..Ticket.count)),
+      tag: Tag.find(rand(1..Tag.count))
+      )
+    end
   end
 
 end
