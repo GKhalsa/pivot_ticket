@@ -20,6 +20,23 @@
   background-color: rgba(250, 160, 102, 0.27);
 }
 
+.venue-map-div {
+  max-width: inherit;
+}
+
+.venue-map {
+  max-width: inherit;
+}
+
+.title-head {
+  padding: 4px;
+  background-color: rgb(161, 68, 68);
+  background-image: linear-gradient(rgb(196, 130, 130), rgb(231, 214, 123));
+  border-radius: 3px;
+  box-shadow: 5px 5px 5px rgba(#888888, 0.6);
+}
+
+
 #price {
   padding: 1px;
   background-color: hsla(124, 37%, 41%, 0.31);
