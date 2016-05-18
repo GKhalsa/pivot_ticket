@@ -1,7 +1,7 @@
 class Admin::VenuesController < Admin::BaseController
   include VenuesHelper
 
-  before_action :set_venue, only: [:de_activate, :activate, :edit, :update]
+  before_action :set_venue, only: [:de_activate, :activate, :edit, :update, :show]
   before_action :user_venue, only: [:show, :create]
 
 

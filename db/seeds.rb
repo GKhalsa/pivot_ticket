@@ -77,7 +77,7 @@ class Seed
   def create_sports_venue_event_tickets
     sports = Category.create!(name: "Sports")
     10.times do |i|
-      sport_venue = Venue.create(name: "#{Faker::University.name} stadium",
+      sport_venue = Venue.create(name: "#{Faker::University.name} Stadium",
                               address: "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.state_abbr}, #{Faker::Address.zip}",
                                status: i%3,
                                 image: get_image("stadium", i))
@@ -112,7 +112,7 @@ class Seed
   def create_music_venue_event_tickets
     music = Category.create!(name: "Music")
     10.times do |i|
-      music_venue = Venue.create(name: "#{Faker::Company.name} concert hall",
+      music_venue = Venue.create(name: "#{Faker::Company.name} Concert Hall",
                               address: "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.state_abbr}, #{Faker::Address.zip}",
                                status: i%3,
                                 image: get_image("concert", i))

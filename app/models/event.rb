@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+  belongs_to :category
   belongs_to :venue
   has_many :tickets
 

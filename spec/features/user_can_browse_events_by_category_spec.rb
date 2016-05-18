@@ -4,7 +4,7 @@ RSpec.feature "User can view category index" do
   scenario "they see the events sorted by category" do
     category_1 = Category.create(name: "Haikus")
     category_2 = Category.create(name: "Limericks")
-    venue = Venue.create(name: "venue")
+    venue = Venue.create(name: "venue", status: 1)
     event_1 = Event.create(title: "Haiku Event",
                             date: Date.today,
                      category_id: category_1.id,
