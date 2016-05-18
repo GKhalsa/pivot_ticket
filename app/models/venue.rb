@@ -1,5 +1,7 @@
 class Venue < ActiveRecord::Base
   before_create :generate_slug
+  geocoded_by :address
+  after_validation :geocode
   has_many :users
   has_many :events
   has_many :tickets, through: :events
