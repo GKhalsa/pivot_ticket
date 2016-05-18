@@ -16,7 +16,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @tickets = @event.tickets.where(status: 0)
+    @tickets = @event.tickets.where(status: 0).order(:seat_location)
   end
 
   def index

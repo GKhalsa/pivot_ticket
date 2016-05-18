@@ -1,23 +1,26 @@
-<div id="event_image"><%= image_tag @event.event_image.url %></div>
-<div id="event_packages" class="col s12 m8 l9">
-  <div class="row">
-  <table class="head">
-    <td>
-      <h5>available tickets ordered by seat</h5>
-    </td>
-  </table>
-    <ul class="collapsible scrolling" data-collapsible="accordion">
-      <% @tickets.each do |ticket| %>
-        <li id="ticket-<%= ticket.id %>">
-          <div class="collapsible-header"><i class="material-icons ticket-add">add</i>
-            <div class="ticket-info">
-              <strong>Ticket Price:</strong> $<%= ticket.price %> <strong>Section/Seat Number:</strong> <%= ticket.seat_location %> </div>
-            </div>
-          <div class="collapsible-body">  <%= button_to cart_path(ticket_id: ticket.id), class: "waves-effect waves-light btn" do %>
-                                          <i class="material-icons left">shopping_cart</i>Add to Cart
-                                           <% end %></div>
-        </li>
-        <% end %>
-      </ul>
+<div class="row">
+  <div class="col s7">
+    <h1> <%=  %> </h1>
   </div>
+  <div id="event_packages" class="col s5 centered">
+    <table class="head centered">
+      <td>
+        <h5>Available Tickets Ordered by Seat</h5>
+      </td>
+    </table>
+      <ul class="collapsible scrolling center-align" data-collapsible="accordion">
+        <% @tickets.each do |ticket| %>
+          <li id="ticket-<%= ticket.id %>">
+            <div class="collapsible-header"><i class="center-align material-icons ticket-add">add</i>
+              <div class="ticket-info">
+                <strong id="price">Price:</strong><span class="hidden-text">tab</span>
+                $<%= ticket.price %><span class="hidden-text">tab</span><strong id="seat">Section/Seat Number:</strong><span class="hidden-text">tab</span><%= ticket.seat_location %> </div>
+              </div>
+            <div class="collapsible-body">  <%= button_to cart_path(ticket_id: ticket.id), class: "waves-effect waves-light btn" do %>
+                                            <i class="material-icons left">shopping_cart</i>Add to Cart
+                                             <% end %></div>
+          </li>
+          <% end %>
+        </ul>
+    </div>
 </div>
