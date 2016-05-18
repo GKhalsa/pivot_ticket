@@ -6,6 +6,9 @@ RSpec.feature "User sees events by venue" do
       venue_1, venue_2 = create_list(:venue, 2)
       event_1, event_2 = create_list(:event, 2, venue_id: venue_1.id)
       event_3 = create(:event, venue_id: venue_2.id)
+      event_1.tickets.create(seat_location: "GA", price: 10)
+      event_2.tickets.create(seat_location: "GA", price: 10)
+      event_3.tickets.create(seat_location: "GA", price: 10)
 
       venue_1.update(status: 1)
       visit root_path

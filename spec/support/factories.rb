@@ -33,7 +33,7 @@ FactoryGirl.define do
       "Event_#{n} Title"
     end
     performing "Event Performer"
-    date "5874897 AD"
+    date Date.today
     venue
   end
 
