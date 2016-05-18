@@ -5,6 +5,9 @@
        <% @categories.each do |category| %>
          <%= display_category_link(category, active_category) %>
        <% end %>
+    </div>
+    <br>
+    <div class="collection">
        <% unless venues.nil? %>
          <%= link_to "Venues", '#', class: "collection-item active" %>
          <% venues.each do |venue| %>
@@ -12,6 +15,7 @@
            <%= link_to venue.name, venue_path(venue.slug), class: "collection-item" %>
            <% end %>
          <% end %>
-       <% end %>     
+       <% end %>
+     </div>
     </div>
-  </div>
+  <!-- </div> -->
