@@ -79,7 +79,7 @@ class Seed
     10.times do |i|
       sport_venue = Venue.create(name: "#{Faker::University.name} stadium",
                               address: "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.state_abbr}, #{Faker::Address.zip}",
-                               status: 1,
+                               status: i%3,
                                 image: get_image("stadium", i))
       user = User.create(name: "#{sport_venue.name} admin",
                         email: "#{sport_venue.name}@turing.io",
@@ -114,7 +114,7 @@ class Seed
     10.times do |i|
       music_venue = Venue.create(name: "#{Faker::Company.name} concert hall",
                               address: "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.state_abbr}, #{Faker::Address.zip}",
-                               status: 1,
+                               status: i%3,
                                 image: get_image("concert", i))
       user = User.create(name: "#{music_venue.name} admin",
                         email: "#{music_venue.name}@turing.io",
