@@ -1,24 +1,36 @@
-<div class="col s12 m8 l9">
-  <div class="row">
-    <% unless @events.nil? %>
-      <% @events.each do |event| %>
-        <div class="col s12 m6">
-          <div class="card events card-<%= event.id %> hoverable">
-            <div class="card-image waves-effect waves-block waves-light">
-              <%= image_tag(event.event_image.url, class: "flow-text")%>
-            </div>
-            <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4"><%= link_to event.title, event_path(event), class: "event-title" %></span>
-            </div>
-            <div class="card-action center-align">
-            </div>
-            <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4"><%= event.title %><i class="material-icons right">close</i></span>
-              <p><%= event.performing %></p>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
+<div class="col s9 offset-3 ">
+  <div class="scrolling-event">
+    <table class= "bordered centered highlight responsive">
+      <thead>
+        <tr>
+          <th data-field="alert"></th>
+          <th data-field="title"><h5>Event Title</h5></th>
+          <th data-field="date">Date</th>
+          <th data-field="price">Average Ticket Price</th>
+          <th data-field="tickets">Get Tickets</th>
+          <th data-field="venue"><h5>Venue</h5></th>
+          <th data-field="event_image"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% unless @events.nil? %>
+          <% @events.each do |event| %>
+          <tr>
+            <td>
+              <% if event.this_week? %>
+                <p id="soon">this week!</p>
+              <% end %>
+            </td>
+            <td><%= event.title %></td>
+            <td><%= event.date_string %></td>
+            <td><%= event.average_ticket_price %></td>
+            <td><%= link_to "Tickets", event_path(event) %></td>
+            <td><%= event.venue.name %></td>
+            <td><%= image_tag(event.event_image.url, class: "thumbnail") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
   </div>
 </div>
