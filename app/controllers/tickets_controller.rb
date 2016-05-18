@@ -38,7 +38,7 @@ class TicketsController < ApplicationController
   def create
     @ticket = Ticket.new(ticket_params)
     @ticket.user_id = current_user.id
-    tags = @ticket.new_tags(params[:ticket][:tags])
+    tags = Tag.new_tags(params[:ticket][:tags])
     if @ticket.save
       @ticket.tags = tags
       flash[:notice] = "Ticket successfully posted."

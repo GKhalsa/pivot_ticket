@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      @user.roles << Role.find_or_create_by(name: "registered_user")
       flash[:notice] = "Account successfully created"
       session[:user_id] = @user.id
       redirect_to dashboard_path
@@ -30,10 +31,6 @@ class UsersController < ApplicationController
   def dashboard
     @user = current_user
     render :dashboard
-  end
-
-  def show
-    @user = current_user
   end
 
   private
