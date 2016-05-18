@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160515162737) do
+ActiveRecord::Schema.define(version: 20160518154955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -126,6 +126,8 @@ ActiveRecord::Schema.define(version: 20160515162737) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "status",             default: 0
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_foreign_key "events", "categories"
