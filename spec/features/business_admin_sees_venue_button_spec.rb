@@ -25,6 +25,8 @@ RSpec.describe "Business Admin can see venue button" do
   scenario "Business Admin can see venue once approved" do
     role = Role.create(name: "business_admin")
     venue = Venue.create(name: "staples center", address: "123 st.")
+    sports = Category.create(name: "sports")
+    event_1, event_2 = create_list(:event, 2, venue_id: venue.id, category_id: sports.id)
     business_admin = User.create(name: "business admin",
                                 email: "email",
                              password: "password",
@@ -48,6 +50,8 @@ RSpec.describe "Business Admin can see venue button" do
     scenario "An event is added to the venue show page" do
       role = Role.create(name: "business_admin")
       venue = Venue.create(name: "staples center", address: "123 st.", status: 1)
+      sports = Category.create(name: "sports")
+      event_1, event_2 = create_list(:event, 2, venue_id: venue.id, category_id: sports.id)
       business_admin = User.create(name: "business admin",
                                   email: "email",
                                password: "password",
@@ -73,11 +77,12 @@ RSpec.describe "Business Admin can see venue button" do
   scenario "Business Admin can edit events" do
     role = Role.create(name: "business_admin")
     venue = Venue.create(name: "staples center", address: "123 st.", status: 1)
+    sports = Category.create(name: "sports")
     event = Event.create(title: "hello",
                     performing: "hello",
                           date: "10/12/17",
-                      venue_id: "#{venue.id}"
-                        )
+                      venue_id: "#{venue.id}",
+                   category_id: sports.id)
     business_admin = User.create(name: "business admin",
                                 email: "email",
                              password: "password",
@@ -100,6 +105,8 @@ RSpec.describe "Business Admin can see venue button" do
   scenario "Business Admin can delete events" do
     role = Role.create(name: "business_admin")
     venue = Venue.create(name: "staples center", address: "123 st.", status: 1)
+    sports = Category.create(name: "sports")
+    event_1, event_2 = create_list(:event, 2, venue_id: venue.id, category_id: sports.id)
     event = Event.create(title: "hello",
                     performing: "hello",
                           date: "10/12/17",
@@ -115,14 +122,14 @@ RSpec.describe "Business Admin can see venue button" do
 
     visit admin_venue_path(venue: venue.slug)
     expect(page).to have_content("hello")
-    expect(Event.count).to eq(1)
+    expect(Event.count).to eq(3)
 
     within("#event-#{event.id}") do
       click_on("Delete")
     end
 
     expect(page).to have_content("hello has been deleted")
-    expect(Event.count).to eq(0)
+    expect(Event.count).to eq(2)
   end
 
 
@@ -130,6 +137,8 @@ RSpec.describe "Business Admin can see venue button" do
     scenario "the venue's name changes" do
       role = Role.create(name: "business_admin")
       venue = Venue.create(name: "staples center", address: "123 st.", status: 1)
+      sports = Category.create(name: "sports")
+      event_1, event_2 = create_list(:event, 2, venue_id: venue.id, category_id: sports.id)
       business_admin = User.create(name: "business admin",
                                   email: "email",
                                password: "password",
@@ -153,6 +162,8 @@ RSpec.describe "Business Admin can see venue button" do
     scenario "the moderators page updates accordingly" do
       role = Role.create(name: "business_admin")
       venue = Venue.create(name: "staples center", address: "123 st.", status: 1)
+      sports = Category.create(name: "sports")
+      event_1, event_2 = create_list(:event, 2, venue_id: venue.id, category_id: sports.id)
       user = User.create(name: "kaiser soze",
                                   email: "email@email.com",
                                password: "password",

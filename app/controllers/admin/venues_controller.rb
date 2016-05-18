@@ -20,7 +20,7 @@ class Admin::VenuesController < Admin::BaseController
       render :pending
     elsif current_user.platform_admin?
       @venue = Venue.find_by(slug: params[:venue])
-      @events = @venue.events
+      @events = @venue.events.order(:date)
     elsif current_user.business_admin?
       gather_venue_and_events
     elsif current_user.registered_user?

@@ -7,7 +7,7 @@ class EventsController < ApplicationController
 
   def index
     @categories = Category.all
-    @events = Event.all
+    @events = Event.order(:date)
     @venues = Venue.where(status: 1)
   end
 
