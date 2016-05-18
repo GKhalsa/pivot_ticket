@@ -7,4 +7,27 @@ class Admin::BaseController < ApplicationController
   def pending_venue?
     current_user.venue.pending?
   end
+
+  def authorize_business_admin
+    current_user.venue && current_user.business_admin?
+      @venue = current_user.venue
+  end
+
+  def authorize_platform_admin?
+  end
+
+  def current_venue?
+    current_user.venue
+  end
+
+  def venue_pending?
+    current_user.venue.pending?
+  end
+
+  def gather_venue_and_events
+    @venue = current_user.venue
+    @events = @venue.events
+  end
+
+
 end

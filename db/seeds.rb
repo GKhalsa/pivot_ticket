@@ -1,4 +1,7 @@
+require_relative "seeds_helper/image_getter"
+
 class Seed
+  include ImageGetter
 
   def initialize
     create_roles
@@ -75,23 +78,24 @@ class Seed
 
   def create_sports_venue_event_tickets
     sports = Category.create!(name: "Sports")
-    10.times do
+    10.times do |i|
       sport_venue = Venue.create(name: "#{Faker::University.name} stadium",
                               address: "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.state_abbr}, #{Faker::Address.zip}",
-                               status: 1)
+                               status: 1,
+                                image: get_image("stadium", i))
       user = User.create(name: "#{sport_venue.name} admin",
                         email: "#{sport_venue.name}@turing.io",
                      password: "password",
                      venue_id: sport_venue.id)
       user.roles = [Role.find_by(name: "business_admin")]
       puts "Built #{sport_venue.name} at #{sport_venue.address} admin: #{sport_venue.users.first.name}"
-      5.times do
+      5.times do |i|
         team1 = Faker::Team.name
         team2 = Faker::Team.name
         game = Event.create(title: "#{team1} vs. #{team2} at #{sport_venue.name}",
                        performing: "#{team1}, #{team2}",
                              date: Faker::Date.forward(23),
-                    event_image: Faker::Avatar.image,
+                    event_image: get_image("athlete", i),
                       category_id: sports.id,
                          venue_id: sport_venue.id)
         puts "#{game.title} is happening on #{game.date}, at #{game.venue.name}!"
@@ -109,23 +113,24 @@ class Seed
 
   def create_music_venue_event_tickets
     music = Category.create!(name: "Music")
-    10.times do
+    10.times do |i|
       music_venue = Venue.create(name: "#{Faker::Company.name} concert hall",
                               address: "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.state_abbr}, #{Faker::Address.zip}",
-                               status: 1)
+                               status: 1,
+                                image: get_image("concert", i))
       user = User.create(name: "#{music_venue.name} admin",
                         email: "#{music_venue.name}@turing.io",
                      password: "password",
                      venue_id: music_venue.id)
       user.roles = [Role.find_by(name: "business_admin")]
       puts "Built #{music_venue.name} at #{music_venue.address} admin: #{music_venue.users.first.name}"
-      5.times do
+      5.times do |i|
         group = Faker::Superhero.name
         artist = Faker::Name.name
         concert = Event.create(title: "#{artist} with #{group} at #{music_venue.name}",
                        performing: "#{group}, #{artist}",
                              date: Faker::Date.forward(23),
-                      event_image: Faker::Avatar.image,
+                      event_image: get_image("musician", i),
                       category_id: music.id,
                          venue_id: music_venue.id)
 
