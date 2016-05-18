@@ -1,26 +1,49 @@
-<div class="row">
   <div class="col sm12 m8 l6">
-    <ul class="collection">
-      <% @cart.all_tickets.each do |ticket| %>
+    <div class="cart-head">
+        <h5>Your shopping cart</h5>
+    </div>
+    <table class="responsive bordered highlight">
+      <thead>
+        <td data-type="image"></td>
+        <td data-type="event_title"><h5>Event Title</h5></td>
+        <td data-type="date">Event Date</td>
+        <td data-type="seat">Seat</td>
+        <td data-type="price">Price</td>
+        <td data-type="delete"></td>
+      </thead>
+      <tbody>
+        <% @cart.all_tickets.each do |ticket| %>
+          <tr>
+            <td><%= image_tag(ticket.event.event_image.url, class: "circle tiny thumbnail") %></td>
+            <td><%= ticket.event.title %> </td>
+            <td><%= ticket.event.date_string %> </td>
+            <td><%= ticket.seat_location %> </td>
+            <td><%= ticket.price %> </td>
+            <td><%= link_to "Remove", cart_path(ticket_id: ticket.id), method: :delete, class: "btn" %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><h6>Total:</h6></td>
+          <td class="center-align"><%= @cart.total %></td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- <ul class="collection">
+      <#% @cart.all_tickets.each do |ticket| %>
         <li class="collection-item avatar">
-          <%= image_tag(ticket.event.event_image.url, class: "circle") %>
-          <span class="title"><%= ticket.event.title %></span>
-          <p><%= ticket.event.performing %></p>
-          <p><%= ticket.event.date_string %></p>
-
-            <%= form_tag cart_path, method: :patch do %>
-              <%= hidden_field_tag(:item_id, ticket.id) %>
-              <%= number_field_tag(:quantity, ticket.quantity, min: 1, class: "right right-align") %>
-              <%= submit_tag("Update", class: "right btn") %>
-            <% end %>
-
-
-          <%= link_to "Delete", cart_path(ticket_id: ticket.id), method: :delete, class: "btn" %>
-          <span class="secondary-content right"><%= ticket.price %></span>
+          <%#= image_tag(ticket.event.event_image.url, class: "circle") %>
+          <span class="title"><%#= ticket.event.title %></span>
+          <p><%#= ticket.event.performing %></p>
+          <p><%#= ticket.event.date_string %></p>
+          <%#= link_to "Delete", cart_path(ticket_id: ticket.id), method: :delete, class: "btn" %>
+          <span class="secondary-content right"><%#= ticket.price %></span>
         </li>
-      <% end %>
+      <#% end %>
       <li class="right collection-item">Total: <%= @cart.total %></li>
-    </ul>
+    </ul> -->
     <%= checkout_or_create_account_button %>
   </div>
-</div>

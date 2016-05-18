@@ -21,11 +21,10 @@ RSpec.feature "User can add a ticket to their cart" do
 
     expect(current_path).to eq(cart_path)
 
-    within("ul.collection:nth-child(1)") do
+    within("table") do
       expect(page).to have_content(ticket_1.event_title)
       expect(page).to have_content(ticket_1.event.date_string)
       expect(page).to have_content(ticket_1.price)
-      expect(page).to have_content(ticket_1.event_performing)
     end
     expect(page).to have_content("Total: 9.99")
 
@@ -38,17 +37,14 @@ RSpec.feature "User can add a ticket to their cart" do
 
     expect(current_path).to eq(cart_path)
 
-    within("li.collection-item:nth-child(1)") do
+    within("table") do
       expect(page).to have_content(ticket_1.event_title)
       expect(page).to have_content(ticket_1.event.date_string)
       expect(page).to have_content(ticket_1.price)
-      expect(page).to have_content(ticket_1.event_performing)
-    end
-    within("li.collection-item:nth-child(2)") do
+
       expect(page).to have_content(ticket_2.event_title)
       expect(page).to have_content(ticket_2.event.date_string)
       expect(page).to have_content(ticket_2.price)
-      expect(page).to have_content(ticket_2.event_performing)
     end
     expect(page).to have_content("Total: 19.98")
   end
