@@ -88,8 +88,8 @@ class Seed
       user.roles = [Role.find_by(name: "business_admin")]
       puts "Built #{sport_venue.name} at #{sport_venue.address} admin: #{sport_venue.users.first.name}"
       5.times do |i|
-        team1 = Faker::Team.name
-        team2 = Faker::Team.name
+        team1 = Faker::Team.name.capitalize
+        team2 = Faker::Team.name.capitalize
         game = Event.create(title: "#{team1} vs. #{team2} at #{sport_venue.name}",
                        performing: "#{team1}, #{team2}",
                              date: Faker::Date.forward(23),
