@@ -6,7 +6,7 @@ module TicketsHelper
       button_to "Create Account to Checkout",
                 login_path,
                 method: "get",
-                class: "waves-effect waves-light btn-large"
+                class: "waves-effect waves-light btn-large light-blue accent-4"
     end
   end
 

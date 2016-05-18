@@ -1,16 +1,16 @@
 <div class="cart-body">
 
   <div class="col sm12 m8 l6">
-    <div class="cart-head center-align">
+    <!-- <div class="cart-head center-align">
         <h5>Your shopping cart</h5>
-    </div>
+    </div> -->
     <table class="responsive bordered highlight">
-      <thead>
+      <thead style="background-color: rgba(83, 124, 187, 0.21);">
         <td data-type="image"></td>
-        <td data-type="event_title"><h5>Event Title</h5></td>
-        <td data-type="date">Event Date</td>
-        <td data-type="seat">Seat</td>
-        <td data-type="price">Price</td>
+        <td data-type="event_title"><h5 class="blue-text">These Tickets are in Your Cart:</h5></td>
+        <td class="blue-text" data-type="date">Event Date</td>
+        <td class="blue-text" data-type="seat">Seat</td>
+        <td class="blue-text" data-type="price">Price</td>
         <td data-type="delete"></td>
       </thead>
       <tbody>
@@ -21,7 +21,7 @@
             <td><%= ticket.event.date_string %> </td>
             <td><%= ticket.seat_location %> </td>
             <td><%= ticket.price %> </td>
-            <td><%= link_to "Remove", cart_path(ticket_id: ticket.id), method: :delete, class: "btn" %></td>
+            <td><%= link_to "Remove", cart_path(ticket_id: ticket.id), method: :delete, class: "btn light-blue accent-5" %></td>
           </tr>
         <% end %>
         <tr>
@@ -34,8 +34,5 @@
         </tr>
       </tbody>
     </table>
-    <!-- <div class="right-align checkout-div">
-
-    </div> -->
   </div>
 </div>
