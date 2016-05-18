@@ -26,7 +26,7 @@ class Admin::BaseController < ApplicationController
 
   def gather_venue_and_events
     @venue = current_user.venue
-    @events = @venue.events
+    @events = @venue.events.order(:date)
   end
 
 
