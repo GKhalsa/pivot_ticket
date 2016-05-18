@@ -1,15 +1,16 @@
 <div class="row">
   <div class="col s12 m3">
-    <div class="collection">
+    <div class="collection with-header">
+      <div class= "collection-header teal lighten-5"><h5>Event Categories</h5></div>
        <%= display_all_category_link(active_category) %>
        <% @categories.each do |category| %>
          <%= display_category_link(category, active_category) %>
        <% end %>
     </div>
     <br>
-    <div class="collection">
+    <div class="collection with-header">
        <% unless venues.nil? %>
-         <%= link_to "Venues", '#', class: "collection-item active" %>
+       <div class= "collection-header teal lighten-5"><h5>Events by Venue</h5></div>
          <% venues.each do |venue| %>
            <% if venue.active? %>
            <%= link_to venue.name, venue_path(venue.slug), class: "collection-item" %>
