@@ -1,0 +1,35 @@
+a.event-title {
+  font-size: .8em;
+}
+
+.overflow-hidden {
+  overflow-y: scroll;
+}
+
+.thumbnail {
+  max-height: 100px;
+  border-radius: 2px;
+}
+
+#soon {
+  color: rgb(129, 35, 1);
+  background-color: rgba(250, 160, 102, 0.54);
+  padding-left: 2px;
+  padding-right: 2px;
+  border-radius: 3px;
+}
+
+.scrolling-event {
+  padding-top: 10px;
+  overflow-y: scroll;
+  max-height: 800px;
+}
+
+.head {
+  background-color: rgba(250, 160, 102, 0.27);
+  border-radius: 3px;
+}
+
+.hidden-text {
+  visibility: hidden;
+}

@@ -1,4 +1,14 @@
 
 <%= render partial: "partials/events_sidebar", locals: { active_category: "#{@category.name}", venues: @venues } %>
-
+<div class="slider short col s9 offset-3">
+  <ul class="slides">
+    <li>
+      <%= image_tag(@category.name.downcase) %>
+      <div class="caption right-align">
+        <h3><%= "We love #{@category.name}!"  %></h3>
+        <h5 class="light white-text text-lighten-3">you've come to the right place.</h5>
+      </div>
+    </li>
+  </li>
+</div>
 <%= render partial: "partials/item_grid" %>
