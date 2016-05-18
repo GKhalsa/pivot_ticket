@@ -1,11 +1,12 @@
 <div class="row">
-  <div class="col s7">
-    <h1> <%=  %> </h1>
+  <div class="col s7 head">
+    <h5> <%= @event.title %></h5>
+    <h6><%= @event.date_string %></h6>
   </div>
   <div id="event_packages" class="col s5 centered">
     <table class="head centered">
       <td>
-        <h5>Available Tickets Ordered by Seat</h5>
+        <h5 id="heading">Available Tickets Ordered by Seat</h5>
       </td>
     </table>
       <ul class="collapsible scrolling center-align" data-collapsible="accordion">
