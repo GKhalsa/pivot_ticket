@@ -9,6 +9,7 @@ class Seed
     create_roles
     create_known_users
     assign_roles
+    create_andrews_venue
     create_sports_venue_event_tickets
     create_music_venue_event_tickets
     create_users_with_orders
@@ -62,7 +63,7 @@ class Seed
     user.roles = [p_a, b_a, r_u]
     puts "#{user.name} has all #{user.roles.count} roles"
     user = User.find_by(name: "Andrew")
-    user.roles = [p_a, b_a, r_u]
+    user.roles = [b_a, r_u]
     puts "#{user.name} has all #{user.roles.count} roles"
     user = User.find_by(name: "Jorge")
     user.roles = [p_a, b_a, r_u]
@@ -76,6 +77,33 @@ class Seed
     user = User.find_by(name: "Jeneve")
     user.roles = [p_a, b_a, r_u]
     puts "#{user.name} has all #{user.roles.count} roles"
+  end
+
+  def create_andrews_venue
+    comedy = Category.create(name: "Comedy")
+    venue = Venue.create!(name: "Laugh House",
+               address: "1510 Blake St. Denver, CO 80202",
+                status: 1,
+                 image: get_image("comedy", 1))
+    User.find_by(name: "Andrew").venue_id = venue
+    5.times do |i|
+      comedian = Faker::Name.name
+      show = Event.create(title: "#{comedian} at #{venue.name}",
+                     performing: "#{comedian}",
+                           date: Faker::Date.forward(23),
+                    event_image: get_image("comedian", i),
+                    category_id: comedy.id,
+                       venue_id: venue.id)
+
+      puts "#{show.title} is happening on #{show.date}, at #{show.venue.name}!"
+      num_tix = rand(50..75)
+      num_tix.times do
+        Ticket.create(price: Faker::Commerce.price,
+              seat_location: Faker::Lorem.characters(3),
+                   event_id: show.id,
+                category_id: comedy.id)
+      end
+    end
   end
 
   def create_sports_venue_event_tickets
