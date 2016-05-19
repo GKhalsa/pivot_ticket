@@ -2,7 +2,7 @@
   <div class="col s8">
     <div class="card">
       <div class="card-image waves-effect waves-block waves-light">
-        <%= image_tag @ticket.event.category.name.downcase, class: "activator" %>
+        <%= image_tag @ticket.appropriate_photo, class: "activator" %>
       </div>
       <div class="card-content">
         <span class="card-title activator grey-text text-darken-4">Ticket: <%= @ticket.event.card_title %><i class="material-icons right">more_vert</i></span>

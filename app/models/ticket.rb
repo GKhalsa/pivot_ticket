@@ -40,4 +40,8 @@ class Ticket < ActiveRecord::Base
   def owner
     self.user
   end
+
+  def appropriate_photo
+    event.category.name.downcase
+  end
 end
