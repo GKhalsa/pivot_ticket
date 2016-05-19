@@ -3,9 +3,11 @@ require "rails_helper"
 RSpec.describe ItemSender, type: :mailer do
   describe ".send_order" do
     before(:each) do
+      @before_count = ActionMailer::Base.deliveries.count
       @user = create(:user)
       @order = create(:order)
       ItemSender.send_order(@user, @order).deliver_now
+      @after_count = ActionMailer::Base.deliveries.count
     end
 
     after(:each) do
@@ -13,7 +15,7 @@ RSpec.describe ItemSender, type: :mailer do
     end
 
     it "should send an email" do
-      expect(ActionMailer::Base.deliveries.count).to eq(3)
+      expect(@after_count).to eq(@before_count + 1)
     end
 
     it "has the correct receiver email" do

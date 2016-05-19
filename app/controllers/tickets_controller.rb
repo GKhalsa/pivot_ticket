@@ -14,9 +14,13 @@ class TicketsController < ApplicationController
     @categories = Category.all
     if @ticket.event.date > Date.today
       render :show
+    elsif @ticket.status == "not_valid"
+      flash.now[:error] = "This ticket has already been used"
+      render :show
     else
       @ticket.status = "not_valid"
-      render :used
+      flash.now[:notice] = "Ticket has been processed."
+      render :show
     end
   end
 

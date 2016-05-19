@@ -14,7 +14,7 @@ RSpec.feature "User can view orders" do
 
     ticket_2 = create(:ticket, event_id: ticket_1.event.id)
 
-    visit event_path(ticket_1.event)
+    visit event_path(ticket_1.event.venue.slug, ticket_1.event.id)
 
     within("#ticket-#{ticket_1.id}") do
       click_button("Add to Cart")
@@ -53,7 +53,7 @@ RSpec.feature "User can view orders" do
       ApplicationController.any_instance.stubs(:current_user).returns(user)
 
       visit order_path(order)
-      
+
       expect(page).to have_content("404")
     end
   end

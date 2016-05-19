@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   root to: "events#index"
   resources :tickets, only: [:index, :update, :create]
-  resources :events, only: [:show, :index, :new, :create]
+  resources :events, only: [:index, :new, :create]
   resource :cart, only: [:create, :show, :destroy, :update]
   resource :users, only: [:create, :update]
   resources :orders, only: [:create, :index, :show]
 
+  get "/venues/:name/events/:id", to: "events#show", as: "event"
   get "/my-tickets", to: "tickets#my_tickets"
   get "/my-tickets/new", to: "tickets#new"
   get "/my-tickets/edit", to: "tickets#edit"

@@ -5,7 +5,7 @@ RSpec.feature "User can view tickets index" do
     ticket_1 = create(:ticket)
     ticket_2 = create(:ticket, event_id: ticket_1.event.id )
 
-    visit event_path(ticket_1.event.id)
+    visit event_path(ticket_1.event.venue.slug, ticket_1.event.id)
 
     expect(page).to have_content(ticket_1.price)
 

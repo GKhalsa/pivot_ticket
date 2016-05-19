@@ -21,7 +21,7 @@
             <td><%= event.title %></td>
             <td><%= event.date_string %></td>
             <td><%= event.average_ticket_price %></td>
-            <td><%= link_to "Get Tickets", event_path(event) %></td>
+            <td><%= link_to "Get Tickets", event_path(event.venue.slug, event.id) %></td>
             <td><%= event.venue.name %></td>
             <td><%= image_tag(event.event_image.url, class: "thumbnail") %></td>
           </tr>
