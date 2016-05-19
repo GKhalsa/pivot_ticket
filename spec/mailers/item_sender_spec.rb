@@ -13,7 +13,7 @@ RSpec.describe ItemSender, type: :mailer do
     end
 
     it "should send an email" do
-      expect(ActionMailer::Base.deliveries.count).to eq(1)
+      expect(ActionMailer::Base.deliveries.count).to eq(3)
     end
 
     it "has the correct receiver email" do
@@ -26,7 +26,7 @@ RSpec.describe ItemSender, type: :mailer do
     end
 
     it "has the correct sender email" do
-      email = "from@example.com"
+      email = "no-reply@example.com"
       expect(ActionMailer::Base.deliveries.first.from).to eq([email])
     end
   end

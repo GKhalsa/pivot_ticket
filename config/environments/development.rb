@@ -46,16 +46,19 @@ Rails.application.configure do
       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'],
     }
   }
+  config.action_mailer.default_url_options = {:host => "localhost:3000"}
+
 
   config.action_mailer.delivery_method = :smtp
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
-   address:               "smtp.gmail.com",
-   port:                  587,
-   user_name:             ENV["GMAIL_USERNAME"],
-   password:              ENV["GMAIL_PASSWORD"],
-   authentication:        "plain",
-  enable_starttls_auto:   true
+    address: 'smtp.sendgrid.net',
+    port: '587',
+    domain: 'example.com',
+    user_name: ENV["SENDGRID_USER_NAME"],
+    password: ENV["SENDGRID_PASSWORD"],
+    authentication: 'plain',
+    enable_starttls_auto: true
   }
 
   # getty = {getty_images_key: ENV["GETTY_IMAGES_KEY"]}

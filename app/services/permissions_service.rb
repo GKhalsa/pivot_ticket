@@ -27,15 +27,12 @@ class PermissionsService
 
     def platform_admin_permissions
       return true if controller == "events"
-      return true if controller == "admin/events"
       return true if controller == "admin/orders"
       return true if controller == "admin/dashboard" && action.in?(%w(show))
-      return true if controller == "admin/venues" && action.in?(%w(de_activate activate show index edit update))
-      return true if controller == "admin/venue_moderators" && action.in?(%w(index destroy new create))
+      return true if controller == "admin/venues"
       return true if controller == "admin/categories" && action.in?(%w(new create))
       return true if controller == "admin/tickets"
       return true if controller == "categories"
-      return true if controller == "tickets" && action.in?(%w(index new create edit update destroy))
       business_admin_permissions
     end
 
@@ -67,7 +64,7 @@ class PermissionsService
       return true if controller == "venues" && action.in?(%w(show))
       return true if controller == "sessions"
       return true if controller == "users" && action.in?(%w(new create dashboard))
-      return true if controller == "tickets" && action.in?(%w(index new))
+      return true if controller == "tickets" && action.in?(%w(index new qr))
     end
 
     def controller

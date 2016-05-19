@@ -1,5 +1,6 @@
 class Admin::TicketsController < Admin::BaseController
-  before_action :set_ticket, only: [:retire, :activate, :edit, :update]
+  before_action :set_ticket, only: [:retire, :de_activate, :activate, :edit, :update]
+  include TicketsHelper
 
   def index
     @tickets = Ticket.all_by_id
@@ -7,12 +8,12 @@ class Admin::TicketsController < Admin::BaseController
 
   def de_activate
     change_status(@ticket, 1, "de-activated")
-    redirect_to dashboard_path
+    redirect_to admin_tickets_path
   end
 
   def activate
     change_status(@ticket, 0, "posted for sale")
-    redirect_to dashboard_path
+    redirect_to admin_tickets_path
   end
 
   def new
