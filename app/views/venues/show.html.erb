@@ -2,7 +2,7 @@
 <div class="slider short col s9 offset-3">
   <ul class="slides">
     <li>
-      <%= image_tag("#{@events.first.category.name.downcase}-venue") %>
+      <%= image_tag(return_appropriate_image(@events)) %>
       <div class="caption left-align">
         <h4><%= @venue.name  %></h4>
         <p class="light white-text text-lighten-3"><%= @venue.address  %></p>

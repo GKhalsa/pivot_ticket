@@ -9,6 +9,7 @@
       <hr>
       <div class="venue-map-div responsive overflow-hidden">
         <div class="venue-map center-align" id="map" style='width: 580px; height: 430px;'></div>
+      </div>
         <script type="text/JavaScript">
         handler = Gmaps.build('Google');
         handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
@@ -17,7 +18,6 @@
           handler.fitMapToBounds();
         });
         </script>
-      </div>
   </div>
   <div id="event_packages" class="col s12 l5 centered">
     <table class="head centered">
