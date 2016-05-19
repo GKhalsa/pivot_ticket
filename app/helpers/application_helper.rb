@@ -24,4 +24,12 @@ module ApplicationHelper
      link_to "!", alerts_path, class: "btn-floating btn-small waves-effect waves-light red"
     end
   end
+
+  def return_appropriate_image(events)
+    if events.empty?
+      "sports-venue"
+    else
+      "#{events.first.category.name.downcase}-venue"
+    end
+  end
 end
