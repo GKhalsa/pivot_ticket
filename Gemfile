@@ -26,6 +26,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
 gem 'unicorn'
+gem 'rqrcode'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -45,6 +46,7 @@ group :production do
   gem 'rails_12factor'
 end
 
+gem 'simplecov', require: false, group: :test
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

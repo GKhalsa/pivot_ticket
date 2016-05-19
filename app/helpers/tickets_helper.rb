@@ -15,5 +15,4 @@ module TicketsHelper
     ticket.save
     flash[:notice] = "Your ticket to #{ticket.event.title} was successfully #{message}"
   end
-
 end

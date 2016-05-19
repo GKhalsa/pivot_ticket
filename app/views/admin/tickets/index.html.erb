@@ -20,7 +20,15 @@
       <td><%= ticket.price %></td>
       <td><%= ticket.updated_at %></td>
       <td><%= link_to "Edit Ticket", edit_admin_ticket_path(ticket), class: "waves-effect waves-light btn" %></td>
-      <td><%= button_to_change_ticket_state(ticket) %></td>
+      <td>  <% if ticket.active? %>
+<<<<<<< HEAD
+             <%= button_to "de-activate ticket", admin_ticket_deactivate_path(ticket.id), class: "waves-effect waves-light red lighten-1 btn" %>
+            <% elsif ticket.inactive? %>
+             <%= button_to "activate ticket", admin_ticket_activate_path(ticket.id), class: "waves-effect waves-light btn" %>
+            <% else %>
+             <%= button_to "ticket is expired", "#", class: "btn disabled" %>
+            <% end %>
+      </td>
     </tr>
   <% end %>
 </table>

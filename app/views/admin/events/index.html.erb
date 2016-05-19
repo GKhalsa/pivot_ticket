@@ -20,7 +20,6 @@
       <td><%= ticket.price %></td>
       <td><%= ticket.updated_at %></td>
       <td><%= link_to "Edit Event", edit_admin_ticket_path(ticket), class: "waves-effect waves-light btn" %></td>
-      <td><%= button_to_change_ticket_state(ticket) %></td>
     </tr>
   <% end %>
 </table>

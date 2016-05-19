@@ -40,18 +40,4 @@ class Ticket < ActiveRecord::Base
   def owner
     self.user
   end
-
-  def parse_tags(string)
-    string.split(",").map do |tag|
-      tag.lstrip
-    end
-  end
-
-  def new_tags(tag_string)
-    tags = parse_tags(tag_string)
-    tags.map do |tag|
-      Tag.find_or_create_by(word: tag)
-    end
-  end
-
 end

@@ -25,49 +25,35 @@ class PermissionsService
 
   private
 
+    def platform_admin_permissions
+      return true if controller == "events"
+      return true if controller == "admin/orders"
+      return true if controller == "admin/dashboard" && action.in?(%w(show))
+      return true if controller == "admin/venues"
+      return true if controller == "admin/categories" && action.in?(%w(new create))
+      return true if controller == "admin/tickets"
+      return true if controller == "categories"
+      business_admin_permissions
+    end
+
     def business_admin_permissions
       return true if controller == "events" && action.in?(%w(index show))
       return true if controller == "admin/venues" && action.in?(%w(index show new edit create update))
       return true if controller == "admin/events" && action.in?(%w(edit destroy new update create))
       return true if controller == "admin/venue_moderators" && action.in?(%w(index new create destroy))
-      return true if controller == "sessions"
-      return true if controller == "categories"
       return true if controller == "venues"
-      return true if controller == "carts"
       return true if controller == "orders" && action.in?(%w(index create show))
-      return true if controller == "users" && action.in?(%w(dashboard edit update))
       return true if controller == "tickets" && action.in?(%w(new create index edit update destroy))
-    end
-
-    def platform_admin_permissions
-      return true if controller == "events"
-      return true if controller == "admin/events"
-      return true if controller == "admin/orders"
-      return true if controller == "admin/dashboard" && action.in?(%w(show))
-      return true if controller == "admin/venues" && action.in?(%w(de_activate activate show index edit update))
-      return true if controller == "admin/venue_moderators" && action.in?(%w(index destroy new create))
-      return true if controller == "admin/categories" && action.in?(%w(new create))
-      return true if controller == "admin/tickets"
-      return true if controller == "sessions"
-      return true if controller == "categories"
-      return true if controller == "tickets" && action.in?(%w(index new create edit update destroy))
-      return true if controller == "users" && action.in?(%w(new create dashboard))
-      return true if controller == "venues"
-      return true if controller == "carts"
+      registered_user_permissions
     end
 
     def registered_user_permissions
-      return true if controller == "categories" && action.in?(%w(show))
-      return true if controller == "events" && action.in?(%w(index show))
-      return true if controller == "carts"
       return true if controller == "orders" && action.in?(%w(index create show))
-      return true if controller == "venues" && action.in?(%w(show))
-      return true if controller == "sessions"
       return true if controller == "tickets" && action.in?(%w(activate de_activate index new create edit update destroy))
-      return true if controller == "users" && action.in?(%w(new create dashboard))
       return true if controller == "tickets" && action.in?(%w(index new create edit update destroy))
-      return true if controller == "users" && action.in?(%w(new create dashboard edit update))
-      return true if controller == "admin/venues"
+      return true if controller == "users" && action.in?(%w(edit update))
+      return true if controller == "admin/venues" && action.in?(%w(new create))
+      guest_user_permissions
     end
 
     def guest_user_permissions
@@ -78,7 +64,7 @@ class PermissionsService
       return true if controller == "venues" && action.in?(%w(show))
       return true if controller == "sessions"
       return true if controller == "users" && action.in?(%w(new create dashboard))
-      return true if controller == "tickets" && action.in?(%w(index new))
+      return true if controller == "tickets" && action.in?(%w(index new qr))
     end
 
     def controller

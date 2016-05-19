@@ -17,10 +17,6 @@ class Venue < ActiveRecord::Base
     self.slug = self.name.parameterize
   end
 
-  def first_admin
-    "first admin email link"
-  end
-
   def alerts?
     false
   end
