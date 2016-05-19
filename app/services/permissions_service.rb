@@ -52,7 +52,7 @@ class PermissionsService
       return true if controller == "tickets" && action.in?(%w(activate de_activate index new create edit update destroy))
       return true if controller == "tickets" && action.in?(%w(index new create edit update destroy))
       return true if controller == "users" && action.in?(%w(edit update))
-      return true if controller == "admin/venues" && action.in?(%w(new create))
+      return true if controller == "admin/venues" && action.in?(%w(new create index show))
       guest_user_permissions
     end
 

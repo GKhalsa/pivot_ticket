@@ -13,9 +13,6 @@ class Admin::BaseController < ApplicationController
       @venue = current_user.venue
   end
 
-  def authorize_platform_admin?
-  end
-
   def current_venue?
     current_user.venue
   end

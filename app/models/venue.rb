@@ -6,9 +6,11 @@ class Venue < ActiveRecord::Base
   has_many :events
   has_many :tickets, through: :events
   has_many :users
+  validates :name, presence: true
+  validates :address, presence: true
 
   has_attached_file :image,
-  default_url: "https://s3.amazonaws.com/digital-destination/missing_image.png"
+  default_url: "http://i.imgur.com/ULEPAyO.jpg"
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   enum status: %w(pending active inactive)
@@ -23,5 +25,13 @@ class Venue < ActiveRecord::Base
 
   def self.find_by_name(params)
     find_by(slug: params[:venue])
+  end
+
+  def make_user_admin
+    users.first.roles << return_business_admin_role
+  end
+
+  def return_business_admin_role
+    Role.find_or_create_by(name: "business_admin")
   end
 end
