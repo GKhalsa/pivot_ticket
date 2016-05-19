@@ -12,19 +12,17 @@ class Admin::VenuesController < Admin::BaseController
 
   def activate
     change_status(@venue, 1, "activated")
+    @venue.make_user_admin
     redirect_to admin_dashboard_path
   end
 
   def show
-    if venue_pending?
-      render :pending
-    elsif current_user.platform_admin?
+    if current_user.platform_admin?
       @venue = Venue.find_by(slug: params[:venue])
       @events = @venue.events.order(:date)
+    elsif venue_pending?
+      render :pending
     elsif current_user.business_admin?
-      gather_venue_and_events
-    elsif current_user.registered_user?
-      current_user.roles << Role.business_admin
       gather_venue_and_events
     else
       render file: 'public/404'

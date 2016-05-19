@@ -36,9 +36,11 @@ RSpec.feature "Admin can change a venue's status" do
                       password: "password" )
       admin.roles.create(name: "platform_admin")
 
-      Venue.create!(name: "venue_name",
+      venue = Venue.create!(name: "venue_name",
                 address: "venue_address",
                  status: 2)
+
+      venue.users << admin           
 
       ApplicationController.any_instance.stubs(:current_user).returns(admin)
 
