@@ -29,8 +29,12 @@ Rails.application.routes.draw do
     resources :venue_moderators, only: [:index, :show, :new, :create, :destroy]
   end
 
+  get "/qr/:id", to: "tickets#qr", as: :ticket_qr
+
   post "/tickets/:id/de_activate", to: "tickets#de_activate", as: :ticket_deactivate
   post "/tickets/:id/activate", to: "tickets#activate", as: :ticket_activate
+  post "admin/tickets/:id/de_activate", to: "admin/tickets#de_activate", as: :admin_ticket_deactivate
+  post "admin/tickets/:id/activate", to: "admin/tickets#activate", as: :admin_ticket_activate
 
   get "/:name", to: "categories#show", as: :category
   get "/:venue/events", to: "venues#show", as: :venue

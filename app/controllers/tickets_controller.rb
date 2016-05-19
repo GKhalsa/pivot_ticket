@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
   include TicketsHelper
-  before_action :set_ticket, only: [:edit, :update, :activate, :de_activate]
+  before_action :set_ticket, only: [:edit, :update, :activate, :de_activate, :qr]
   before_action :require_login, only: [:new, :create, :edit, :update]
 
   def index
@@ -9,8 +9,15 @@ class TicketsController < ApplicationController
     @venues = Venue.all
   end
 
-  def show
-
+  def qr
+    @venues = Venue.all
+    @categories = Category.all
+    if @ticket.event.date > Date.today
+      render :show
+    else
+      @ticket.status = "not_valid"
+      render :used
+    end
   end
 
   def de_activate
@@ -22,13 +29,6 @@ class TicketsController < ApplicationController
     change_status(@ticket, 0, "posted for sale")
     redirect_to dashboard_path
   end
-
-  def my_tickets
-    @categories = Category.all
-    @tickets = Ticket.where(user_id: current_user.id)
-    render :my_tickets_index
-  end
-
 
   def new
     @categories = Category.all

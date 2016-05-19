@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
     if order_builder.create
       session[:cart] = {}
       flash[:notice] = "Order was successfully placed"
+      ItemSender.send_order(current_user, order).deliver_now
       redirect_to orders_path
     else
       flash[:notice] = "Something went wrong"

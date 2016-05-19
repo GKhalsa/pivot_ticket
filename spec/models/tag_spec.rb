@@ -13,4 +13,16 @@ RSpec.describe Tag, type: :model do
 
     expect(result).to eq([ticket])
   end
+
+  it "can parse multiple comma separated strings for multiple tags" do
+    a = Tag.create(word: "a tag")
+    b = Tag.create(word: "tag2")
+    c = Tag.create(word: "another tag")
+
+    string = "a tag, tag2, another tag"
+
+    tags = Tag.new_tags(string)
+
+    expect(tags).to eq([a, b, c])
+  end
 end
