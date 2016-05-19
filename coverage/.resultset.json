@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/helpers/application_helper.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/helpers/application_helper.rb": [
         1,
         1,
         136,
@@ -28,9 +28,17 @@
         0,
         null,
         null,
+        null,
+        1,
+        1,
+        0,
+        null,
+        1,
+        null,
+        null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/helpers/category_helper.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/helpers/category_helper.rb": [
         1,
         1,
         12,
@@ -50,7 +58,7 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/helpers/nav_helper.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/helpers/nav_helper.rb": [
         1,
         1,
         136,
@@ -69,15 +77,15 @@
         34,
         null,
         102,
-        20,
-        20,
-        82,
+        22,
+        22,
+        80,
         29,
         null,
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/helpers/orders_helper.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/helpers/orders_helper.rb": [
         1,
         1,
         24,
@@ -108,7 +116,7 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/helpers/tickets_helper.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/helpers/tickets_helper.rb": [
         1,
         1,
         10,
@@ -128,7 +136,7 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/helpers/venues_helper.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/helpers/venues_helper.rb": [
         1,
         null,
         1,
@@ -139,7 +147,7 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/mailers/item_sender.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/mailers/item_sender.rb": [
         1,
         null,
         1,
@@ -159,13 +167,13 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/mailers/application_mailer.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/mailers/application_mailer.rb": [
         1,
         1,
         1,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/models/cart_ticket.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/models/cart_ticket.rb": [
         1,
         1,
         null,
@@ -180,7 +188,7 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/models/category.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/models/category.rb": [
         1,
         1,
         1,
@@ -191,7 +199,7 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/models/order_builder.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/models/order_builder.rb": [
         1,
         1,
         null,
@@ -215,7 +223,7 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/models/order_ticket.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/models/order_ticket.rb": [
         1,
         1,
         1,
@@ -229,7 +237,7 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/models/concerns/order.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/models/concerns/order.rb": [
         1,
         1,
         1,
@@ -265,7 +273,7 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/models/role.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/models/role.rb": [
         1,
         1,
         1,
@@ -275,7 +283,7 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/models/tag.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/models/tag.rb": [
         1,
         1,
         1,
@@ -301,7 +309,7 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/models/ticket.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/models/ticket.rb": [
         1,
         1,
         1,
@@ -346,19 +354,19 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/models/ticket_tag.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/models/ticket_tag.rb": [
         1,
         1,
         1,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/models/user_role.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/models/user_role.rb": [
         1,
         1,
         1,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/models/user.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/models/user.rb": [
         1,
         1,
         null,
@@ -392,7 +400,7 @@
         null,
         null,
         1,
-        296,
+        294,
         null,
         null,
         1,
@@ -401,7 +409,7 @@
         null,
         1,
         null,
-        296,
+        297,
         null,
         null,
         null,
@@ -411,11 +419,13 @@
         null,
         1,
         null,
-        260,
+        256,
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/models/venue.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/models/venue.rb": [
+        1,
+        1,
         1,
         1,
         1,
@@ -442,9 +452,18 @@
         1,
         1,
         null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/models/event.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/models/event.rb": [
+        1,
         1,
         1,
         1,
@@ -452,10 +471,15 @@
         null,
         1,
         null,
+        1,
         1,
         null,
         1,
         9,
+        0,
+        null,
+        9,
+        null,
         null,
         null,
         1,
@@ -475,7 +499,7 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/controllers/application_controller.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/controllers/application_controller.rb": [
         1,
         1,
         1,
@@ -514,14 +538,14 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/controllers/admin/dashboard_controller.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/controllers/admin/dashboard_controller.rb": [
         1,
         1,
         13,
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/controllers/admin/base_controller.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/controllers/admin/base_controller.rb": [
         1,
         null,
         1,
@@ -534,9 +558,6 @@
         null,
         1,
         1,
-        1,
-        null,
-        null,
         1,
         null,
         null,
@@ -556,7 +577,7 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/models/cart.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/models/cart.rb": [
         1,
         1,
         1,
@@ -592,7 +613,7 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/services/permissions_service.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/services/permissions_service.rb": [
         1,
         1,
         null,
@@ -675,7 +696,7 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/controllers/admin/orders_controller.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/controllers/admin/orders_controller.rb": [
         1,
         1,
         null,
@@ -703,7 +724,7 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/controllers/admin/categories_controller.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/controllers/admin/categories_controller.rb": [
         1,
         1,
         3,
@@ -726,7 +747,7 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/controllers/admin/events_controller.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/controllers/admin/events_controller.rb": [
         1,
         null,
         1,
@@ -789,7 +810,7 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/controllers/events_controller.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/controllers/events_controller.rb": [
         1,
         null,
         1,
@@ -811,7 +832,7 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/controllers/admin/tickets_controller.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/controllers/admin/tickets_controller.rb": [
         1,
         1,
         1,
@@ -864,7 +885,7 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/controllers/users_controller.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/controllers/users_controller.rb": [
         1,
         1,
         null,
@@ -915,7 +936,7 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/controllers/sessions_controller.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/controllers/sessions_controller.rb": [
         1,
         1,
         3,
@@ -958,7 +979,7 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/controllers/admin/venues_controller.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/controllers/admin/venues_controller.rb": [
         1,
         1,
         null,
@@ -971,6 +992,7 @@
         1,
         null,
         null,
+        1,
         1,
         1,
         1,
@@ -978,15 +1000,12 @@
         null,
         1,
         12,
+        0,
+        0,
+        12,
         1,
         11,
-        0,
-        0,
         11,
-        11,
-        0,
-        0,
-        0,
         null,
         0,
         null,
@@ -1044,7 +1063,7 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/controllers/admin/venue_moderators_controller.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/controllers/admin/venue_moderators_controller.rb": [
         1,
         null,
         1,
@@ -1094,7 +1113,7 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/controllers/carts_controller.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/controllers/carts_controller.rb": [
         1,
         1,
         null,
@@ -1131,7 +1150,7 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/controllers/categories_controller.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/controllers/categories_controller.rb": [
         1,
         1,
         1,
@@ -1141,7 +1160,7 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/controllers/orders_controller.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/controllers/orders_controller.rb": [
         1,
         1,
         null,
@@ -1168,7 +1187,7 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/controllers/tickets_controller.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/controllers/tickets_controller.rb": [
         1,
         1,
         1,
@@ -1247,7 +1266,7 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/controllers/venues_controller.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/controllers/venues_controller.rb": [
         1,
         1,
         1,
@@ -1257,10 +1276,10 @@
         null,
         null
       ],
-      "/Users/jeneveparrish/Turing/3module/pivot/pivot_ticket/app/models/qr.rb": [
+      "/Users/drew/turing/3module/pivot_ticket/app/models/qr.rb": [
 
       ]
     },
-    "timestamp": 1463666263
+    "timestamp": 1463672782
   }
 }

@@ -85,7 +85,7 @@ class Seed
                address: "1510 Blake St. Denver, CO 80202",
                 status: 1,
                  image: get_image("comedy", 1))
-    User.find_by(name: "Andrew").venue_id = venue
+    User.find_by(name: "Andrew").update(venue_id: venue.id)
     5.times do |i|
       comedian = Faker::Name.name
       show = Event.create(title: "#{comedian} at #{venue.name}",
