@@ -18,4 +18,12 @@ class Event < ActiveRecord::Base
   def date_string
     date.strftime('%a, %b %e')
   end
+
+  def type
+    category.name.downcase == "sports" ? "Game" : "Show"
+  end
+
+  def card_title
+    "#{performing.gsub(", ", " and ")} on #{date_string}"
+  end
 end
