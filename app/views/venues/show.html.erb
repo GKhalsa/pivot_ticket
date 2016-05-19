@@ -3,7 +3,7 @@
 <div class="slider short col s9 offset-3">
   <ul class="slides">
     <li>
-      <%= image_tag(return_appropriate_image(@events)) %>
+      <%= image_tag("https://raw.githubusercontent.com/GKhalsa/pivot_ticket/master/app/assets/images/#{return_appropriate_image(@events)}.jpg") %>
       <div class="caption left-align">
         <h4><%= @venue.name  %></h4>
         <p class="light white-text text-lighten-3"><%= @venue.address  %></p>
