@@ -44,7 +44,7 @@ class Admin::VenuesController < Admin::BaseController
       current_user.update(venue_id: @venue.id)
       render :pending
     else
-      flash.now[:error] = @venue.errors.full_messages
+      flash.now[:error] = @venue.errors.full_messages.join(", ")
       render :new
     end
   end
