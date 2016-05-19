@@ -43,7 +43,7 @@ RSpec.describe "Business Admin can see venue button" do
 
     expect(page).to have_content("Add Event")
     expect(page).to have_content("Edit Venue")
-    expect(page).to have_content("Venue Admin Dashboard")
+    expect(page).to have_content("View all Venue Admins")
   end
 
   context "Business Admin can add an event" do
@@ -93,9 +93,10 @@ RSpec.describe "Business Admin can see venue button" do
 
     visit admin_venue_path(venue: venue.slug)
 
-    within(".collapsible-body") do
+    within "#event-#{event.id}" do
       click_on("Edit")
     end
+
 
     fill_in :Title, with: "what"
     click_on "Submit"
@@ -123,6 +124,7 @@ RSpec.describe "Business Admin can see venue button" do
     visit admin_venue_path(venue: venue.slug)
     expect(page).to have_content("hello")
     expect(Event.count).to eq(3)
+
 
     within("#event-#{event.id}") do
       click_on("Delete")
@@ -177,13 +179,14 @@ RSpec.describe "Business Admin can see venue button" do
       ApplicationController.any_instance.stubs(:current_user).returns(business_admin)
 
       visit admin_venue_path(venue: venue.slug)
-      click_on("Venue Admin Dashboard")
+      click_on("View all Venue Admins")
 
-      click_on("Create a New Admin")
+      click_on("Add a New Admin")
 
       fill_in :email, with: "email@email.com"
       click_on("Search")
-      click_on("Venue Admin Dashboard")
+
+      click_on("View all Venue Admins")
       expect(page).to have_content("kaiser soze")
 
       within("#mod-id-#{user.id}") do
