@@ -27,7 +27,6 @@ class Admin::EventsController < Admin::BaseController
   end
 
   def update
-
     @event = Event.find(params[:venue])
     if @event.update(event_params)
       flash[:success] = "#{@event.title} has been updated"
@@ -48,14 +47,15 @@ class Admin::EventsController < Admin::BaseController
   private
 
   def event_params
-    params.require(:event).permit(:title,
-                                  :performing,
-                                  :date,
-                                  :category_id,
-                                  :venue_id,
-                                  :event_image,
-                                  :id
-                                  )
+    params.require(:event).permit(
+      :title,
+      :performing,
+      :date,
+      :category_id,
+      :venue_id,
+      :event_image,
+      :id
+    )
   end
 
 end

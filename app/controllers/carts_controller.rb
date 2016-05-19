@@ -19,11 +19,6 @@ class CartsController < ApplicationController
   def show
   end
 
-  def update
-    @cart.update_ticket(params[:ticket_id], params[:quantity].to_i)
-    render :show
-  end
-
 private
 
   def set_ticket

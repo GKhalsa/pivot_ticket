@@ -5,14 +5,14 @@ class Admin::TicketsController < Admin::BaseController
     @tickets = Ticket.all_by_id
   end
 
-  def retire
-    @ticket.retired!
-    redirect_to admin_tickets_path
+  def de_activate
+    change_status(@ticket, 1, "de-activated")
+    redirect_to dashboard_path
   end
 
   def activate
-    @ticket.active!
-    redirect_to admin_tickets_path
+    change_status(@ticket, 0, "posted for sale")
+    redirect_to dashboard_path
   end
 
   def new
