@@ -38,6 +38,8 @@ gem 'omniauth-oauth2'
 gem 'omniauth-github'
 gem 'figaro'
 gem 'faker'
+gem 'geocoder'
+gem 'gmaps4rails'
 
 group :production do
   gem 'rails_12factor'
