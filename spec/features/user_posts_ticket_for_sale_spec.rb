@@ -13,7 +13,7 @@ RSpec.feature "User can change the status of a ticket" do
                           event_id: event.id)
       ApplicationController.any_instance.stubs(:current_user).returns(user)
 
-      visit event_path(event.id)
+      visit event_path(event.venue.slug, event.id)
 
       expect(page).to have_content("201.0")
       expect(page).to have_content("GA")
@@ -26,7 +26,7 @@ RSpec.feature "User can change the status of a ticket" do
       expect(page).to_not have_content("de-activate ticket")
       expect(page).to have_button("activate ticket")
 
-      visit event_path(event.id)
+      visit event_path(event.venue.slug, event.id)
 
       expect(page).to_not have_content("201.0")
       expect(page).to_not have_content("GA")
@@ -47,7 +47,7 @@ RSpec.feature "User can change the status of a ticket" do
                             status: 1)
       ApplicationController.any_instance.stubs(:current_user).returns(user)
 
-      visit event_path(event.id)
+      visit event_path(event.venue.slug, event.id)
 
       expect(page).to_not have_content("201.0")
       expect(page).to_not have_content("GA")
@@ -60,7 +60,7 @@ RSpec.feature "User can change the status of a ticket" do
       expect(page).to_not have_content("activate ticket")
       expect(page).to have_button("de-activate ticket")
 
-      visit event_path(event.id)
+      visit event_path(event.venue.slug, event.id)
 
       expect(page).to have_content("201.0")
       expect(page).to have_content("GA")
@@ -81,7 +81,7 @@ RSpec.feature "User can change the status of a ticket" do
                             status: 2)
       ApplicationController.any_instance.stubs(:current_user).returns(user)
 
-      visit event_path(event.id)
+      visit event_path(event.venue.slug, event.id)
 
       expect(page).to_not have_content("201.0")
       expect(page).to_not have_content("GA")

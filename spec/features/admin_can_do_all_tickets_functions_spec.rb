@@ -17,7 +17,7 @@ RSpec.describe "Admins have control over tickets" do
                           event_id: event.id)
       ApplicationController.any_instance.stubs(:current_user).returns(user)
 
-      visit event_path(event.id)
+      visit event_path(event.venue.slug, event.id)
 
       expect(page).to have_content("201.0")
       expect(page).to have_content("GA")
@@ -51,7 +51,7 @@ RSpec.describe "Admins have control over tickets" do
                             status: 1)
       ApplicationController.any_instance.stubs(:current_user).returns(user)
 
-      visit event_path(event.id)
+      visit event_path(event.venue.slug, event.id)
 
       expect(page).to_not have_content("201.0")
       expect(page).to_not have_content("GA")
@@ -83,7 +83,7 @@ RSpec.describe "Admins have control over tickets" do
                             status: 2)
       ApplicationController.any_instance.stubs(:current_user).returns(user)
 
-      visit event_path(event.id)
+      visit event_path(event.venue.slug, event.id)
 
       expect(page).to_not have_content("201.0")
       expect(page).to_not have_content("GA")

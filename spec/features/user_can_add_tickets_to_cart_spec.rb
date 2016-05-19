@@ -7,7 +7,7 @@ RSpec.feature "User can add a ticket to their cart" do
 
     ticket_2 = create(:ticket, event_id: ticket_1.event.id, seat_location: "GA")
 
-    visit event_path(ticket_1.event.id)
+    visit event_path(ticket_1.event.venue.slug, ticket_1.event.id)
 
     expect(page).to have_button("Add to Cart")
 
@@ -15,7 +15,7 @@ RSpec.feature "User can add a ticket to their cart" do
       click_button("Add to Cart")
     end
 
-    expect(current_path).to eq(event_path(ticket_1.event.id))
+    expect(current_path).to eq(event_path(ticket_1.event.venue.slug, ticket_1.event.id))
 
     click_link("shopping_cart")
 
@@ -28,7 +28,7 @@ RSpec.feature "User can add a ticket to their cart" do
     end
     expect(page).to have_content("Total: 9.99")
 
-    visit event_path(ticket_2.event.id)
+    visit event_path(ticket_2.event.venue.slug, ticket_2.event.id)
 
     within("#ticket-#{ticket_2.id}") do
       click_button("Add to Cart")

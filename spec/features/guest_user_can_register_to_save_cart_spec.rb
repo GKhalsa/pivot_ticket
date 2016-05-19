@@ -5,7 +5,7 @@ RSpec.feature "User can register an account" do
     ticket_1 = create(:ticket)
     ticket_2 = create(:ticket, event_id: ticket_1.event.id)
 
-    visit event_path(ticket_1.event.id)
+    visit event_path(ticket_1.event.venue.slug, ticket_1.event.id)
 
     within("#ticket-#{ticket_1.id}") do
       click_button("Add to Cart")

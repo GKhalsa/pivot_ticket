@@ -4,7 +4,7 @@ RSpec.feature "User can delete an ticket from cart and undo" do
   scenario "they see updated cart" do
     ticket = create(:ticket)
 
-    visit event_path(ticket.event)
+    visit event_path(ticket.event.venue.slug, ticket.event.id)
 
     within("#ticket-#{ticket.id}") do
       click_button("Add to Cart")
