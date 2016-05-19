@@ -1,39 +1,47 @@
-<div class="row">
-  <div class="col s12">
-    <h3>Welcome to your Venue's Dashboard</h3>
-    <p>
-      <%= @venue.address %>
-    </p>
+<div class="col s12 m8 offset-m2 ">
+  <div class="row">
+    <h4>Venue Admin Dashboard</h4>
+    <%= link_to "Edit Venue", edit_admin_venue_path(@venue), class: "waves-effect waves-light btn"%>
+    <%= link_to "Add Event", new_admin_event_path(@venue), class: "waves-effect waves-light btn"%>
+    <%= link_to "View all Venue Admins", admin_venue_moderators_path(venue_id: @venue.id), class: "waves-effect waves-light btn"%>
+  </div>
+  <div class="row">
+    <table class= "centered">
+      <thead>
+        <th data-field="venue_name"></th>
+        <th data-field="venue_address"></th>
+        <th data-field="venue_link"></th>
+        <th data-field="venue_admin"></th>
+      </thead>
+      <tbody>
+        <tr class="admin-head">
+          <td><h4><%= @venue.name %></h4></td>
+          <td><h5><%= @venue.address %></h5></td>
+          <td><h5><%= link_to "link to public view", venue_path(@venue.slug) %></h5></td>
+        </tr>
+      </tbody>
+    </table>
+    <hr>
+    <table class= "bordered highlight">
+      <thead>
+        <th data-field="event_title"><h5>This Venue's Events:</h5></th>
+        <th data-field="event_date">Event Date</th>
+        <th data-field="edit_link">Edit Event</th>
+        <th data-field="delete_link">Delete Event</th>
+      </thead>
+      <tbody>
+        <% @events.each do |event| %>
+          <tr id=<%= "event-#{event.id}" %> >
+            <td> <%= event.title %> </td>
+            <td> <%= event.date_string %> </td>
+            <td><%= link_to edit_admin_event_path(@venue.slug, event), class: "waves-effect waves-light btn" do %>
+            <i class="material-icons left">mode_edit</i>Edit
+              <% end %></td>
+            <td><%= link_to delete_admin_event_path(@venue.slug, event), method: :delete, class: "waves-effect waves-light btn" do %>
+              <i class="material-icons left">delete</i>Delete
+            <% end %></td>
+          </tr>
+        <% end %>
+      </tbody>
   </div>
 </div>
-
-<h3><div> <%= @venue.name %> </div></h3>
-<div id="venue-image"><%= image_tag @venue.image %></div>
-
-<div class="row">
-  <div id="venue-options" class="col s2 m2 l4">
-    <div  class="collection">
-      <div class="collection-item center"> <%= link_to "Add Event", new_admin_event_path(@venue) %> </div>
-      <div href="#!" class="collection-item center"> <%= link_to "Edit Venue", edit_admin_venue_path(@venue) %></div>
-      <div href="#!" class="collection-item center"> <%= link_to "Venue Admin Dashboard", admin_venue_moderators_path(venue_id: @venue.id) %> </div>
-    </div>
-  </div>
-</div>
-
-<ul class="collapsible" data-collapsible="accordion">
-  <% @events.each do |event| %>
-    <li>
-      <div  class="collapsible-header"><i class="material-icons"></i><%= event.title %></div>
-      <div id="event-<%=event.id%>" class="collapsible-body">  <%= link_to delete_admin_event_path(@venue.slug, event), method: :delete, class: "waves-effect waves-light btn" do %>
-                                      <i class="material-icons left">delete</i>Delete
-                                      <% end %>
-
-                                      <%= link_to edit_admin_event_path(@venue.slug, event), class: "waves-effect waves-light btn" do %>
-                                      <i class="material-icons left">mode_edit</i>Edit
-                                      <% end %>
-
-      </div>
-
-    </li>
-    <% end %>
-  </ul>
