@@ -31,6 +31,7 @@ class Admin::VenuesController < Admin::BaseController
     end
   end
 
+
   def index
 
   end
