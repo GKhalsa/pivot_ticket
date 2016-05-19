@@ -6,3 +6,11 @@ $black: #000000;
   padding: 20px;
   text-align: center;
 }
+
+.flash-error {
+  border: 2px solid;
+  color: $black;
+  padding: 20px;
+  text-align: center;
+  background-color: rgb(230, 124, 124);
+}

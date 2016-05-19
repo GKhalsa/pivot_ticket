@@ -40,7 +40,9 @@
       </div>
     </div>
   </div>
-  <div class="col sm4 offset-8">
+</div>
+
+  <div class="col sm4 offset-4">
     <% if @ticket.active? %>
      <%= button_to "I'm going! De-activate ticket", ticket_deactivate_path(@ticket.id), class: "waves-effect waves-light red lighten-1 btn" %>
     <% elsif @ticket.inactive? %>
@@ -49,4 +51,3 @@
      <%= button_to "ticket is expired", "#", class: "btn disabled" %>
     <% end %>
   </div>
-</div>
