@@ -3,7 +3,7 @@
 <div class="slider short col s9 offset-3">
   <ul class="slides">
     <li>
-      <%= image_tag(@category.name.downcase) %>
+      <%= image_tag("https://raw.githubusercontent.com/GKhalsa/pivot_ticket/master/app/assets/images/#{@category.name.downcase}.jpg" ) %>
       <div class="caption right-align">
         <h3><%= "We love #{@category.name}!"  %></h3>
         <h5 class="light white-text text-lighten-3">you've come to the right place.</h5>
@@ -12,5 +12,3 @@
   </li>
 </div>
 <%= render partial: "partials/item_grid" %>
-
-<img src="https://raw.githubusercontent.com/GKhalsa/pivot_ticket/master/app/assets/images/symphony.jpg" >
