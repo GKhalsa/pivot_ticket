@@ -1,7 +1,9 @@
 require_relative "seeds_helper/image_getter"
+require_relative "seeds_helper/address_getter"
 
 class Seed
   include ImageGetter
+  include AddressGetter
 
   def initialize
     create_roles
@@ -80,7 +82,7 @@ class Seed
     sports = Category.create!(name: "Sports")
     10.times do |i|
       sport_venue = Venue.create(name: "#{Faker::University.name} Stadium",
-                              address: "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.state_abbr}, #{Faker::Address.zip}",
+                              address: SPORTS_VENUE_ADDRESSES[i%10],
                                status: i%3,
                                 image: get_image("stadium", i))
       user = User.create(name: "#{sport_venue.name} admin",
@@ -115,7 +117,7 @@ class Seed
     music = Category.create!(name: "Music")
     10.times do |i|
       music_venue = Venue.create(name: "#{Faker::Company.name} Concert Hall",
-                              address: "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.state_abbr}, #{Faker::Address.zip}",
+                              address: MUSIC_VENUE_ADDRESSES[i%10],
                                status: i%3,
                                 image: get_image("concert", i))
       user = User.create(name: "#{music_venue.name} admin",
