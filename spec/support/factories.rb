@@ -26,6 +26,7 @@ FactoryGirl.define do
     end
     address "Venue Address"
     status 0
+    slug "test-slug"
   end
 
   factory :event do

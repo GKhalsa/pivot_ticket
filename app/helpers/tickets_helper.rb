@@ -1,12 +1,12 @@
 module TicketsHelper
   def checkout_or_create_account_button
     if current_user
-      button_to "Checkout", orders_path, class: "waves-effect waves-light btn"
+      button_to "Checkout", orders_path, class: "waves-effect waves-light btn-large light-blue accent-4"
     else
       button_to "Create Account to Checkout",
                 login_path,
                 method: "get",
-                class: "waves-effect waves-light btn"
+                class: "waves-effect waves-light btn-large light-blue accent-4"
     end
   end
 

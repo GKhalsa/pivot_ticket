@@ -6,6 +6,8 @@ class Venue < ActiveRecord::Base
   has_many :events
   has_many :tickets, through: :events
   has_many :users
+  validates :name, presence: true
+  validates :address, presence: true
 
   has_attached_file :image,
   default_url: "http://i.imgur.com/ULEPAyO.jpg"
